@@ -69,7 +69,7 @@
                     </div>
 
                     <!-- 獨立解析區塊 -->
-                    <div id="explanation-box" class="hidden bg-slate-900/90 border-l-4 border-sky-500 p-5 rounded-r-xl text-sm transition-all animate-fadeIn">
+                    <div id="explanation-box" class="hidden bg-slate-900/90 border-l-4 border-sky-500 p-5 rounded-r-xl text-sm transition-all">
                         <div class="flex items-center space-x-2 text-sky-400 font-semibold mb-2">
                             <i class="fa-solid fa-lightbulb"></i>
                             <span>題目解析 Explanation</span>
@@ -110,132 +110,394 @@
         </div>
     </div>
 
-    <!-- 載入外部題目資料檔 -->
-    <script src="bank.js"></script>
-
-    <!-- 主控程式邏輯 -->
+    <!-- 內嵌題庫與主程式邏輯 -->
     <script>
-        let currentModuleKey = "M05-01";
-        let currentIndex = 0;
-        let userAnswers = {};
-
-        function initApp() {
-            if (typeof allQuestionBanks === 'undefined') {
-                console.error("無法讀取 bank.js，請確認檔案名稱與路徑！");
-                return;
-            }
-            for (let key in allQuestionBanks) {
-                userAnswers[key] = new Array(allQuestionBanks[key].questions.length).fill(null);
-            }
-            loadQuestion();
-        }
-
-        function getCurrentQuestions() {
-            return allQuestionBanks[currentModuleKey].questions;
-        }
-
-        function loadQuestion() {
-            const questions = getCurrentQuestions();
-            const q = questions[currentIndex];
-            const currentAnswers = userAnswers[currentModuleKey];
-
-            document.getElementById("module-badge").textContent = currentModuleKey;
-            document.getElementById("module-title").textContent = allQuestionBanks[currentModuleKey].title;
-            document.getElementById("current-idx").textContent = currentIndex + 1;
-            document.getElementById("total-cnt").textContent = questions.length;
-            
-            // 更新進度條
-            const percent = ((currentIndex + 1) / questions.length) * 100;
-            document.getElementById("progress-bar").style.width = `${percent}%`;
-
-            document.getElementById("question-text").textContent = q.question;
-            const container = document.getElementById("options-container");
-            container.innerHTML = "";
-
-            q.options.forEach((opt) => {
-                const letter = opt.charAt(0).toLowerCase();
-                const btn = document.createElement("button");
-                btn.className = "w-full text-left p-4 rounded-xl bg-slate-700/50 hover:bg-slate-700 border border-slate-600/60 transition flex items-center justify-between text-slate-200 text-sm md:text-base";
-                btn.innerHTML = `<span>${opt}</span>`;
-
-                if (currentAnswers[currentIndex] !== null) {
-                    btn.disabled = true;
-                    if (letter === q.answer.toLowerCase()) {
-                        btn.className = "w-full text-left p-4 rounded-xl bg-emerald-600/20 border-2 border-emerald-500 text-emerald-300 font-medium flex items-center justify-between text-sm md:text-base";
-                    } else if (letter === currentAnswers[currentIndex]) {
-                        btn.className = "w-full text-left p-4 rounded-xl bg-rose-600/20 border-2 border-rose-500 text-rose-300 font-medium flex items-center justify-between text-sm md:text-base";
+        const allQuestionBanks = {
+            "M05-01": {
+                title: "Electronic Instrument Systems",
+                questions: [
+                    {
+                        id: "M05-01",
+                        question: "1. What are the basic elements for 'Classic T' format?",
+                        options: [
+                            "A. Direction, altitude and height.",
+                            "B. Airspeed, pitch and roll.",
+                            "C. Airspeed, attitude, altitude and direction."
+                        ],
+                        answer: "C",
+                        explanation: "Classic T 的四大基本儀表核心元素為：Airspeed (空速)、Attitude (姿態)、Altitude (高度) 與 Direction (方向)。"
+                    },
+                    {
+                        id: "M05-02",
+                        question: "2. Typical displays on an EHSI are.",
+                        options: [
+                            "A. Engine indications.",
+                            "B. VOR, Map, Plan and weather radar.",
+                            "C. VOR, Plan, Map and Attitude."
+                        ],
+                        answer: "B",
+                        explanation: "EHSI 典型顯示包含 VOR、Map、Plan 及氣象雷達 (weather radar)。"
+                    },
+                    {
+                        id: "M05-03",
+                        question: "3. An EADI display showing a moving runway moves down during the final stages of an approach. The aircraft must.",
+                        options: [
+                            "A. fly down.",
+                            "B. fly up.",
+                            "C. hold descent path."
+                        ],
+                        answer: "A",
+                        explanation: "在進場最後階段上升跑道會向上移直到觸及飛機符號。若上升跑道開始向下移，代表飛機正在爬升，因此必須向下飛行。"
+                    },
+                    {
+                        id: "M05-04",
+                        question: "4. During an instrument approach, the glideslope pointer reflects below the glideslope centre mark. This means the aircraft is positioned.",
+                        options: [
+                            "A. above the glideslope.",
+                            "B. below the glideslope.",
+                            "C. to the left of the localiser."
+                        ],
+                        answer: "A",
+                        explanation: "指針在中心標記下方，代表滑道在飛機下方，也就是飛機位於滑道上方。"
+                    },
+                    {
+                        id: "M05-05",
+                        question: "5. Engine parameters are displayed on.",
+                        options: [
+                            "A. ECAM.",
+                            "B. EHSI.",
+                            "C. FMSCDU."
+                        ],
+                        answer: "A",
+                        explanation: "引擎參數可以透過選取 Engine 頁面顯示在 ECAM 上。"
+                    },
+                    {
+                        id: "M05-06",
+                        question: "6. What is the fixed feature of an ADI?",
+                        options: [
+                            "A. The glideslope pointer.",
+                            "B. The aircraft symbol.",
+                            "C. The lateral deviation bar."
+                        ],
+                        answer: "B",
+                        explanation: "ADI 儀表正中央繪製的小飛機符號為固定特徵。"
+                    },
+                    {
+                        id: "M05-07",
+                        question: "7. On an EADI, the Flight Director command bars show.",
+                        options: [
+                            "A. the path with respect to the horizon.",
+                            "B. the required path with respect to the actual path.",
+                            "C. the actual path with respect to the required path."
+                        ],
+                        answer: "B",
+                        explanation: "飛行導引指令桿顯示的是相對於實際飛行路徑的需求路徑。"
+                    },
+                    {
+                        id: "M05-08",
+                        question: "8. What instrument includes a display of a rising runway?",
+                        options: [
+                            "A. ECAM.",
+                            "B. EHSI.",
+                            "C. EADI."
+                        ],
+                        answer: "C",
+                        explanation: "上升跑道顯示於 EADI（電子姿態儀指示器）上。"
+                    },
+                    {
+                        id: "M05-09",
+                        question: "9. What functions are available on the EHSI?",
+                        options: [
+                            "A. Full arc and Wx only.",
+                            "B. Full arc, Wx and Map Mode.",
+                            "C. Full Arc only."
+                        ],
+                        answer: "B",
+                        explanation: "EHSI 提供 Full arc、Wx 及 Map Mode 等顯示功能。"
+                    },
+                    {
+                        id: "M05-10",
+                        question: "10. With radio coupled autopilot, what are the inputs?",
+                        options: [
+                            "A. ADF and VOR.",
+                            "B. ILS and VOR.",
+                            "C. ADF and ILS."
+                        ],
+                        answer: "B",
+                        explanation: "無線電耦合自動駕駛儀主要接收 ILS 與 VOR 訊號輸入。"
+                    },
+                    {
+                        id: "M05-11",
+                        question: "11. An EADI display of flight director commands are coloured.",
+                        options: [
+                            "A. cyan.",
+                            "B. magenta.",
+                            "C. red."
+                        ],
+                        answer: "B",
+                        explanation: "EADI 飛行導引指令桿顏色為洋紅色 (magenta)。"
+                    },
+                    {
+                        id: "M05-12",
+                        question: "12. EFIS systems have two control panels, their purpose is.",
+                        options: [
+                            "A. one to control the type of EFIS display and the other to select the source of the information being displayed.",
+                            "B. one for the EADI display and one for the EHSI display.",
+                            "C. to provide display control by one control panel whilst the other provides a standby."
+                        ],
+                        answer: "A",
+                        explanation: "一個控制面板控制顯示類型，另一個選擇資訊來源。"
+                    },
+                    {
+                        id: "M05-13",
+                        question: "13. What would you expect to see displayed on an EADI display?",
+                        options: [
+                            "A. Compass heading, selected heading and VOR.",
+                            "B. Course information, weather radar, way point alert and bearing pointers.",
+                            "C. Flight director command bars, slip indicator, rate to altitude & autoland."
+                        ],
+                        answer: "C",
+                        explanation: "EADI 顯示飛行導引指令桿、側滑指示器、高度速率及自動降落等資訊。"
+                    },
+                    {
+                        id: "M05-14",
+                        question: "14. An EFIS ADI display will show along with pitch and roll.",
+                        options: [
+                            "A. flight director bars, autoland, compass rose, altitude.",
+                            "B. decision height, autoland, rad alt , altitude.",
+                            "C. flight director bars, autoland, altitude, range to altitude, decision height."
+                        ],
+                        answer: "B",
+                        explanation: "EFIS ADI 除俯仰與滾轉外，還會顯示決斷高度、自動降落、無線電高度與高度。"
+                    },
+                    {
+                        id: "M05-15",
+                        question: "15. If the glideslope pointer is below the centre mark the aircraft is.",
+                        options: [
+                            "A. below the glideslope.",
+                            "B. on the glideslope.",
+                            "C. above the glideslope."
+                        ],
+                        answer: "C",
+                        explanation: "滑道指針在中心標記下方時，代表飛機位於滑道上方。"
+                    },
+                    {
+                        id: "M05-16",
+                        question: "16. On an EFIS system the weather radar is displayed on.",
+                        options: [
+                            "A. the FMC CDU.",
+                            "B. the EADI.",
+                            "C. the EHSI."
+                        ],
+                        answer: "C",
+                        explanation: "氣象雷達顯示於 EHSI 上。"
+                    },
+                    {
+                        id: "M05-17",
+                        question: "17. EADI displays show.",
+                        options: [
+                            "A. pitch, roll and waypoints.",
+                            "B. pitch and roll attitudes.",
+                            "C. heading and weather radar."
+                        ],
+                        answer: "B",
+                        explanation: "EADI 主要顯示俯仰與滾轉姿態。"
+                    },
+                    {
+                        id: "M05-18",
+                        question: "18. On an EHSI in weather radar mode, a severe storm would be shown as.",
+                        options: [
+                            "A. orange areas with black or yellow surrounds.",
+                            "B. red areas with black surrounds",
+                            "C. blue areas with white background."
+                        ],
+                        answer: "B",
+                        explanation: "劇烈風暴在氣象雷達模式中以紅色區域帶有黑色外框表示。"
+                    },
+                    {
+                        id: "M05-19",
+                        question: "19. During flight (non fault conditions) the EICAS system displays on the lower CRT.",
+                        options: [
+                            "A. flight phase page.",
+                            "B. secondary engine parameters.",
+                            "C. synoptic display."
+                        ],
+                        answer: "B",
+                        explanation: "在正常飛行條件下，EICAS 下方 CRT 螢幕顯示次要引擎參數。"
+                    },
+                    {
+                        id: "M05-20",
+                        question: "20. Radio altitude is displayed on an EFIS system.",
+                        options: [
+                            "A. on the Electronic Horizontal Situation Indicator.",
+                            "B. on the Electronic Attitude Direction Indicator.",
+                            "C. on the RMI."
+                        ],
+                        answer: "B",
+                        explanation: "無線電高度顯示在電子姿態儀指示器 (EADI) 上。"
+                    },
+                    {
+                        id: "M05-21",
+                        question: "21. An EFIS system ADI displays pitch, roll.",
+                        options: [
+                            "A. autoland, altitude, compass rose and flight director bars.",
+                            "B. autoland, decision height, range to altitude and flight director bars and slip indicator.",
+                            "C. autoland, rad alt, decision height and slip indicator."
+                        ],
+                        answer: "B",
+                        explanation: "EFIS ADI 顯示自動降落、決斷高度、高度範圍、飛行導引指令桿與側滑指示器。"
+                    },
+                    {
+                        id: "M05-22",
+                        question: "22. An electronic flight instrument display consists of.",
+                        options: [
+                            "A. Mode control panel, Raster and Stroke generator display, microprocessor and Data inputs.",
+                            "B. ADC, Altimeter, VSI and ASI.",
+                            "C. ADI, HSI and Symbol generator."
+                        ],
+                        answer: "A",
+                        explanation: "電子飛行儀表顯示系統包含模式控制面板、光柵與筆劃產生器顯示器、微處理器及資料輸入。"
+                    },
+                    {
+                        id: "M05-23",
+                        question: "23. The EFIS system consists of.",
+                        options: [
+                            "A. EHSI, Mode control panel, EADI.",
+                            "B. EADI, EHSI, Symbol generators.",
+                            "C. Mode control Panel, RDMI, EHSI."
+                        ],
+                        answer: "B",
+                        explanation: "EFIS 系統由 EADI、EHSI 以及符號產生器組成。"
+                    },
+                    {
+                        id: "M05-24",
+                        question: "24. ILS indications on PFD/ND are shown in.",
+                        options: [
+                            "A. cyan.",
+                            "B. magenta.",
+                            "C. green."
+                        ],
+                        answer: "B",
+                        explanation: "PFD/ND 上的 ILS 導引指示以洋紅色顯示。"
+                    },
+                    {
+                        id: "M05-25",
+                        question: "25. A weather radar image can be displayed on the ND on all modes except.",
+                        options: [
+                            "A. arc.",
+                            "B. nav rose.",
+                            "C. plan."
+                        ],
+                        answer: "C",
+                        explanation: "氣象雷達影像可以顯示在導航顯示器的多種模式，但不適用於 Plan 模式。"
+                    },
+                    {
+                        id: "M05-26",
+                        question: "26. In a typical commercial aircraft Head Up Guidance System.",
+                        options: [
+                            "A. the type of information shown on the attitude director indicator is displayed on a transparent plate.",
+                            "B. all instrument information is displayed on the windshield.",
+                            "C. only emergency indications or warnings are displayed to the pilot."
+                        ],
+                        answer: "A",
+                        explanation: "平視導引系統將姿態儀資訊投射顯示在正前方的透明板上。"
+                    },
+                    {
+                        id: "M05-27",
+                        question: "27. A modern Electronic Horizontal Situation Indicator will display the following:.",
+                        options: [
+                            "A. Waypoints, ILS Steering Information, Distance to go and Magnetic Heading.",
+                            "B. ILS Steering Information, Flight director information and Glide Slope Deviation.",
+                            "C. Ground speed, Magnetic Heading, Way points and Localiser."
+                        ],
+                        answer: "A",
+                        explanation: "現代 EHSI 顯示航點、ILS 導引資訊、剩餘距離與磁航向。"
+                    },
+                    {
+                        id: "M05-28",
+                        question: "28. Cockpit panels have a matt colour finish. The purpose is.",
+                        options: [
+                            "A. so that pilots feel more comfortable during daytime.",
+                            "B. so that the amount of glare is reduced to minimum.",
+                            "C. so that dust and dirt are less evident on panels."
+                        ],
+                        answer: "B",
+                        explanation: "駕駛艙面板採用消光處理是為了將反光降至最低。"
+                    },
+                    {
+                        id: "M05-29",
+                        question: "29. A complete EFIS installation in an aircraft is made up of.",
+                        options: [
+                            "A. either of the above.",
+                            "B. right (captain) and left (co-pilot).",
+                            "C. left (captain) and right (co-pilot)."
+                        ],
+                        answer: "A",
+                        explanation: "左右座配置因機型而異，視具體安裝而定。"
+                    },
+                    {
+                        id: "M05-30",
+                        question: "30. On a modern 'glass cockpit' aircraft, engine information will be displayed on.",
+                        options: [
+                            "A. FMS.",
+                            "B. EFIS.",
+                            "C. ECAM."
+                        ],
+                        answer: "C",
+                        explanation: "在現代玻璃座艙飛機中，引擎資訊顯示在 ECAM 上。"
+                    },
+                    {
+                        id: "M05-31",
+                        question: "31. What does EFIS mean?",
+                        options: [
+                            "A. Electronic Fire Indication Signal.",
+                            "B. Electronic Flight Instrument System.",
+                            "C. Electronic Flight Information System."
+                        ],
+                        answer: "B",
+                        explanation: "EFIS 全稱為 Electronic Flight Instrument System。"
+                    },
+                    {
+                        id: "M05-32",
+                        question: "32. What does EICAS mean?",
+                        options: [
+                            "A. Electronic indicator and control alerting system.",
+                            "B. Engine indicating and Crew alerting system.",
+                            "C. Electronic indicator and crew alerting system."
+                        ],
+                        answer: "B",
+                        explanation: "EICAS 全稱為 Engine indicating and Crew alerting system。"
+                    },
+                    {
+                        id: "M05-33",
+                        question: "33. What does ECAM mean?",
+                        options: [
+                            "A. Engine Centralised Aircraft Management System.",
+                            "B. Engine Centralised Aircraft Monitoring System.",
+                            "C. Electronic Centralised Aircraft Monitoring System."
+                        ],
+                        answer: "C",
+                        explanation: "ECAM 全稱為 Electronic Centralised Aircraft Monitoring System。"
                     }
-                } else {
-                    btn.onclick = () => selectOption(letter);
-                }
-                container.appendChild(btn);
-            });
-
-            const expBox = document.getElementById("explanation-box");
-            if (currentAnswers[currentIndex] !== null) {
-                document.getElementById("explanation-text").textContent = q.explanation || "暫無詳細解析。";
-                expBox.classList.remove("hidden");
-            } else {
-                expBox.classList.add("hidden");
-            }
-
-            document.getElementById("prev-btn").disabled = currentIndex === 0;
-            document.getElementById("next-btn").querySelector("span").textContent = currentIndex === questions.length - 1 ? "查看結果" : "下一題";
-        }
-
-        function selectOption(letter) {
-            userAnswers[currentModuleKey][currentIndex] = letter;
-            loadQuestion();
-        }
-
-        function nextQuestion() {
-            const questions = getCurrentQuestions();
-            if (currentIndex < questions.length - 1) {
-                currentIndex++;
-                loadQuestion();
-            } else {
-                showResult();
-            }
-        }
-
-        function prevQuestion() {
-            if (currentIndex > 0) {
-                currentIndex--;
-                loadQuestion();
-            }
-        }
-
-        function showResult() {
-            const questions = getCurrentQuestions();
-            const answers = userAnswers[currentModuleKey];
-            let score = 0;
-            questions.forEach((q, idx) => {
-                if (answers[idx] === q.answer.toLowerCase()) score++;
-            });
-
-            document.getElementById("quiz-container").classList.add("hidden");
-            document.getElementById("result-container").classList.remove("hidden");
-            document.getElementById("score-text").textContent = score;
-            document.getElementById("result-total").textContent = questions.length;
-        }
-
-        function switchModule(key) {
-            currentModuleKey = key;
-            currentIndex = 0;
-            document.getElementById("result-container").classList.add("hidden");
-            document.getElementById("quiz-container").classList.remove("hidden");
-            loadQuestion();
-        }
-
-        function restartQuiz() {
-            userAnswers[currentModuleKey] = new Array(getCurrentQuestions().length).fill(null);
-            currentIndex = 0;
-            document.getElementById("result-container").classList.add("hidden");
-            document.getElementById("quiz-container").classList.remove("hidden");
-            loadQuestion();
-        }
-
-        window.onload = initApp;
-    </script>
-</body>
-</html>
+                ]
+            },
+            "M05-02": {
+                title: "Numbering Systems",
+                questions: [
+                    {
+                        id: "M05-02-01",
+                        question: "1. Convert 011101 Base2 to octal.",
+                        options: ["a) 25.", "b) 35.", "c) 33."],
+                        answer: "b",
+                        explanation: "The OCTAL code has 8 digits, 0 - 7. To convert binary to octal divide the binary number into groups of three starting from the right."
+                    },
+                    {
+                        id: "M05-02-02",
+                        question: "2. The binary number 11010111 expressed as a decimal is.",
+                        options: ["a) 215.", "b) 223.", "c) 207."],
+                        answer: "a",
+                        explanation: "Convert binary 11010111 to decimal: 128 + 64 + 16 + 4 + 2 + 1 = 215."
+                    },
+                    {
+                        id: "M05-02-03",
+                        question: "3. The octal number 1001
