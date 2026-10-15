@@ -28,6 +28,7 @@
                 <option value="M05-02">Module 05.02 - Numbering Systems</option>
                 <option value="M05-03">Module 05.03 - Data Conversion</option>
                 <option value="M05-04">Module 05.04 - Data Buses</option>
+                <option value="M05-05">Module 05.05 - Logic Circuits</option>
             </select>
         </div>
     </header>
@@ -61,9 +62,13 @@
             <div id="quiz-container" class="p-6 md:p-8 flex-1 flex flex-col justify-between">
                 <div>
                     <div class="mb-6">
-                        <p id="question-text" class="text-base md:text-lg font-semibold leading-relaxed text-slate-800">
+                        <p id="question-text" class="text-base md:text-lg font-semibold leading-relaxed text-slate-800 mb-4">
                             載入題目中...
                         </p>
+                        <!-- 圖片顯示容器 -->
+                        <div id="image-container" class="hidden mb-6 flex justify-center bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <img id="question-image" src="" alt="題目參考圖" class="max-h-64 object-contain rounded-lg shadow-sm">
+                        </div>
                     </div>
 
                     <!-- 選項按鈕組 -->
@@ -119,988 +124,136 @@
             "M05-01": {
                 title: "Electronic Instrument Systems",
                 questions: [
-                    {
-                        id: "M05-01",
-                        question: "1. What are the basic elements for 'Classic T' format?",
-                        options: [
-                            "A. Direction, altitude and height.",
-                            "B. Airspeed, pitch and roll.",
-                            "C. Airspeed, attitude, altitude and direction."
-                        ],
-                        answer: "C",
-                        explanation: "Classic T 的四大基本儀表核心元素為：Airspeed (空速)、Attitude (姿態)、Altitude (高度) 與 Direction (方向)。"
-                    },
-                    {
-                        id: "M05-02",
-                        question: "2. Typical displays on an EHSI are.",
-                        options: [
-                            "A. Engine indications.",
-                            "B. VOR, Map, Plan and weather radar.",
-                            "C. VOR, Plan, Map and Attitude."
-                        ],
-                        answer: "B",
-                        explanation: "EHSI 典型顯示包含 VOR、Map、Plan 及氣象雷達 (weather radar)。"
-                    },
-                    {
-                        id: "M05-03",
-                        question: "3. An EADI display showing a moving runway moves down during the final stages of an approach. The aircraft must.",
-                        options: [
-                            "A. fly down.",
-                            "B. fly up.",
-                            "C. hold descent path."
-                        ],
-                        answer: "A",
-                        explanation: "在進場最後階段上升跑道會向上移直到觸及飛機符號。若上升跑道開始向下移，代表飛機正在爬升，因此必須向下飛行。"
-                    },
-                    {
-                        id: "M05-04",
-                        question: "4. During an instrument approach, the glideslope pointer reflects below the glideslope centre mark. This means the aircraft is positioned.",
-                        options: [
-                            "A. above the glideslope.",
-                            "B. below the glideslope.",
-                            "C. to the left of the localiser."
-                        ],
-                        answer: "A",
-                        explanation: "指針在中心標記下方，代表滑道在飛機下方，也就是飛機位於滑道上方。"
-                    },
-                    {
-                        id: "M05-05",
-                        question: "5. Engine parameters are displayed on.",
-                        options: [
-                            "A. ECAM.",
-                            "B. EHSI.",
-                            "C. FMSCDU."
-                        ],
-                        answer: "A",
-                        explanation: "引擎參數可以透過選取 Engine 頁面顯示在 ECAM 上。"
-                    },
-                    {
-                        id: "M05-06",
-                        question: "6. What is the fixed feature of an ADI?",
-                        options: [
-                            "A. The glideslope pointer.",
-                            "B. The aircraft symbol.",
-                            "C. The lateral deviation bar."
-                        ],
-                        answer: "B",
-                        explanation: "ADI 儀表正中央繪製的小飛機符號為固定特徵。"
-                    },
-                    {
-                        id: "M05-07",
-                        question: "7. On an EADI, the Flight Director command bars show.",
-                        options: [
-                            "A. the path with respect to the horizon.",
-                            "B. the required path with respect to the actual path.",
-                            "C. the actual path with respect to the required path."
-                        ],
-                        answer: "B",
-                        explanation: "飛行導引指令桿顯示的是相對於實際飛行路徑的需求路徑。"
-                    },
-                    {
-                        id: "M05-08",
-                        question: "8. What instrument includes a display of a rising runway?",
-                        options: [
-                            "A. ECAM.",
-                            "B. EHSI.",
-                            "C. EADI."
-                        ],
-                        answer: "C",
-                        explanation: "上升跑道顯示於 EADI（電子姿態儀指示器）上。"
-                    },
-                    {
-                        id: "M05-09",
-                        question: "9. What functions are available on the EHSI?",
-                        options: [
-                            "A. Full arc and Wx only.",
-                            "B. Full arc, Wx and Map Mode.",
-                            "C. Full Arc only."
-                        ],
-                        answer: "B",
-                        explanation: "EHSI 提供 Full arc、Wx 及 Map Mode 等顯示功能。"
-                    },
-                    {
-                        id: "M05-10",
-                        question: "10. With radio coupled autopilot, what are the inputs?",
-                        options: [
-                            "A. ADF and VOR.",
-                            "B. ILS and VOR.",
-                            "C. ADF and ILS."
-                        ],
-                        answer: "B",
-                        explanation: "無線電耦合自動駕駛儀主要接收 ILS 與 VOR 訊號輸入。"
-                    },
-                    {
-                        id: "M05-11",
-                        question: "11. An EADI display of flight director commands are coloured.",
-                        options: [
-                            "A. cyan.",
-                            "B. magenta.",
-                            "C. red."
-                        ],
-                        answer: "B",
-                        explanation: "EADI 飛行導引指令桿顏色為洋紅色 (magenta)。"
-                    },
-                    {
-                        id: "M05-12",
-                        question: "12. EFIS systems have two control panels, their purpose is.",
-                        options: [
-                            "A. one to control the type of EFIS display and the other to select the source of the information being displayed.",
-                            "B. one for the EADI display and one for the EHSI display.",
-                            "C. to provide display control by one control panel whilst the other provides a standby."
-                        ],
-                        answer: "A",
-                        explanation: "一個控制面板控制顯示類型，另一個選擇資訊來源。"
-                    },
-                    {
-                        id: "M05-13",
-                        question: "13. What would you expect to see displayed on an EADI display?",
-                        options: [
-                            "A. Compass heading, selected heading and VOR.",
-                            "B. Course information, weather radar, way point alert and bearing pointers.",
-                            "C. Flight director command bars, slip indicator, rate to altitude & autoland."
-                        ],
-                        answer: "C",
-                        explanation: "EADI 顯示飛行導引指令桿、側滑指示器、高度速率及自動降落等資訊。"
-                    },
-                    {
-                        id: "M05-14",
-                        question: "14. An EFIS ADI display will show along with pitch and roll.",
-                        options: [
-                            "A. flight director bars, autoland, compass rose, altitude.",
-                            "B. decision height, autoland, rad alt , altitude.",
-                            "C. flight director bars, autoland, altitude, range to altitude, decision height."
-                        ],
-                        answer: "B",
-                        explanation: "EFIS ADI 除俯仰與滾轉外，還會顯示決斷高度、自動降落、無線電高度與高度。"
-                    },
-                    {
-                        id: "M05-15",
-                        question: "15. If the glideslope pointer is below the centre mark the aircraft is.",
-                        options: [
-                            "A. below the glideslope.",
-                            "B. on the glideslope.",
-                            "C. above the glideslope."
-                        ],
-                        answer: "C",
-                        explanation: "滑道指針在中心標記下方時，代表飛機位於滑道上方。"
-                    },
-                    {
-                        id: "M05-16",
-                        question: "16. On an EFIS system the weather radar is displayed on.",
-                        options: [
-                            "A. the FMC CDU.",
-                            "B. the EADI.",
-                            "C. the EHSI."
-                        ],
-                        answer: "C",
-                        explanation: "氣象雷達顯示於 EHSI 上。"
-                    },
-                    {
-                        id: "M05-17",
-                        question: "17. EADI displays show.",
-                        options: [
-                            "A. pitch, roll and waypoints.",
-                            "B. pitch and roll attitudes.",
-                            "C. heading and weather radar."
-                        ],
-                        answer: "B",
-                        explanation: "EADI 主要顯示俯仰與滾轉姿態。"
-                    },
-                    {
-                        id: "M05-18",
-                        question: "18. On an EHSI in weather radar mode, a severe storm would be shown as.",
-                        options: [
-                            "A. orange areas with black or yellow surrounds.",
-                            "B. red areas with black surrounds",
-                            "C. blue areas with white background."
-                        ],
-                        answer: "B",
-                        explanation: "劇烈風暴在氣象雷達模式中以紅色區域帶有黑色外框表示。"
-                    },
-                    {
-                        id: "M05-19",
-                        question: "19. During flight (non fault conditions) the EICAS system displays on the lower CRT.",
-                        options: [
-                            "A. flight phase page.",
-                            "B. secondary engine parameters.",
-                            "C. synoptic display."
-                        ],
-                        answer: "B",
-                        explanation: "在正常飛行條件下，EICAS 下方 CRT 螢幕顯示次要引擎參數。"
-                    },
-                    {
-                        id: "M05-20",
-                        question: "20. Radio altitude is displayed on an EFIS system.",
-                        options: [
-                            "A. on the Electronic Horizontal Situation Indicator.",
-                            "B. on the Electronic Attitude Direction Indicator.",
-                            "C. on the RMI."
-                        ],
-                        answer: "B",
-                        explanation: "無線電高度顯示在電子姿態儀指示器 (EADI) 上。"
-                    },
-                    {
-                        id: "M05-21",
-                        question: "21. An EFIS system ADI displays pitch, roll.",
-                        options: [
-                            "A. autoland, altitude, compass rose and flight director bars.",
-                            "B. autoland, decision height, range to altitude and flight director bars and slip indicator.",
-                            "C. autoland, rad alt, decision height and slip indicator."
-                        ],
-                        answer: "B",
-                        explanation: "EFIS ADI 顯示自動降落、決斷高度、高度範圍、飛行導引指令桿與側滑指示器。"
-                    },
-                    {
-                        id: "M05-22",
-                        question: "22. An electronic flight instrument display consists of.",
-                        options: [
-                            "A. Mode control panel, Raster and Stroke generator display, microprocessor and Data inputs.",
-                            "B. ADC, Altimeter, VSI and ASI.",
-                            "C. ADI, HSI and Symbol generator."
-                        ],
-                        answer: "A",
-                        explanation: "電子飛行儀表顯示系統包含模式控制面板、光柵與筆劃產生器顯示器、微處理器及資料輸入。"
-                    },
-                    {
-                        id: "M05-23",
-                        question: "23. The EFIS system consists of.",
-                        options: [
-                            "A. EHSI, Mode control panel, EADI.",
-                            "B. EADI, EHSI, Symbol generators.",
-                            "C. Mode control Panel, RDMI, EHSI."
-                        ],
-                        answer: "B",
-                        explanation: "EFIS 系統由 EADI、EHSI 以及符號產生器組成。"
-                    },
-                    {
-                        id: "M05-24",
-                        question: "24. ILS indications on PFD/ND are shown in.",
-                        options: [
-                            "A. cyan.",
-                            "B. magenta.",
-                            "C. green."
-                        ],
-                        answer: "B",
-                        explanation: "PFD/ND 上的 ILS 導引指示以洋紅色顯示。"
-                    },
-                    {
-                        id: "M05-25",
-                        question: "25. A weather radar image can be displayed on the ND on all modes except.",
-                        options: [
-                            "A. arc.",
-                            "B. nav rose.",
-                            "C. plan."
-                        ],
-                        answer: "C",
-                        explanation: "氣象雷達影像可以顯示在導航顯示器的多種模式，但不適用於 Plan 模式。"
-                    },
-                    {
-                        id: "M05-26",
-                        question: "26. In a typical commercial aircraft Head Up Guidance System.",
-                        options: [
-                            "A. the type of information shown on the attitude director indicator is displayed on a transparent plate.",
-                            "B. all instrument information is displayed on the windshield.",
-                            "C. only emergency indications or warnings are displayed to the pilot."
-                        ],
-                        answer: "A",
-                        explanation: "平視導引系統將姿態儀資訊投射顯示在正前方的透明板上。"
-                    },
-                    {
-                        id: "M05-27",
-                        question: "27. A modern Electronic Horizontal Situation Indicator will display the following:.",
-                        options: [
-                            "A. Waypoints, ILS Steering Information, Distance to go and Magnetic Heading.",
-                            "B. ILS Steering Information, Flight director information and Glide Slope Deviation.",
-                            "C. Ground speed, Magnetic Heading, Way points and Localiser."
-                        ],
-                        answer: "A",
-                        explanation: "現代 EHSI 顯示航點、ILS 導引資訊、剩餘距離與磁航向。"
-                    },
-                    {
-                        id: "M05-28",
-                        question: "28. Cockpit panels have a matt colour finish. The purpose is.",
-                        options: [
-                            "A. so that pilots feel more comfortable during daytime.",
-                            "B. so that the amount of glare is reduced to minimum.",
-                            "C. so that dust and dirt are less evident on panels."
-                        ],
-                        answer: "B",
-                        explanation: "駕駛艙面板採用消光處理是為了將反光降至最低。"
-                    },
-                    {
-                        id: "M05-29",
-                        question: "29. A complete EFIS installation in an aircraft is made up of.",
-                        options: [
-                            "A. either of the above.",
-                            "B. right (captain) and left (co-pilot).",
-                            "C. left (captain) and right (co-pilot)."
-                        ],
-                        answer: "A",
-                        explanation: "左右座配置因機型而異，視具體安裝而定。"
-                    },
-                    {
-                        id: "M05-30",
-                        question: "30. On a modern 'glass cockpit' aircraft, engine information will be displayed on.",
-                        options: [
-                            "A. FMS.",
-                            "B. EFIS.",
-                            "C. ECAM."
-                        ],
-                        answer: "C",
-                        explanation: "在現代玻璃座艙飛機中，引擎資訊顯示在 ECAM 上。"
-                    },
-                    {
-                        id: "M05-31",
-                        question: "31. What does EFIS mean?",
-                        options: [
-                            "A. Electronic Fire Indication Signal.",
-                            "B. Electronic Flight Instrument System.",
-                            "C. Electronic Flight Information System."
-                        ],
-                        answer: "B",
-                        explanation: "EFIS 全稱為 Electronic Flight Instrument System。"
-                    },
-                    {
-                        id: "M05-32",
-                        question: "32. What does EICAS mean?",
-                        options: [
-                            "A. Electronic indicator and control alerting system.",
-                            "B. Engine indicating and Crew alerting system.",
-                            "C. Electronic indicator and crew alerting system."
-                        ],
-                        answer: "B",
-                        explanation: "EICAS 全稱為 Engine indicating and Crew alerting system。"
-                    },
-                    {
-                        id: "M05-33",
-                        question: "33. What does ECAM mean?",
-                        options: [
-                            "A. Engine Centralised Aircraft Management System.",
-                            "B. Engine Centralised Aircraft Monitoring System.",
-                            "C. Electronic Centralised Aircraft Monitoring System."
-                        ],
-                        answer: "C",
-                        explanation: "ECAM 全稱為 Electronic Centralised Aircraft Monitoring System。"
-                    }
+                    { id: "M05-01", question: "1. What are the basic elements for 'Classic T' format?", options: ["A. Direction, altitude and height.", "B. Airspeed, pitch and roll.", "C. Airspeed, attitude, altitude and direction."], answer: "C", explanation: "Classic T 的四大基本儀表核心元素為：Airspeed (空速)、Attitude (姿態)、Altitude (高度) 與 Direction (方向)。" },
+                    { id: "M05-02", question: "2. Typical displays on an EHSI are.", options: ["A. Engine indications.", "B. VOR, Map, Plan and weather radar.", "C. VOR, Plan, Map and Attitude."], answer: "B", explanation: "EHSI 典型顯示包含 VOR、Map、Plan 及氣象雷達 (weather radar)。" },
+                    { id: "M05-03", question: "3. An EADI display showing a moving runway moves down during the final stages of an approach. The aircraft must.", options: ["A. fly down.", "B. fly up.", "C. hold descent path."], answer: "A", explanation: "在進場最後階段上升跑道會向上移直到觸及飛機符號。若上升跑道開始向下移，代表飛機正在爬升，因此必須向下飛行。" },
+                    { id: "M05-04", question: "4. During an instrument approach, the glideslope pointer reflects below the glideslope centre mark. This means the aircraft is positioned.", options: ["A. above the glideslope.", "B. below the glideslope.", "C. to the left of the localiser."], answer: "A", explanation: "指針在中心標記下方，代表滑道在飛機下方，也就是飛機位於滑道上方。" },
+                    { id: "M05-05", question: "5. Engine parameters are displayed on.", options: ["A. ECAM.", "B. EHSI.", "C. FMSCDU."], answer: "A", explanation: "引擎參數可以透過選取 Engine 頁面顯示在 ECAM 上。" },
+                    { id: "M05-06", question: "6. What is the fixed feature of an ADI?", options: ["A. The glideslope pointer.", "B. The aircraft symbol.", "C. The lateral deviation bar."], answer: "B", explanation: "ADI 儀表正中央繪製的小飛機符號為固定特徵。" },
+                    { id: "M05-07", question: "7. On an EADI, the Flight Director command bars show.", options: ["A. the path with respect to the horizon.", "B. the required path with respect to the actual path.", "C. the actual path with respect to the required path."], answer: "B", explanation: "飛行導引指令桿顯示的是相對於實際飛行路徑的需求路徑。" },
+                    { id: "M05-08", question: "8. What instrument includes a display of a rising runway?", options: ["A. ECAM.", "B. EHSI.", "C. EADI."], answer: "C", explanation: "上升跑道顯示於 EADI（電子姿態儀指示器）上。" },
+                    { id: "M05-09", question: "9. What functions are available on the EHSI?", options: ["A. Full arc and Wx only.", "B. Full arc, Wx and Map Mode.", "C. Full Arc only."], answer: "B", explanation: "EHSI 提供 Full arc、Wx 及 Map Mode 等顯示功能。" },
+                    { id: "M05-10", question: "10. With radio coupled autopilot, what are the inputs?", options: ["A. ADF and VOR.", "B. ILS and VOR.", "C. ADF and ILS."], answer: "B", explanation: "無線電耦合自動駕駛儀主要接收 ILS 與 VOR 訊號輸入。" },
+                    { id: "M05-11", question: "11. An EADI display of flight director commands are coloured.", options: ["A. cyan.", "B. magenta.", "C. red."], answer: "B", explanation: "EADI 飛行導引指令桿顏色為洋紅色 (magenta)。" },
+                    { id: "M05-12", question: "12. EFIS systems have two control panels, their purpose is.", options: ["A. one to control the type of EFIS display and the other to select the source of the information being displayed.", "B. one for the EADI display and one for the EHSI display.", "C. to provide display control by one control panel whilst the other provides a standby."], answer: "A", explanation: "一個控制面板控制顯示類型，另一個選擇資訊來源。" },
+                    { id: "M05-13", question: "13. What would you expect to see displayed on an EADI display?", options: ["A. Compass heading, selected heading and VOR.", "B. Course information, weather radar, way point alert and bearing pointers.", "C. Flight director command bars, slip indicator, rate to altitude & autoland."], answer: "C", explanation: "EADI 顯示飛行導引指令桿、側滑指示器、高度速率及自動降落等資訊。" },
+                    { id: "M05-14", question: "14. An EFIS ADI display will show along with pitch and roll.", options: ["A. flight director bars, autoland, compass rose, altitude.", "B. decision height, autoland, rad alt , altitude.", "C. flight director bars, autoland, altitude, range to altitude, decision height."], answer: "B", explanation: "EFIS ADI 除俯仰與滾轉外，還會顯示決斷高度、自動降落、無線電高度與高度。" },
+                    { id: "M05-15", question: "15. If the glideslope pointer is below the centre mark the aircraft is.", options: ["A. below the glideslope.", "B. on the glideslope.", "C. above the glideslope."], answer: "C", explanation: "滑道指針在中心標記下方時，代表飛機位於滑道上方。" },
+                    { id: "M05-16", question: "16. On an EFIS system the weather radar is displayed on.", options: ["A. the FMC CDU.", "B. the EADI.", "C. the EHSI."], answer: "C", explanation: "氣象雷達顯示於 EHSI 上。" },
+                    { id: "M05-17", question: "17. EADI displays show.", options: ["A. pitch, roll and waypoints.", "B. pitch and roll attitudes.", "C. heading and weather radar."], answer: "B", explanation: "EADI 主要顯示俯仰與滾轉姿態。" },
+                    { id: "M05-18", question: "18. On an EHSI in weather radar mode, a severe storm would be shown as.", options: ["A. orange areas with black or yellow surrounds.", "B. red areas with black surrounds", "C. blue areas with white background."], answer: "B", explanation: "劇烈風暴在氣象雷達模式中以紅色區域帶有黑色外框表示。" },
+                    { id: "M05-19", question: "19. During flight (non fault conditions) the EICAS system displays on the lower CRT.", options: ["A. flight phase page.", "B. secondary engine parameters.", "C. synoptic display."], answer: "B", explanation: "在正常飛行條件下，EICAS 下方 CRT 螢幕顯示次要引擎參數。" },
+                    { id: "M05-20", question: "20. Radio altitude is displayed on an EFIS system.", options: ["A. on the Electronic Horizontal Situation Indicator.", "B. on the Electronic Attitude Direction Indicator.", "C. on the RMI."], answer: "B", explanation: "無線電高度顯示在電子姿態儀指示器 (EADI) 上。" },
+                    { id: "M05-21", question: "21. An EFIS system ADI displays pitch, roll.", options: ["A. autoland, altitude, compass rose and flight director bars.", "B. autoland, decision height, range to altitude and flight director bars and slip indicator.", "C. autoland, rad alt, decision height and slip indicator."], answer: "B", explanation: "EFIS ADI 顯示自動降落、決斷高度、高度範圍、飛行導引指令桿與側滑指示器。" },
+                    { id: "M05-22", question: "22. An electronic flight instrument display consists of.", options: ["A. Mode control panel, Raster and Stroke generator display, microprocessor and Data inputs.", "B. ADC, Altimeter, VSI and ASI.", "C. ADI, HSI and Symbol generator."], answer: "A", explanation: "電子飛行儀表顯示系統包含模式控制面板、光柵與筆劃產生器顯示器、微處理器及資料輸入。" },
+                    { id: "M05-23", question: "23. The EFIS system consists of.", options: ["A. EHSI, Mode control panel, EADI.", "B. EADI, EHSI, Symbol generators.", "C. Mode control Panel, RDMI, EHSI."], answer: "B", explanation: "EFIS 系統由 EADI、EHSI 以及符號產生器組成。" },
+                    { id: "M05-24", question: "24. ILS indications on PFD/ND are shown in.", options: ["A. cyan.", "B. magenta.", "C. green."], answer: "B", explanation: "PFD/ND 上的 ILS 導引指示以洋紅色顯示。" },
+                    { id: "M05-25", question: "25. A weather radar image can be displayed on the ND on all modes except.", options: ["A. arc.", "B. nav rose.", "C. plan."], answer: "C", explanation: "氣象雷達影像可以顯示在導航顯示器的多種模式，但不適用於 Plan 模式。" },
+                    { id: "M05-26", question: "26. In a typical commercial aircraft Head Up Guidance System.", options: ["A. the type of information shown on the attitude director indicator is displayed on a transparent plate.", "B. all instrument information is displayed on the windshield.", "C. only emergency indications or warnings are displayed to the pilot."], answer: "A", explanation: "平視導引系統將姿態儀資訊投射顯示在正前方的透明板上。" },
+                    { id: "M05-27", question: "27. A modern Electronic Horizontal Situation Indicator will display the following:.", options: ["A. Waypoints, ILS Steering Information, Distance to go and Magnetic Heading.", "B. ILS Steering Information, Flight director information and Glide Slope Deviation.", "C. Ground speed, Magnetic Heading, Way points and Localiser."], answer: "A", explanation: "現代 EHSI 顯示航點、ILS 導引資訊、剩餘距離與磁航向。" },
+                    { id: "M05-28", question: "28. Cockpit panels have a matt colour finish. The purpose is.", options: ["A. so that pilots feel more comfortable during daytime.", "B. so that the amount of glare is reduced to minimum.", "C. so that dust and dirt are less evident on panels."], answer: "B", explanation: "駕駛艙面板採用消光處理是為了將反光降至最低。" },
+                    { id: "M05-29", question: "29. A complete EFIS installation in an aircraft is made up of.", options: ["A. either of the above.", "B. right (captain) and left (co-pilot).", "C. left (captain) and right (co-pilot)."], answer: "A", explanation: "左右座配置因機型而異，視具體安裝而定。" },
+                    { id: "M05-30", question: "30. On a modern 'glass cockpit' aircraft, engine information will be displayed on.", options: ["A. FMS.", "B. EFIS.", "C. ECAM."], answer: "C", explanation: "在現代玻璃座艙飛機中，引擎資訊顯示在 ECAM 上。" },
+                    { id: "M05-31", question: "31. What does EFIS mean?", options: ["A. Electronic Fire Indication Signal.", "B. Electronic Flight Instrument System.", "C. Electronic Flight Information System."], answer: "B", explanation: "EFIS 全稱為 Electronic Flight Instrument System。" },
+                    { id: "M05-32", question: "32. What does EICAS mean?", options: ["A. Electronic indicator and control alerting system.", "B. Engine indicating and Crew alerting system.", "C. Electronic indicator and crew alerting system."], answer: "B", explanation: "EICAS 全稱為 Engine indicating and Crew alerting system。" },
+                    { id: "M05-33", question: "33. What does ECAM mean?", options: ["A. Engine Centralised Aircraft Management System.", "B. Engine Centralised Aircraft Monitoring System.", "C. Electronic Centralised Aircraft Monitoring System."], answer: "C", explanation: "ECAM 全稱為 Electronic Centralised Aircraft Monitoring System。" }
                 ]
             },
             "M05-02": {
                 title: "Numbering Systems",
                 questions: [
-                    {
-                        id: "M05-02-01",
-                        question: "1. Convert 011101 Base2 to octal.",
-                        options: ["a) 25.", "b) 35.", "c) 33."],
-                        answer: "b",
-                        explanation: "The OCTAL code has 8 digits, 0 - 7. To convert binary to octal divide the binary number into groups of three starting from the right."
-                    },
-                    {
-                        id: "M05-02-02",
-                        question: "2. The binary number 11010111 expressed as a decimal is.",
-                        options: ["a) 215.", "b) 223.", "c) 207."],
-                        answer: "a",
-                        explanation: "Convert binary 11010111 to decimal: 128 + 64 + 16 + 4 + 2 + 1 = 215."
-                    },
-                    {
-                        id: "M05-02-03",
-                        question: "3. The octal number 1001 expressed as a decimal is.",
-                        options: ["a) 9.", "b) 65.", "c) 513."],
-                        answer: "c",
-                        explanation: "Octal 1001 = (1 * 8^3) + (0 * 8^2) + (0 * 8^1) + (1 * 8^0) = 512 + 1 = 513."
-                    },
-                    {
-                        id: "M05-02-04",
-                        question: "4. What is 345 in binary?",
-                        options: ["a) 100111001.", "b) 101011001.", "c) 110011001."],
-                        answer: "b",
-                        explanation: "Decimal 345 converted to binary is 101011001."
-                    },
-                    {
-                        id: "M05-02-05",
-                        question: "5. What is hex 110 in decimal?",
-                        options: ["a) 282.", "b) 272.", "c) 32."],
-                        answer: "b",
-                        explanation: "Hex 110 = (1 * 256) + (1 * 16) + (0 * 1) = 256 + 16 = 272."
-                    },
-                    {
-                        id: "M05-02-06",
-                        question: "6. Convert the binary word 1100 to decimal.",
-                        options: ["a) 11.", "b) 16.", "c) 12."],
-                        answer: "c",
-                        explanation: "Binary 1100 = 8 + 4 = 12."
-                    },
-                    {
-                        id: "M05-02-07",
-                        question: "7. If a data message is made up of 1s and 0s, it is.",
-                        options: ["a) analogue.", "b) binary.", "c) digital."],
-                        answer: "c",
-                        explanation: "Digital is 1s and 0s, either binary or grey code."
-                    },
-                    {
-                        id: "M05-02-08",
-                        question: "8. Convert the binary word 1110 to decimal.",
-                        options: ["a) 12.", "b) 14.", "c) 15."],
-                        answer: "b",
-                        explanation: "Binary 1110 = 8 + 4 + 2 = 14."
-                    },
-                    {
-                        id: "M05-02-09",
-                        question: "9. Convert the binary number 110010 to decimal.",
-                        options: ["a) 80.", "b) 50.", "c) 34."],
-                        answer: "b",
-                        explanation: "Binary 110010 = 32 + 16 + 2 = 50."
-                    },
-                    {
-                        id: "M05-02-10",
-                        question: "10. Convert the hexadecimal number D into decimal.",
-                        options: ["a) 13.", "b) 15.", "c) 14."],
-                        answer: "a",
-                        explanation: "Hex D represents decimal 13."
-                    },
-                    {
-                        id: "M05-02-11",
-                        question: "11. Convert decimal 15 into binary.",
-                        options: ["a) 1111.", "b) 1101.", "c) 1110."],
-                        answer: "a",
-                        explanation: "Decimal 15 = 8 + 4 + 2 + 1 = 1111 in binary."
-                    },
-                    {
-                        id: "M05-02-12",
-                        question: "12. Convert 448 to hex.",
-                        options: ["a) 22 Base16.", "b) 36 Base16.", "c) 24 Base16."],
-                        answer: "c",
-                        explanation: "448 in decimal converted to hex is 24 Base16."
-                    },
-                    {
-                        id: "M05-02-13",
-                        question: "13. Convert decimal 15 into hexadecimal.",
-                        options: ["a) G.", "b) E.", "c) F."],
-                        answer: "c",
-                        explanation: "Decimal 15 is represented as F in hexadecimal."
-                    },
-                    {
-                        id: "M05-02-14",
-                        question: "14. What is 345 in binary?",
-                        options: ["a) 100111001.", "b) 110011001.", "c) 101011001."],
-                        answer: "c",
-                        explanation: "Decimal 345 converted to binary is 101011001."
-                    },
-                    {
-                        id: "M05-02-15",
-                        question: "15. Convert 1D to binary.",
-                        options: ["a) 11101.", "b) 29.", "c) 101001."],
-                        answer: "a",
-                        explanation: "Hex 1 = 0001, Hex D (13) = 1101, combined as 11101."
-                    },
-                    {
-                        id: "M05-02-16",
-                        question: "16. Convert 2C hex to octal.",
-                        options: ["a) 35.", "b) 44.", "c) 54."],
-                        answer: "c",
-                        explanation: "Hex 2C = 44 decimal = 54 octal."
-                    },
-                    {
-                        id: "M05-02-17",
-                        question: "17. A hexadecimal is a number to base.",
-                        options: ["a) 2.", "b) 16.", "c) 8."],
-                        answer: "b",
-                        explanation: "Hexadecimal is a base-16 number system."
-                    },
-                    {
-                        id: "M05-02-18",
-                        question: "18. 1012 converted to decimal is.",
-                        options: ["a) 52.", "b) 210.", "c) 510."],
-                        answer: "c",
-                        explanation: "101 Base 2 = 5."
-                    },
-                    {
-                        id: "M05-02-19",
-                        question: "19. The binary coded decimal number 10011000 expressed as a decimal number is.",
-                        options: ["a) 1528.", "b) 9810.", "c) 1522."],
-                        answer: "b",
-                        explanation: "BCD 1001 = 9, 1000 = 8, representing 98."
-                    },
-                    {
-                        id: "M05-02-20",
-                        question: "20. The decimal number 7 expressed as a binary number is.",
-                        options: ["a) 101 Base 2.", "b) 111 Base 2.", "c) 7 Base 2."],
-                        answer: "b",
-                        explanation: "Decimal 7 in binary is 111."
-                    },
-                    {
-                        id: "M05-02-21",
-                        question: "21. Convert 011101 binary to octal.",
-                        options: ["a) 25.", "b) 35.", "c) 33."],
-                        answer: "b",
-                        explanation: "Group into 011 (3) and 101 (5), giving 35 octal."
-                    },
-                    {
-                        id: "M05-02-22",
-                        question: "22. Binary Number: 110010 is.",
-                        options: ["a) 80.", "b) 50.", "c) 34."],
-                        answer: "b",
-                        explanation: "Binary 110010 = 32 + 16 + 2 = 50."
-                    },
-                    {
-                        id: "M05-02-23",
-                        question: "23. Binary addition of 1101 + 101101 is.",
-                        options: ["a) 58.", "b) 70.", "c) 61."],
-                        answer: "a",
-                        explanation: "13 + 45 = 58 in decimal."
-                    },
-                    {
-                        id: "M05-02-24",
-                        question: "24. The binary number 11010111 is expressed as a decimal is.",
-                        options: ["a) 107.", "b) 215.", "c) 53."],
-                        answer: "b",
-                        explanation: "128 + 64 + 16 + 4 + 2 + 1 = 215."
-                    },
-                    {
-                        id: "M05-02-25",
-                        question: "25. The octal number 1001 expressed as a decimal is.",
-                        options: ["a) 713.", "b) 613.", "c) 513."],
-                        answer: "c",
-                        explanation: "512 + 1 = 513."
-                    },
-                    {
-                        id: "M05-02-26",
-                        question: "26. What is 011100001 Base2 in Octal?",
-                        options: ["a) 225 Base 8.", "b) 281 Base 10.", "c) 341 Base 8."],
-                        answer: "c",
-                        explanation: "011 = 3, 100 = 4, 001 = 1 -> 341 Base 8."
-                    },
-                    {
-                        id: "M05-02-27",
-                        question: "27. The binary number 1010100011100101 Base2 in hexadecimal is.",
-                        options: ["a) 22BC Base 16.", "b) FFFF Base 16.", "c) A8E5 Base 16."],
-                        answer: "c",
-                        explanation: "1010=A, 1000=8, 1110=E, 0101=5 -> A8E5 Base 16."
-                    },
-                    {
-                        id: "M05-02-28",
-                        question: "28. 0011011000101001 when transferred to computer language this information can be a representation of.",
-                        options: ["a) binary, octal or decimal numbers.", "b) hex, octal and binary numbers.", "c) hex, octal and decimal numbers."],
-                        answer: "c",
-                        explanation: "Binary IS 'computer language' not a representation. Therefore any answer with 'binary' in it is wrong."
-                    },
-                    {
-                        id: "M05-02-29",
-                        question: "29. A computer message 3B4 is.",
-                        options: ["a) Octal.", "b) binary.", "c) hexadecimal."],
-                        answer: "c",
-                        explanation: "Contains letter B, indicating hexadecimal."
-                    },
-                    {
-                        id: "M05-02-30",
-                        question: "30. What is 54 octal in hexadecimal?",
-                        options: ["a) 2F.", "b) 4F.", "c) 2C."],
-                        answer: "c",
-                        explanation: "Octal 54 = 44 decimal = 2C hex."
-                    },
-                    {
-                        id: "M05-02-31",
-                        question: "31. 2D in decimal is.",
-                        options: ["a) 43.", "b) 45.", "c) 41."],
-                        answer: "b",
-                        explanation: "Aircraft Electricity and Electronics Eismin 5th Edition Page 132."
-                    },
-                    {
-                        id: "M05-02-32",
-                        question: "32. 84 decimal in hexadecimal is.",
-                        options: ["a) 5f.", "b) f4.", "c) 54."],
-                        answer: "c",
-                        explanation: "Aircraft Electricity and Electronics Eismin 5th Edition Page 132."
-                    },
-                    {
-                        id: "M05-02-33",
-                        question: "33. 16 hexadecimal converted to decimal is equivalent to.",
-                        options: ["a) 48.", "b) 38.", "c) 22."],
-                        answer: "c",
-                        explanation: "Aircraft Electricity and Electronics Eismin 5th Edition Page 132."
-                    },
-                    {
-                        id: "M05-02-34",
-                        question: "34. Decimal 10 converted to binary is.",
-                        options: ["a) 1111.", "b) 1001.", "c) 1010."],
-                        answer: "c",
-                        explanation: "Aircraft Electricity and Electronics Eismin 5th Edition Page 128."
-                    },
-                    {
-                        id: "M05-02-35",
-                        question: "35. What systems uses base 10?",
-                        options: ["a) Octal.", "b) Binary.", "c) Decimal."],
-                        answer: "c",
-                        explanation: "Aircraft Electricity and Electronics Eismin 5th Edition Page 128."
-                    },
-                    {
-                        id: "M05-02-36",
-                        question: "36. What systems use base 16?",
-                        options: ["a) BCD.", "b) Octal.", "c) Hexadecimal."],
-                        answer: "c",
-                        explanation: "Aircraft Electricity and Electronics Eismin 5th Edition Page 132."
-                    },
-                    {
-                        id: "M05-02-37",
-                        question: "37. Binary coded decimal (BCD) format has a minimum of.",
-                        options: ["a) 2 lots of four.", "b) four.", "c) 3 lots of four."],
-                        answer: "b",
-                        explanation: "BCD uses groups of four bits."
-                    },
-                    {
-                        id: "M05-02-38",
-                        question: "38. What is the Hexadecimal number F86 in Binary?",
-                        options: ["a) 111110000001.", "b) 3974.", "c) 111110000110."],
-                        answer: "c",
-                        explanation: "Convert it to Decimal first = 3974. Since it is an even number, it must be the answer with a zero on the end."
-                    },
-                    {
-                        id: "M05-02-39",
-                        question: "39. What is 11000012 - 1011002?",
-                        options: ["a) 10001101 Base 2.", "b) 110111 Base 2.", "c) 110101 Base 2."],
-                        answer: "c",
-                        explanation: "Aircraft Electricity and Electronics Eismin 5th Edition Page 1129."
-                    },
-                    {
-                        id: "M05-02-40",
-                        question: "40. What is used for the power of 10?",
-                        options: ["a) Digital.", "b) Octal.", "c) Decimal."],
-                        answer: "c",
-                        explanation: "Decimal is a power of 10 counting system."
-                    },
-                    {
-                        id: "M05-02-41",
-                        question: "41. What is 44 in hexadecimal?",
-                        options: ["a) 2d.", "b) 2c.", "c) 2F."],
-                        answer: "b",
-                        explanation: "(2 * 16) + (12 * 1) = 44 (c = 12)."
-                    },
-                    {
-                        id: "M05-02-42",
-                        question: "42. What is octal 33 in hexadecimal?",
-                        options: ["a) 1b.", "b) 11.", "c) 22."],
-                        answer: "a",
-                        explanation: "Octal 33 = 27 decimal = 1b hex."
-                    },
-                    {
-                        id: "M05-02-43",
-                        question: "43. An octal format hexadecimal number 3F written as binary would be.",
-                        options: ["a) 110 111.", "b) 111 111.", "c) 101 011."],
-                        answer: "b",
-                        explanation: "Hex 3 = 0011, F = 1111."
-                    },
-                    {
-                        id: "M05-02-44",
-                        question: "44. What is f86 hex when converted to binary?",
-                        options: ["a) 1000010000110.", "b) 111110000110.", "c) 100000000000."],
-                        answer: "b",
-                        explanation: "F=1111, 8=1000, 6=0110 -> 111110000110."
-                    },
-                    {
-                        id: "M05-02-45",
-                        question: "45. In a computer, the address 3B8 is.",
-                        options: ["a) hexadecimal.", "b) decimal.", "c) octal."],
-                        answer: "a",
-                        explanation: "Contains letter B, indicating hexadecimal."
-                    },
-                    {
-                        id: "M05-02-46",
-                        question: "46. What is a Grays converter?",
-                        options: ["a) Analogue to Analogue.", "b) Analogue to Digital.", "c) Digital to Analogue."],
-                        answer: "b",
-                        explanation: "Gray code converters transform analog or sensor inputs into digital code."
-                    },
-                    {
-                        id: "M05-02-47",
-                        question: "47. What is the hexadecimal number AE5 in octal form?",
-                        options: ["a) 5445.", "b) 5340.", "c) 5345."],
-                        answer: "c",
-                        explanation: "AE5 hex = 2789 decimal = 5345 octal."
-                    },
-                    {
-                        id: "M05-02-48",
-                        question: "48. Hexadecimal 5C is what in binary?",
-                        options: ["a) 1011111.", "b) 1011100.", "c) 1110100."],
-                        answer: "b",
-                        explanation: "Hex 5 = 0101, C = 1100 -> 01011100."
-                    },
-                    {
-                        id: "M05-02-49",
-                        question: "49. Binary 11001101 converted to octal is.",
-                        options: ["a) 12E.", "b) 315.", "c) 205."],
-                        answer: "b",
-                        explanation: "11 (3) 001 (1) 101 (5) -> 315 octal."
-                    },
-                    {
-                        id: "M05-02-50",
-                        question: "50. What is the binary notation for 29?",
-                        options: ["a) 0001 0110.", "b) 0010 1001.", "c) 0001 1101."],
-                        answer: "c",
-                        explanation: "Decimal 29 = 11101 (0001 1101)."
-                    },
-                    {
-                        id: "M05-02-51",
-                        question: "51. 101012 + 110012 =.",
-                        options: ["a) 462.", "b) 468.", "c) 4610."],
-                        answer: "c",
-                        explanation: "21 + 25 = 46 decimal."
-                    }
+                    { id: "M05-02-01", question: "1. Convert 011101 Base2 to octal.", options: ["a) 25.", "b) 35.", "c) 33."], answer: "b", explanation: "The OCTAL code has 8 digits, 0 - 7. To convert binary to octal divide the binary number into groups of three starting from the right." },
+                    { id: "M05-02-02", question: "2. The binary number 11010111 expressed as a decimal is.", options: ["a) 215.", "b) 223.", "c) 207."], answer: "a", explanation: "Convert binary 11010111 to decimal: 128 + 64 + 16 + 4 + 2 + 1 = 215." },
+                    { id: "M05-02-03", question: "3. The octal number 1001 expressed as a decimal is.", options: ["a) 9.", "b) 65.", "c) 513."], answer: "c", explanation: "Octal 1001 = (1 * 8^3) + (0 * 8^2) + (0 * 8^1) + (1 * 8^0) = 512 + 1 = 513." },
+                    { id: "M05-02-04", question: "4. What is 345 in binary?", options: ["a) 100111001.", "b) 101011001.", "c) 110011001."], answer: "b", explanation: "Decimal 345 converted to binary is 101011001." },
+                    { id: "M05-02-05", question: "5. What is hex 110 in decimal?", options: ["a) 282.", "b) 272.", "c) 32."], answer: "b", explanation: "Hex 110 = (1 * 256) + (1 * 16) + (0 * 1) = 256 + 16 = 272." },
+                    { id: "M05-02-06", question: "6. Convert the binary word 1100 to decimal.", options: ["a) 11.", "b) 16.", "c) 12."], answer: "c", explanation: "Binary 1100 = 8 + 4 = 12." },
+                    { id: "M05-02-07", question: "7. If a data message is made up of 1s and 0s, it is.", options: ["a) analogue.", "b) binary.", "c) digital."], answer: "c", explanation: "Digital is 1s and 0s, either binary or grey code." },
+                    { id: "M05-02-08", question: "8. Convert the binary word 1110 to decimal.", options: ["a) 12.", "b) 14.", "c) 15."], answer: "b", explanation: "Binary 1110 = 8 + 4 + 2 = 14." },
+                    { id: "M05-02-09", question: "9. Convert the binary number 110010 to decimal.", options: ["a) 80.", "b) 50.", "c) 34."], answer: "b", explanation: "Binary 110010 = 32 + 16 + 2 = 50." },
+                    { id: "M05-02-10", question: "10. Convert the hexadecimal number D into decimal.", options: ["a) 13.", "b) 15.", "c) 14."], answer: "a", explanation: "Hex D represents decimal 13." },
+                    { id: "M05-02-11", question: "11. Convert decimal 15 into binary.", options: ["a) 1111.", "b) 1101.", "c) 1110."], answer: "a", explanation: "Decimal 15 = 8 + 4 + 2 + 1 = 1111 in binary." },
+                    { id: "M05-02-12", question: "12. Convert 448 to hex.", options: ["a) 22 Base16.", "b) 36 Base16.", "c) 24 Base16."], answer: "c", explanation: "448 in decimal converted to hex is 24 Base16." },
+                    { id: "M05-02-13", question: "13. Convert decimal 15 into hexadecimal.", options: ["a) G.", "b) E.", "c) F."], answer: "c", explanation: "Decimal 15 is represented as F in hexadecimal." },
+                    { id: "M05-02-14", question: "14. What is 345 in binary?", options: ["a) 100111001.", "b) 110011001.", "c) 101011001."], answer: "c", explanation: "Decimal 345 converted to binary is 101011001." },
+                    { id: "M05-02-15", question: "15. Convert 1D to binary.", options: ["a) 11101.", "b) 29.", "c) 101001."], answer: "a", explanation: "Hex 1 = 0001, Hex D (13) = 1101, combined as 11101." },
+                    { id: "M05-02-16", question: "16. Convert 2C hex to octal.", options: ["a) 35.", "b) 44.", "c) 54."], answer: "c", explanation: "Hex 2C = 44 decimal = 54 octal." },
+                    { id: "M05-02-17", question: "17. A hexadecimal is a number to base.", options: ["a) 2.", "b) 16.", "c) 8."], answer: "b", explanation: "Hexadecimal is a base-16 number system." },
+                    { id: "M05-02-18", question: "18. 1012 converted to decimal is.", options: ["a) 52.", "b) 210.", "c) 510."], answer: "c", explanation: "101 Base 2 = 5." },
+                    { id: "M05-02-19", question: "19. The binary coded decimal number 10011000 expressed as a decimal number is.", options: ["a) 1528.", "b) 9810.", "c) 1522."], answer: "b", explanation: "BCD 1001 = 9, 1000 = 8, representing 98." },
+                    { id: "M05-02-20", question: "20. The decimal number 7 expressed as a binary number is.", options: ["a) 101 Base 2.", "b) 111 Base 2.", "c) 7 Base 2."], answer: "b", explanation: "Decimal 7 in binary is 111." },
+                    { id: "M05-02-21", question: "21. Convert 011101 binary to octal.", options: ["a) 25.", "b) 35.", "c) 33."], answer: "b", explanation: "Group into 011 (3) and 101 (5), giving 35 octal." },
+                    { id: "M05-02-22", question: "22. Binary Number: 110010 is.", options: ["a) 80.", "b) 50.", "c) 34."], answer: "b", explanation: "Binary 110010 = 32 + 16 + 2 = 50." },
+                    { id: "M05-02-23", question: "23. Binary addition of 1101 + 101101 is.", options: ["a) 58.", "b) 70.", "c) 61."], answer: "a", explanation: "13 + 45 = 58 in decimal." },
+                    { id: "M05-02-24", question: "24. The binary number 11010111 is expressed as a decimal is.", options: ["a) 107.", "b) 215.", "c) 53."], answer: "b", explanation: "128 + 64 + 16 + 4 + 2 + 1 = 215." },
+                    { id: "M05-02-25", question: "25. The octal number 1001 expressed as a decimal is.", options: ["a) 713.", "b) 613.", "c) 513."], answer: "c", explanation: "512 + 1 = 513." },
+                    { id: "M05-02-26", question: "26. What is 011100001 Base2 in Octal?", options: ["a) 225 Base 8.", "b) 281 Base 10.", "c) 341 Base 8."], answer: "c", explanation: "011 = 3, 100 = 4, 001 = 1 -> 341 Base 8." },
+                    { id: "M05-02-27", question: "27. The binary number 1010100011100101 Base2 in hexadecimal is.", options: ["a) 22BC Base 16.", "b) FFFF Base 16.", "c) A8E5 Base 16."], answer: "c", explanation: "1010=A, 1000=8, 1110=E, 0101=5 -> A8E5 Base 16." },
+                    { id: "M05-02-28", question: "28. 0011011000101001 when transferred to computer language this information can be a representation of.", options: ["a) binary, octal or decimal numbers.", "b) hex, octal and binary numbers.", "c) hex, octal and decimal numbers."], answer: "c", explanation: "Binary IS 'computer language' not a representation. Therefore any answer with 'binary' in it is wrong." },
+                    { id: "M05-02-29", question: "29. A computer message 3B4 is.", options: ["a) Octal.", "b) binary.", "c) hexadecimal."], answer: "c", explanation: "Contains letter B, indicating hexadecimal." },
+                    { id: "M05-02-30", question: "30. What is 54 octal in hexadecimal?", options: ["a) 2F.", "b) 4F.", "c) 2C."], answer: "c", explanation: "Octal 54 = 44 decimal = 2C hex." },
+                    { id: "M05-02-31", question: "31. 2D in decimal is.", options: ["a) 43.", "b) 45.", "c) 41."], answer: "b", explanation: "Aircraft Electricity and Electronics Eismin 5th Edition Page 132." },
+                    { id: "M05-02-32", question: "32. 84 decimal in hexadecimal is.", options: ["a) 5f.", "b) f4.", "c) 54."], answer: "c", explanation: "Aircraft Electricity and Electronics Eismin 5th Edition Page 132." },
+                    { id: "M05-02-33", question: "33. 16 hexadecimal converted to decimal is equivalent to.", options: ["a) 48.", "b) 38.", "c) 22."], answer: "c", explanation: "Aircraft Electricity and Electronics Eismin 5th Edition Page 132." },
+                    { id: "M05-02-34", question: "34. Decimal 10 converted to binary is.", options: ["a) 1111.", "b) 1001.", "c) 1010."], answer: "c", explanation: "Aircraft Electricity and Electronics Eismin 5th Edition Page 128." },
+                    { id: "M05-02-35", question: "35. What systems uses base 10?", options: ["a) Octal.", "b) Binary.", "c) Decimal."], answer: "c", explanation: "Aircraft Electricity and Electronics Eismin 5th Edition Page 128." },
+                    { id: "M05-02-36", question: "36. What systems use base 16?", options: ["a) BCD.", "b) Octal.", "c) Hexadecimal."], answer: "c", explanation: "Aircraft Electricity and Electronics Eismin 5th Edition Page 132." },
+                    { id: "M05-02-37", question: "37. Binary coded decimal (BCD) format has a minimum of.", options: ["a) 2 lots of four.", "b) four.", "c) 3 lots of four."], answer: "b", explanation: "BCD uses groups of four bits." },
+                    { id: "M05-02-38", question: "38. What is the Hexadecimal number F86 in Binary?", options: ["a) 111110000001.", "b) 3974.", "c) 111110000110."], answer: "c", explanation: "Convert it to Decimal first = 3974. Since it is an even number, it must be the answer with a zero on the end." },
+                    { id: "M05-02-39", question: "39. What is 11000012 - 1011002?", options: ["a) 10001101 Base 2.", "b) 110111 Base 2.", "c) 110101 Base 2."], answer: "c", explanation: "Aircraft Electricity and Electronics Eismin 5th Edition Page 1129." },
+                    { id: "M05-02-40", question: "40. What is used for the power of 10?", options: ["a) Digital.", "b) Octal.", "c) Decimal."], answer: "c", explanation: "Decimal is a power of 10 counting system." },
+                    { id: "M05-02-41", question: "41. What is 44 in hexadecimal?", options: ["a) 2d.", "b) 2c.", "c) 2F."], answer: "b", explanation: "(2 * 16) + (12 * 1) = 44 (c = 12)." },
+                    { id: "M05-02-42", question: "42. What is octal 33 in hexadecimal?", options: ["a) 1b.", "b) 11.", "c) 22."], answer: "a", explanation: "Octal 33 = 27 decimal = 1b hex." },
+                    { id: "M05-02-43", question: "43. An octal format hexadecimal number 3F written as binary would be.", options: ["a) 110 111.", "b) 111 111.", "c) 101 011."], answer: "b", explanation: "Hex 3 = 0011, F = 1111." },
+                    { id: "M05-02-44", question: "44. What is f86 hex when converted to binary?", options: ["a) 1000010000110.", "b) 111110000110.", "c) 100000000000."], answer: "b", explanation: "F=1111, 8=1000, 6=0110 -> 111110000110." },
+                    { id: "M05-02-45", question: "45. In a computer, the address 3B8 is.", options: ["a) hexadecimal.", "b) decimal.", "c) octal."], answer: "a", explanation: "Contains letter B, indicating hexadecimal." },
+                    { id: "M05-02-46", question: "46. What is a Grays converter?", options: ["a) Analogue to Analogue.", "b) Analogue to Digital.", "c) Digital to Analogue."], answer: "b", explanation: "Gray code converters transform analog or sensor inputs into digital code." },
+                    { id: "M05-02-47", question: "47. What is the hexadecimal number AE5 in octal form?", options: ["a) 5445.", "b) 5340.", "c) 5345."], answer: "c", explanation: "AE5 hex = 2789 decimal = 5345 octal." },
+                    { id: "M05-02-48", question: "48. Hexadecimal 5C is what in binary?", options: ["a) 1011111.", "b) 1011100.", "c) 1110100."], answer: "b", explanation: "Hex 5 = 0101, C = 1100 -> 01011100." },
+                    { id: "M05-02-49", question: "49. Binary 11001101 converted to octal is.", options: ["a) 12E.", "b) 315.", "c) 205."], answer: "b", explanation: "11 (3) 001 (1) 101 (5) -> 315 octal." },
+                    { id: "M05-02-50", question: "50. What is the binary notation for 29?", options: ["a) 0001 0110.", "b) 0010 1001.", "c) 0001 1101."], answer: "c", explanation: "Decimal 29 = 11101 (0001 1101)." },
+                    { id: "M05-02-51", question: "51. 101012 + 110012 =.", options: ["a) 462.", "b) 468.", "c) 4610."], answer: "c", explanation: "21 + 25 = 46 decimal." }
                 ]
             },
             "M05-03": {
                 title: "Data Conversion",
                 questions: [
-                    {
-                        id: "M05-03-01",
-                        question: "1. If a signal has quantity in volts and physical position it is.",
-                        options: ["a) digital.", "b) synchronous.", "c) analogue."],
-                        answer: "c",
-                        explanation: "This is the definition of an analogue signal."
-                    },
-                    {
-                        id: "M05-03-02",
-                        question: "2. Within a computer controlled flight system, position feedback is converted from.",
-                        options: ["a) position feedback to rate feedback.", "b) analogue to digital.", "c) digital to analogue."],
-                        answer: "b",
-                        explanation: "Position feedback is converted from analogue to digital for computer processing."
-                    },
-                    {
-                        id: "M05-03-03",
-                        question: "3. What is serial to parallel and vice-versa called?",
-                        options: ["a) Switching.", "b) Multiplex/Demultiplex.", "c) Encoder/Decoder."],
-                        answer: "b",
-                        explanation: "Multiplex/Demultiplex manages serial and parallel data conversion."
-                    },
-                    {
-                        id: "M05-03-04",
-                        question: "4. A thyristor is a device which has.",
-                        options: ["a) a positive temperature coefficient.", "b) a negative temperature coefficient.", "c) a temperature coefficient of zero."],
-                        answer: "b",
-                        explanation: "Thyristors typically exhibit a negative temperature coefficient characteristics."
-                    },
-                    {
-                        id: "M05-03-05",
-                        question: "5. Physical variables in quantitative forms, such as voltage or angular rotation of a shaft are.",
-                        options: ["a) digital.", "b) analogue.", "c) binary."],
-                        answer: "b",
-                        explanation: "Continuous physical variables represent analogue signals."
-                    },
-                    {
-                        id: "M05-03-06",
-                        question: "6. A D to A converter is required to produce an output range of 0 to 10V. This can be achieved by.",
-                        options: ["a) a non inverting op amp connected in series with output.", "b) an inverting op amp connected in series with output.", "c) a differentiator with a 100 Kilohm feedback resistor."],
-                        answer: "b",
-                        explanation: "An inverting op amp connected in series with output can scale and shift/invert DAC output."
-                    },
-                    {
-                        id: "M05-03-07",
-                        question: "7. A D to A converter would use a precision amplifier to.",
-                        options: ["a) compensate for the variation of the feedback resistor with temperature.", "b) ensure that the output voltages remain accurate.", "c) ensure that the input voltage remains accurate."],
-                        answer: "b",
-                        explanation: "Precision amplifiers ensure that output voltages remain accurate."
-                    },
-                    {
-                        id: "M05-03-08",
-                        question: "8. A given transducer provides a voltage which corresponds to true heading. This voltage can be converted to 'bits' by using a.",
-                        options: ["a) analogue to digital converter.", "b) digital to analogue converter.", "c) commutator."],
-                        answer: "a",
-                        explanation: "Converting voltage (analogue) to bits (digital) requires an A/D converter."
-                    },
-                    {
-                        id: "M05-03-09",
-                        question: "9. An A to D converter uses successive approximation to.",
-                        options: ["a) increase resolution.", "b) increase accuracy.", "c) increase speed."],
-                        answer: "c",
-                        explanation: "Successive approximation is chosen to increase conversion speed compared to simple counters."
-                    },
-                    {
-                        id: "M05-03-10",
-                        question: "10. An R-2R D to A converter uses.",
-                        options: ["a) two values of resistors whose precision is not important.", "b) two values of precision resistors.", "c) resistors whose values are logarithmic."],
-                        answer: "b",
-                        explanation: "An R-2R ladder uses two resistor values (R and 2R) requiring high precision."
-                    },
-                    {
-                        id: "M05-03-11",
-                        question: "11. The function of a commutator is to.",
-                        options: ["a) convert from analogue to binary form.", "b) provide continuous availability of all parameters connected to the system.", "c) provide a sampling in sequence of a number of parameters."],
-                        answer: "c",
-                        explanation: "A commutator samples a number of parameters sequentially."
-                    },
-                    {
-                        id: "M05-03-12",
-                        question: "12. An encoder using Grey code.",
-                        options: ["a) changes analogue to binary.", "b) changes digital to analogue.", "c) changes analogue to digital."],
-                        answer: "c",
-                        explanation: "Encoders convert physical/analogue shaft positions to digital/Grey code."
-                    },
-                    {
-                        id: "M05-03-13",
-                        question: "13. An analogue to digital converter is as accurate as.",
-                        options: ["a) the frequency.", "b) the sampling rate.", "c) the amplitude."],
-                        answer: "b",
-                        explanation: "Sampling rate and quantization steps govern ADC performance."
-                    },
-                    {
-                        id: "M05-03-14",
-                        question: "14. A digital to analogue converter that requires the output to range between 0v and -10v would have.",
-                        options: ["a) a non-inverting amplifier in line with the output with a resistor to ground.", "b) an inverting amplifier in series with the output line.", "c) a non-inverting amplifier in parallel with the output line."],
-                        answer: "b",
-                        explanation: "An inverting amplifier in series with the output line scales and inverts the polarity."
-                    },
-                    {
-                        id: "M05-03-15",
-                        question: "15. In an analogue to digital converter, the input voltage.",
-                        options: ["a) is switched by the digital input.", "b) is intermittent.", "c) stays on constantly."],
-                        answer: "c",
-                        explanation: "The continuous analogue input voltage stays on constantly for sampling."
-                    },
-                    {
-                        id: "M05-03-16",
-                        question: "16. An R-2R Converter has values or resistance.",
-                        options: ["a) whose relative precision are accurate.", "b) whose precision are not accurate.", "c) whose precision are accurate."],
-                        answer: "a",
-                        explanation: "Relative precision of R and 2R resistors is critical in R-2R networks."
-                    },
-                    {
-                        id: "M05-03-17",
-                        question: "17. What does 1 represent in an analogue system?",
-                        options: ["a) High frequency", "b) Switches closed, magnetised", "c) Switches open, unmagnetised"],
-                        answer: "b",
-                        explanation: "In discrete or relay-based analogue/control analogies, closed switches/magnetisation represent state 1."
-                    },
-                    {
-                        id: "M05-03-18",
-                        question: "18. Audio sounds recorded digitally.",
-                        options: ["a) are superior quality and greater bandwidth.", "b) are narrow bandwidth.", "c) are not as accurate due to clipping and input errors."],
-                        answer: "a",
-                        explanation: "Digital recording offers superior fidelity and robust bandwidth."
-                    },
-                    {
-                        id: "M05-03-19",
-                        question: "19. An analogue to digital converter where it counts up to binary state equal to the analogue input and then back down when this is reached is a.",
-                        options: ["a) a ramp type converter.", "b) successive approximation counter.", "c) flash type converter."],
-                        answer: "a",
-                        explanation: "Digital Fundamentals T L Floyd page 790: ramp type counter converter."
-                    },
-                    {
-                        id: "M05-03-20",
-                        question: "20. Transistors are used in a current triggered D to A device to.",
-                        options: ["a) switch off the inputs.", "b) switch on the input.", "c) change the state of the inputs."],
-                        answer: "c",
-                        explanation: "Transistors switch or change the state of input currents in DAC networks."
-                    },
-                    {
-                        id: "M05-03-21",
-                        question: "21. Op amps generally used in ADCs and DACs are normally.",
-                        options: ["a) high input impedance, high output impedance.", "b) high input impedance, low output impedance.", "c) low input impedance , how output impedance."],
-                        answer: "b",
-                        explanation: "Ideal op-amps feature high input impedance and low output impedance."
-                    },
-                    {
-                        id: "M05-03-22",
-                        question: "22. Analogue logic 1 is.",
-                        options: ["a) closed switch, Logic Q=0.", "b) closed circuit, Logic Q=1.", "c) open circuit."],
-                        answer: "b",
-                        explanation: "Closed circuit represents active state / logic 1."
-                    },
-                    {
-                        id: "M05-03-23",
-                        question: "23. An ADC uses successive approximation to.",
-                        options: ["a) increase speed.", "b) increase accuracy.", "c) increase resolution."],
-                        answer: "a",
-                        explanation: "Successive approximation increases conversion speed."
-                    },
-                    {
-                        id: "M05-03-24",
-                        question: "24. A DAC uses a precision amplifier to.",
-                        options: ["a) ensure the output voltages remain accurate.", "b) compensates for the variation of the feedback resistor due to temperature.", "c) ensure the input remains accurate."],
-                        answer: "a",
-                        explanation: "Precision amplifiers ensure accurate output voltage levels."
-                    },
-                    {
-                        id: "M05-03-25",
-                        question: "25. A precision op-amp is used in a DAC to.",
-                        options: ["a) compensate for temperature variation.", "b) give output at required level.", "c) make output between 0 - 5V."],
-                        answer: "b",
-                        explanation: "To scale and provide output at the required level."
-                    },
-                    {
-                        id: "M05-03-26",
-                        question: "26. In an R-2R ladder converter the values of resistors.",
-                        options: ["a) do not need to be of precise values.", "b) only the first resistor need to be precise.", "c) are precise."],
-                        answer: "a",
-                        explanation: "As noted in variant questions, relative matching matters more than absolute tight tolerance."
-                    },
-                    {
-                        id: "M05-03-27",
-                        question: "27. What is the quickest method of analogue to digital conversion?",
-                        options: ["a) Voltage to frequency.", "b) Flash converter.", "c) Single ramp method."],
-                        answer: "b",
-                        explanation: "Flash converters are the fastest type of ADC (Digital Fundamentals by Thomas L Floyd)."
-                    },
-                    {
-                        id: "M05-03-28",
-                        question: "28. A charge balancing ADC uses.",
-                        options: ["a) successive approximation logic circuit to control the output.", "b) a closed loop system to compare the analogue input to give the required digital output.", "c) a closed loop system to check the analogue input with the input sample."],
-                        answer: "b",
-                        explanation: "Charge-balancing ADC employs a closed-loop system comparing input to output frequency."
-                    },
-                    {
-                        id: "M05-03-29",
-                        question: "29. Sample and hold is a technique used in.",
-                        options: ["a) D to A conversion.", "b) Moving coil instruments.", "c) A to D conversion."],
-                        answer: "c",
-                        explanation: "Sample-and-hold circuits are standard front-ends for A/D conversion."
-                    },
-                    {
-                        id: "M05-03-30",
-                        question: "30. An analogue to digital converter (ADC) requires the following.",
-                        options: ["a) a reference voltage, an input gate, an internal counter, a comparitor.", "b) a reference voltage, an input gate, a comparator.", "c) a reference voltage, an input gate, an internal counter."],
-                        answer: "b",
-                        explanation: "Essential core components include a reference voltage, input gate, and comparator."
-                    },
-                    {
-                        id: "M05-03-31",
-                        question: "31. What is 'Throughput Rate' for the A/D converter?",
-                        options: ["a) Number of complete digital words encoded in a specified unit of time.", "b) None of the above.", "c) Speed of variable resistor which senses the analogue signal."],
-                        answer: "a",
-                        explanation: "Throughput rate defines complete encoded digital words per unit time."
-                    },
-                    {
-                        id: "M05-03-32",
-                        question: "32. What is the Resolution of A/D and D/A converters?",
-                        options: ["a) Resolution of the Instrument which displays the values.", "b) Number of discrete values that can be represented by the digital word.", "c) Rate at which data is converted."],
-                        answer: "b",
-                        explanation: "Resolution is determined by the number of discrete values represented by the digital word bits."
-                    },
-                    {
-                        id: "M05-03-33",
-                        question: "33. Digital signals can be represented.",
-                        options: ["a) only as a binary value.", "b) by a series of integers.", "c) by real numbers."],
-                        answer: "b",
-                        explanation: "Digital values correspond to discrete integers."
-                    },
-                    {
-                        id: "M05-03-34",
-                        question: "34. When testing EGT probe.",
-                        options: ["a) it must be soaked and ambient temperature allowance taken into consideration.", "b) not necessarily soaked but ambient temperature must be taken into consideration.", "c) if its not soaked, a minimum temperature of 20 degrees C taken as OAT."],
-                        answer: "a",
-                        explanation: "Exhaust Gas Temperature probes require thermal soaking and ambient compensation."
-                    },
-                    {
-                        id: "M05-03-35",
-                        question: "35. A Digital to Analogue Converter has a resolution of 0.3 Volts. What will be the analogue output when the digital input is 10110.",
-                        options: ["a) 6.6 Volts RMS.", "b) -6.6 Volts DC.", "c) 6.6 Volts DC."],
-                        answer: "c",
-                        explanation: "Binary 10110 = 22 decimal. 22 * 0.3V = 6.6 Volts DC."
-                    },
-                    {
-                        id: "M05-03-36",
-                        question: "36. A number represented as a physical quantity, e.g. voltage or speed of rotation is.",
-                        options: ["a) digital.", "b) maximum value.", "c) analogue."],
-                        answer: "c",
-                        explanation: "Physical quantities representing values continuously are analogue."
-                    }
+                    { id: "M05-03-01", question: "1. If a signal has quantity in volts and physical position it is.", options: ["a) digital.", "b) synchronous.", "c) analogue."], answer: "c", explanation: "This is the definition of an analogue signal." },
+                    { id: "M05-03-02", question: "2. Within a computer controlled flight system, position feedback is converted from.", options: ["a) position feedback to rate feedback.", "b) analogue to digital.", "c) digital to analogue."], answer: "b", explanation: "Position feedback is converted from analogue to digital for computer processing." },
+                    { id: "M05-03-03", question: "3. What is serial to parallel and vice-versa called?", options: ["a) Switching.", "b) Multiplex/Demultiplex.", "c) Encoder/Decoder."], answer: "b", explanation: "Multiplex/Demultiplex manages serial and parallel data conversion." },
+                    { id: "M05-03-04", question: "4. A thyristor is a device which has.", options: ["a) a positive temperature coefficient.", "b) a negative temperature coefficient.", "c) a temperature coefficient of zero."], answer: "b", explanation: "Thyristors typically exhibit a negative temperature coefficient characteristics." },
+                    { id: "M05-03-05", question: "5. Physical variables in quantitative forms, such as voltage or angular rotation of a shaft are.", options: ["a) digital.", "b) analogue.", "c) binary."], answer: "b", explanation: "Continuous physical variables represent analogue signals." },
+                    { id: "M05-03-06", question: "6. A D to A converter is required to produce an output range of 0 to 10V. This can be achieved by.", options: ["a) a non inverting op amp connected in series with output.", "b) an inverting op amp connected in series with output.", "c) a differentiator with a 100 Kilohm feedback resistor."], answer: "b", explanation: "An inverting op amp connected in series with output can scale and shift/invert DAC output." },
+                    { id: "M05-03-07", question: "7. A D to A converter would use a precision amplifier to.", options: ["a) compensate for the variation of the feedback resistor with temperature.", "b) ensure that the output voltages remain accurate.", "c) ensure that the input voltage remains accurate."], answer: "b", explanation: "Precision amplifiers ensure that output voltages remain accurate." },
+                    { id: "M05-03-08", question: "8. A given transducer provides a voltage which corresponds to true heading. This voltage can be converted to 'bits' by using a.", options: ["a) analogue to digital converter.", "b) digital to analogue converter.", "c) commutator."], answer: "a", explanation: "Converting voltage (analogue) to bits (digital) requires an A/D converter." },
+                    { id: "M05-03-09", question: "9. An A to D converter uses successive approximation to.", options: ["a) increase resolution.", "b) increase accuracy.", "c) increase speed."], answer: "c", explanation: "Successive approximation is chosen to increase conversion speed compared to simple counters." },
+                    { id: "M05-03-10", question: "10. An R-2R D to A converter uses.", options: ["a) two values of resistors whose precision is not important.", "b) two values of precision resistors.", "c) resistors whose values are logarithmic."], answer: "b", explanation: "An R-2R ladder uses two resistor values (R and 2R) requiring high precision." },
+                    { id: "M05-03-11", question: "11. The function of a commutator is to.", options: ["a) convert from analogue to binary form.", "b) provide continuous availability of all parameters connected to the system.", "c) provide a sampling in sequence of a number of parameters."], answer: "c", explanation: "A commutator samples a number of parameters sequentially." },
+                    { id: "M05-03-12", question: "12. An encoder using Grey code.", options: ["a) changes analogue to binary.", "b) changes digital to analogue.", "c) changes analogue to digital."], answer: "c", explanation: "Encoders convert physical/analogue shaft positions to digital/Grey code." },
+                    { id: "M05-03-13", question: "13. An analogue to digital converter is as accurate as.", options: ["a) the frequency.", "b) the sampling rate.", "c) the amplitude."], answer: "b", explanation: "Sampling rate and quantization steps govern ADC performance." },
+                    { id: "M05-03-14", question: "14. A digital to analogue converter that requires the output to range between 0v and -10v would have.", options: ["a) a non-inverting amplifier in line with the output with a resistor to ground.", "b) an inverting amplifier in series with the output line.", "c) a non-inverting amplifier in parallel with the output line."], answer: "b", explanation: "An inverting amplifier in series with the output line scales and inverts the polarity." },
+                    { id: "M05-03-15", question: "15. In an analogue to digital converter, the input voltage.", options: ["a) is switched by the digital input.", "b) is intermittent.", "c) stays on constantly."], answer: "c", explanation: "The continuous analogue input voltage stays on constantly for sampling." },
+                    { id: "M05-03-16", question: "16. An R-2R Converter has values or resistance.", options: ["a) whose relative precision are accurate.", "b) whose precision are not accurate.", "c) whose precision are accurate."], answer: "a", explanation: "Relative precision of R and 2R resistors is critical in R-2R networks." },
+                    { id: "M05-03-17", question: "17. What does 1 represent in an analogue system?", options: ["a) High frequency", "b) Switches closed, magnetised", "c) Switches open, unmagnetised"], answer: "b", explanation: "In discrete or relay-based analogue/control analogies, closed switches/magnetisation represent state 1." },
+                    { id: "M05-03-18", question: "18. Audio sounds recorded digitally.", options: ["a) are superior quality and greater bandwidth.", "b) are narrow bandwidth.", "c) are not as accurate due to clipping and input errors."], answer: "a", explanation: "Digital recording offers superior fidelity and robust bandwidth." },
+                    { id: "M05-03-19", question: "19. An analogue to digital converter where it counts up to binary state equal to the analogue input and then back down when this is reached is a.", options: ["a) a ramp type converter.", "b) successive approximation counter.", "c) flash type converter."], answer: "a", explanation: "Digital Fundamentals T L Floyd page 790: ramp type counter converter." },
+                    { id: "M05-03-20", question: "20. Transistors are used in a current triggered D to A device to.", options: ["a) switch off the inputs.", "b) switch on the input.", "c) change the state of the inputs."], answer: "c", explanation: "Transistors switch or change the state of input currents in DAC networks." },
+                    { id: "M05-03-21", question: "21. Op amps generally used in ADCs and DACs are normally.", options: ["a) high input impedance, high output impedance.", "b) high input impedance, low output impedance.", "c) low input impedance , how output impedance."], answer: "b", explanation: "Ideal op-amps feature high input impedance and low output impedance." },
+                    { id: "M05-03-22", question: "22. Analogue logic 1 is.", options: ["a) closed switch, Logic Q=0.", "b) closed circuit, Logic Q=1.", "c) open circuit."], answer: "b", explanation: "Closed circuit represents active state / logic 1." },
+                    { id: "M05-03-23", question: "23. An ADC uses successive approximation to.", options: ["a) increase speed.", "b) increase accuracy.", "c) increase resolution."], answer: "a", explanation: "Successive approximation increases conversion speed." },
+                    { id: "M05-03-24", question: "24. A DAC uses a precision amplifier to.", options: ["a) ensure the output voltages remain accurate.", "b) compensates for the variation of the feedback resistor due to temperature.", "c) ensure the input remains accurate."], answer: "a", explanation: "Precision amplifiers ensure accurate output voltage levels." },
+                    { id: "M05-03-25", question: "25. A precision op-amp is used in a DAC to.", options: ["a) compensate for temperature variation.", "b) give output at required level.", "c) make output between 0 - 5V."], answer: "b", explanation: "To scale and provide output at the required level." },
+                    { id: "M05-03-26", question: "26. In an R-2R ladder converter the values of resistors.", options: ["a) do not need to be of precise values.", "b) only the first resistor need to be precise.", "c) are precise."], answer: "a", explanation: "As noted in variant questions, relative matching matters more than absolute tight tolerance." },
+                    { id: "M05-03-27", question: "27. What is the quickest method of analogue to digital conversion?", options: ["a) Voltage to frequency.", "b) Flash converter.", "c) Single ramp method."], answer: "b", explanation: "Flash converters are the fastest type of ADC (Digital Fundamentals by Thomas L Floyd)." },
+                    { id: "M05-03-28", question: "28. A charge balancing ADC uses.", options: ["a) successive approximation logic circuit to control the output.", "b) a closed loop system to compare the analogue input to give the required digital output.", "c) a closed loop system to check the analogue input with the input sample."], answer: "b", explanation: "Charge-balancing ADC employs a closed-loop system comparing input to output frequency." },
+                    { id: "M05-03-29", question: "29. Sample and hold is a technique used in.", options: ["a) D to A conversion.", "b) Moving coil instruments.", "c) A to D conversion."], answer: "c", explanation: "Sample-and-hold circuits are standard front-ends for A/D conversion." },
+                    { id: "M05-03-30", question: "30. An analogue to digital converter (ADC) requires the following.", options: ["a) a reference voltage, an input gate, an internal counter, a comparitor.", "b) a reference voltage, an input gate, a comparator.", "c) a reference voltage, an input gate, an internal counter."], answer: "b", explanation: "Essential core components include a reference voltage, input gate, and comparator." },
+                    { id: "M05-03-31", question: "31. What is 'Throughput Rate' for the A/D converter?", options: ["a) Number of complete digital words encoded in a specified unit of time.", "b) None of the above.", "c) Speed of variable resistor which senses the analogue signal."], answer: "a", explanation: "Throughput rate defines complete encoded digital words per unit time." },
+                    { id: "M05-03-32", question: "32. What is the Resolution of A/D and D/A converters?", options: ["a) Resolution of the Instrument which displays the values.", "b) Number of discrete values that can be represented by the digital word.", "c) Rate at which data is converted."], answer: "b", explanation: "Resolution is determined by the number of discrete values represented by the digital word bits." },
+                    { id: "M05-03-33", question: "33. Digital signals can be represented.", options: ["a) only as a binary value.", "b) by a series of integers.", "c) by real numbers."], answer: "b", explanation: "Digital values correspond to discrete integers." },
+                    { id: "M05-03-34", question: "34. When testing EGT probe.", options: ["a) it must be soaked and ambient temperature allowance taken into consideration.", "b) not necessarily soaked but ambient temperature must be taken into consideration.", "c) if its not soaked, a minimum temperature of 20 degrees C taken as OAT."], answer: "a", explanation: "Exhaust Gas Temperature probes require thermal soaking and ambient compensation." },
+                    { id: "M05-03-35", question: "35. A Digital to Analogue Converter has a resolution of 0.3 Volts. What will be the analogue output when the digital input is 10110.", options: ["a) 6.6 Volts RMS.", "b) -6.6 Volts DC.", "c) 6.6 Volts DC."], answer: "c", explanation: "Binary 10110 = 22 decimal. 22 * 0.3V = 6.6 Volts DC." },
+                    { id: "M05-03-36", question: "36. A number represented as a physical quantity, e.g. voltage or speed of rotation is.", options: ["a) digital.", "b) maximum value.", "c) analogue."], answer: "c", explanation: "Physical quantities representing values continuously are analogue." }
                 ]
             },
             "M05-04": {
@@ -1194,6 +347,46 @@
                     { id: "M05-04-86", question: "86. In an ARINC 429 digital word bit number 32 is used for.", options: ["a) terminating the data field.", "b) checking parity.", "c) identifying word type."], answer: "b", explanation: "Parity checking." },
                     { id: "M05-04-87", question: "87. What connects an LRU to the Bus Coupler in an ARINC 629 Data Bus?", options: ["a) Patch Cord.", "b) Stub Cable.", "c) Interconnect Cable."], answer: "b", explanation: "Stub cable." }
                 ]
+            },
+            "M05-05": {
+                title: "Logic Circuits",
+                questions: [
+                    { id: "M05-05-01", question: "1. A NOR gate with both inputs inverted becomes a.", options: ["a) NAND gate.", "b) AND gate.", "c) OR gate."], answer: "b", explanation: "By De Morgan's laws, inverting inputs of a NOR gate yields an AND gate." },
+                    { id: "M05-05-02", question: "2. Adding invertors to the two inputs of an AND gate makes a.", options: ["a) OR gate.", "b) NOR gate.", "c) NAND gate."], answer: "b", explanation: "Inverting AND inputs creates a NOR gate operation." },
+                    { id: "M05-05-03", question: "3. This truth table is for a.", options: ["a) OR gate.", "b) AND gate.", "c) NAND gate."], answer: "b", image: "image_bbcac0.jpg", explanation: "The truth table outputs 1 only when both A and B are 1, representing an AND gate[cite: 1]." },
+                    { id: "M05-05-04", question: "4. Which logic gate can be represented as a parallel circuit?", options: ["a) OR gate.", "b) Exclusive OR gate.", "c) NAND gate."], answer: "a", explanation: "Parallel switches correspond to an OR gate function." },
+                    { id: "M05-05-05", question: "5. Making an inverter from a NAND or NOR gate is achieved by.", options: ["a) connecting the inputs.", "b) inverting the input.", "c) connecting two in series."], answer: "a", explanation: "Tied inputs on NAND/NOR gate function as a NOT gate (inverter)." },
+                    { id: "M05-05-06", question: "6. An AND gate output is 1 when inputs are.", options: ["a) both 1.", "b) both 0.", "c) 1 and 0."], answer: "a", explanation: "AND gate requires all inputs high (1) for a high output." },
+                    { id: "M05-05-07", question: "7. What sort of gate requires two positive voltages to operate?", options: ["a) AND.", "b) OR.", "c) NOT."], answer: "a", explanation: "AND gate requires both inputs at high / positive voltage level." },
+                    { id: "M05-05-08", question: "8. When will a NAND gate give logic 0 at the output?", options: ["a) When both inputs are at 1.", "b) When the inputs are different.", "c) When both inputs are at 0."], answer: "a", explanation: "NAND output is 0 only when all inputs are 1." },
+                    { id: "M05-05-09", question: "9. Which logic gate has this truth table?", options: ["a) NOT.", "b) NAND.", "c) Exclusive OR."], answer: "c", image: "image_bbcd85.jpg", explanation: "Outputs 1 when inputs are different (Exclusive OR)[cite: 2]." },
+                    { id: "M05-05-10", question: "10. Which logic gate can be represented as a parallel circuit?", options: ["a) Exclusive OR.", "b) NAND.", "c) OR."], answer: "c", explanation: "OR gate corresponds to parallel switch circuits." },
+                    { id: "M05-05-11", question: "11. What sort of gate is this?", options: ["a) NOT gate.", "b) NOR gate.", "c) OR gate."], answer: "b", image: "image_bbcde0.png", explanation: "NOR gate truth table (output 1 only when both inputs are 0)[cite: 3]." },
+                    { id: "M05-05-12", question: "12. The output of a NOT gate is logic 1. The input is.", options: ["a) logic 0.", "b) logic 1.", "c) both logic 1."], answer: "a", explanation: "NOT gate inverts logic state 0 to 1." },
+                    { id: "M05-05-13", question: "13. When the voltage that represents a logic 1 state is less than the voltage that represents a logic 0 state, the logic being used is.", options: ["a) either positive or negative.", "b) positive.", "c) negative."], answer: "c", explanation: "Definition of negative (active-low/negative) logic." },
+                    { id: "M05-05-14", question: "14. The output of an AND gate having two inputs A and B is logic 1. The two inputs will have the logic states of.", options: ["a) A = 0, B = 0.", "b) A = 1, B = 0.", "c) A = 1, B = 1."], answer: "c", explanation: "AND gate output is 1 when both inputs are 1." },
+                    { id: "M05-05-15", question: "15. The output of an OR gate having two inputs A and B is logic 0. The two inputs will have the logic states of.", options: ["a) A = 1, B = 0.", "b) A = 0, B = 1.", "c) A = 0, B = 0."], answer: "c", explanation: "OR gate output is 0 only when all inputs are 0." },
+                    { id: "M05-05-16", question: "16. What is this symbol?", options: ["a) Exclusive AND gate.", "b) Exclusive NOR gate.", "c) Exclusive OR gate."], answer: "c", image: "image_bbd8c7.jpg", explanation: "Exclusive OR (XOR) gate symbol[cite: 4]." },
+                    { id: "M05-05-17", question: "17. What Logic Gate does this switch circuit indicate?", options: ["a) NOR gate.", "b) AND gate.", "c) OR gate."], answer: "c", image: "image_bbd8ed.jpg", explanation: "Parallel switch arrangement represents an OR gate[cite: 5]." },
+                    { id: "M05-05-18", question: "18. Which logic gate has both inputs high to get an output?", options: ["a) AND gate.", "b) OR gate.", "c) NAND gate."], answer: "a", explanation: "AND gate." },
+                    { id: "M05-05-19", question: "19. A NAND and NOR to become a NOT gate have.", options: ["a) inputs inverted.", "b) outputs inverted.", "c) inputs connected together."], answer: "c", explanation: "Connecting inputs together converts NAND/NOR into an inverter." },
+                    { id: "M05-05-20", question: "20. An AND gate with inverted inputs and an inverted output is equivalent to.", options: ["a) an AND gate.", "b) a NOR gate.", "c) an OR gate."], answer: "c", explanation: "Inverting AND inputs and output results in an OR gate." },
+                    { id: "M05-05-21", question: "21. Logic gates internal operating mechanisms are produced from.", options: ["a) thin film resistors.", "b) transistors.", "c) diodes."], answer: "b", explanation: "Modern logic gates use transistors internally." },
+                    { id: "M05-05-22", question: "22. A logic 1 may be represented in an analogue system by (where Q is an output of a latch / flip-flop).", options: ["a) switch closed / light off / Not Q.", "b) positive / magnetised / Q.", "c) switch open / light on / Q."], answer: "b", explanation: "Positive voltage / magnetised state represents logic 1." },
+                    { id: "M05-05-23", question: "23. To get logic 1 using this gate.", options: ["a) A and B = 0.", "b) A or B = 1.", "c) A and B = 1."], answer: "a", image: "image_bbd925.jpg", explanation: "For a NOR gate, output is 1 when both inputs are 0[cite: 6]." },
+                    { id: "M05-05-24", question: "24. What logic gate would this circuit represent?", options: ["a) NAND Gate.", "b) NOR gate.", "c) AND gate."], answer: "c", image: "image_bbd942.jpg", explanation: "Series switches represent an AND gate[cite: 7]." },
+                    { id: "M05-05-25", question: "25. What type of gate is this?", options: ["a) NAND.", "b) NOT.", "c) E-OR."], answer: "c", image: "image_bbd965.jpg", explanation: "Exclusive-OR gate symbol[cite: 8]." },
+                    { id: "M05-05-26", question: "26. What sort of gate requires two negative input voltages to operate?", options: ["a) OR.", "b) NAND.", "c) NOT."], answer: "b", explanation: "NAND logic principles in specific negative/active-low configurations." },
+                    { id: "M05-05-27", question: "27. In Positive Logic representation.", options: ["a) both states have same positive voltages but stage 1 has more current.", "b) state 1 is more positive than state 0.", "c) state 0 is more positive than state 1."], answer: "b", explanation: "In positive logic, higher/more positive voltage represents logic 1." },
+                    { id: "M05-05-28", question: "28. Switching within logic gates is normally achieved with the use of.", options: ["a) BTB's.", "b) relays.", "c) diodes."], answer: "c", explanation: "Diode-transistor / diode logic fundamentals." },
+                    { id: "M05-05-29", question: "29. The truth table of A =0011 B=0101 and =0110 indicates that the logic device is.", options: ["a) an ECLUSIVE OR gate.", "b) a NOR gate.", "c) an AND gate."], answer: "a", explanation: "Truth table corresponds to Exclusive OR." },
+                    { id: "M05-05-30", question: "30. What input is required to activate the relay shown?", options: ["a) A=0 B=1.", "b) A=1 B=0.", "c) A=1 B=1."], answer: "c", image: "image_bbd981.png", explanation: "Series switches require both A and B to be closed (1)[cite: 9]." },
+                    { id: "M05-05-31", question: "31. A NAND gate has inputs A and B and output C. If the output (c) was zero, what are the inputs?", options: ["a) A=1 B=1.", "b) A=0 B=0.", "c) A=1 B=0."], answer: "a", explanation: "NAND output is 0 only when all inputs are 1." },
+                    { id: "M05-05-32", question: "32. The 'fan-in' in a gate is the.", options: ["a) number of inputs to a gate.", "b) number of outputs from a gate.", "c) number of inputs and outputs of a gate."], answer: "a", explanation: "Fan-in defines the number of inputs a logic gate can accept." },
+                    { id: "M05-05-33", question: "33. What does the logic circuit shown represent?", options: ["a) Full Adder Circuit.", "b) Half adder circuit.", "c) Multi-bit adder."], answer: "a", image: "image_bbd99f.png", explanation: "Circuit diagram represents a Full Adder Circuit[cite: 10]." },
+                    { id: "M05-05-34", question: "34. Tristate devices are found.", options: ["a) on input circuits.", "b) on output circuits.", "c) on both input and output circuits."], answer: "a", explanation: "Input / buffer structures." },
+                    { id: "M05-05-35", question: "35. A full adder has.", options: ["a) three inputs and two outputs.", "b) two inputs and one output.", "c) three inputs and one output."], answer: "a", explanation: "A full adder takes 3 inputs (A, B, Cin) and produces 2 outputs (Sum, Cout)." }
+                ]
             }
         };
 
@@ -1234,6 +427,18 @@
             document.getElementById("progress-bar").style.width = `${percent}%`;
 
             document.getElementById("question-text").textContent = q.question;
+
+            // 處理圖片顯示
+            const imgContainer = document.getElementById("image-container");
+            const imgElement = document.getElementById("question-image");
+            if (q.image) {
+                imgElement.src = q.image; // 對應對話中提供的圖片檔名
+                imgContainer.classList.remove("hidden");
+            } else {
+                imgContainer.classList.add("hidden");
+                imgElement.src = "";
+            }
+
             const container = document.getElementById("options-container");
             container.innerHTML = "";
 
