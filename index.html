@@ -4,64 +4,166 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EASA Part-66 Module 05.01 模擬測驗</title>
-    <!-- 引入 Tailwind CSS 樣式 -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background-color: #1e293b;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            padding: 30px;
+            box-sizing: border-box;
+        }
+        header {
+            border-bottom: 1px solid #334155;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .badge {
+            background-color: #0284c7;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        h1 {
+            font-size: 20px;
+            margin: 10px 0 0 0;
+        }
+        .progress {
+            color: #94a3b8;
+            font-size: 14px;
+        }
+        .question-text {
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .option-btn {
+            width: 100%;
+            text-align: left;
+            background-color: #334155;
+            color: #f8fafc;
+            border: 1px solid #475569;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            font-size: 15px;
+            transition: background 0.2s;
+        }
+        .option-btn:hover:not(:disabled) {
+            background-color: #475569;
+        }
+        .option-btn:disabled {
+            cursor: default;
+        }
+        .correct {
+            background-color: #16a34a !important;
+            border-color: #22c55e !important;
+        }
+        .wrong {
+            background-color: #dc2626 !important;
+            border-color: #ef4444 !important;
+        }
+        .explanation {
+            background-color: #0f172a;
+            border-left: 4px solid #0284c7;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+        .hidden {
+            display: none;
+        }
+        .footer-nav {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid #334155;
+            padding-top: 15px;
+        }
+        .nav-btn {
+            background-color: #475569;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .nav-btn:hover:not(:disabled) {
+            background-color: #64748b;
+        }
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        .primary-btn {
+            background-color: #0284c7;
+        }
+        .primary-btn:hover {
+            background-color: #0ea5e9;
+        }
+        .result-box {
+            text-align: center;
+            padding: 20px 0;
+        }
+    </style>
 </head>
-<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col items-center py-10 px-4">
+<body>
 
-    <div class="max-w-3xl w-full bg-slate-800 rounded-xl shadow-2xl p-6 md:p-8">
-        <!-- 標題與進度列 -->
-        <header class="border-b border-slate-700 pb-4 mb-6 flex justify-between items-center">
+    <div class="container">
+        <header>
             <div>
-                <span class="text-xs uppercase tracking-wider bg-sky-600 text-white px-2 py-1 rounded font-semibold">Module 05.01</span>
-                <h1 class="text-2xl font-bold mt-2">Electronic Instrument Systems 模擬測驗</h1>
+                <span class="badge">Module 05.01</span>
+                <h1>Electronic Instrument Systems 模擬測驗</h1>
             </div>
-            <div id="progress-indicator" class="text-sm text-slate-400">
+            <div class="progress">
                 題目: <span id="current-idx">1</span> / <span id="total-cnt">33</span>
             </div>
         </header>
 
-        <!-- 測驗進行區 -->
         <main id="quiz-container">
-            <div id="question-box" class="mb-6">
-                <h2 id="question-text" class="text-lg md:text-xl font-medium leading-relaxed mb-4">
-                    載入中...
-                </h2>
-                <div id="options-container" class="space-y-3">
-                    <!-- 選項將透過 JavaScript 動態載入 -->
-                </div>
+            <div class="question-text" id="question-text">載入中...</div>
+            <div id="options-container"></div>
+
+            <div id="explanation-box" class="explanation hidden">
+                <strong style="color: #38bdf8; display: block; margin-bottom: 5px;">📖 解析 (Explanation):</strong>
+                <p id="explanation-text" style="margin: 0;"></p>
             </div>
 
-            <!-- 解析區 -->
-            <div id="explanation-box" class="hidden bg-slate-900/80 border-l-4 border-sky-500 p-4 rounded mb-6 text-sm">
-                <span class="font-bold text-sky-400 block mb-1">📖 解析 (Explanation):</span>
-                <p id="explanation-text" class="text-slate-300 leading-relaxed"></p>
-            </div>
-
-            <!-- 控制按鈕 -->
-            <div class="flex justify-between items-center pt-4 border-t border-slate-700">
-                <button id="prev-btn" onclick="prevQuestion()" class="bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded font-medium transition disabled:opacity-30 disabled:cursor-not-allowed">
-                    上一題
-                </button>
-                <button id="next-btn" onclick="nextQuestion()" class="bg-sky-600 hover:bg-sky-500 text-white px-6 py-2 rounded font-medium transition">
-                    下一題
-                </button>
+            <div class="footer-nav">
+                <button id="prev-btn" class="nav-btn" onclick="prevQuestion()">上一題</button>
+                <button id="next-btn" class="nav-btn primary-btn" onclick="nextQuestion()">下一題</button>
             </div>
         </main>
 
-        <!-- 結算畫面 -->
-        <div id="result-container" class="hidden text-center py-10">
-            <h2 class="text-3xl font-bold mb-4 text-sky-400">🎉 測驗完成！</h2>
-            <p class="text-xl mb-6">您的總得分：<span id="score-text" class="font-bold text-green-400">0</span> / 33</p>
-            <button onclick="restartQuiz()" class="bg-sky-600 hover:bg-sky-500 text-white px-6 py-3 rounded-lg font-semibold transition">
-                重新測驗
-            </button>
+        <div id="result-container" class="result-box hidden">
+            <h2 style="font-size: 26px; color: #38bdf8; margin-bottom: 15px;">🎉 測驗完成！</h2>
+            <p style="font-size: 18px; margin-bottom: 20px;">您的總得分：<span id="score-text" style="color: #4ade80; font-weight: bold;">0</span> / 33</p>
+            <button class="nav-btn primary-btn" onclick="restartQuiz()">重新測驗</button>
         </div>
     </div>
 
-    <!-- 題庫與互動邏輯 Script -->
     <script>
-        // 題庫資料陣列 (已內含 33 題)
         const questionBank = [
             {
                 id: "M05-01",
@@ -230,4 +332,294 @@
             },
             {
                 id: "M05-16",
-                question: "16.
+                question: "16. On an EFIS system the weather radar is displayed on.",
+                options: [
+                    "A. the FMC CDU.",
+                    "B. the EADI.",
+                    "C. the EHSI."
+                ],
+                answer: "C",
+                explanation: "氣象雷達顯示於 EHSI 上。"
+            },
+            {
+                id: "M05-17",
+                question: "17. EADI displays show.",
+                options: [
+                    "A. pitch, roll and waypoints.",
+                    "B. pitch and roll attitudes.",
+                    "C. heading and weather radar."
+                ],
+                answer: "B",
+                explanation: "EADI 主要顯示俯仰與滾轉姿態。"
+            },
+            {
+                id: "M05-18",
+                question: "18. On an EHSI in weather radar mode, a severe storm would be shown as.",
+                options: [
+                    "A. orange areas with black or yellow surrounds.",
+                    "B. red areas with black surrounds",
+                    "C. blue areas with white background."
+                ],
+                answer: "B",
+                explanation: "劇烈風暴在氣象雷達模式中以紅色區域帶有黑色外框表示。"
+            },
+            {
+                id: "M05-19",
+                question: "19. During flight (non fault conditions) the EICAS system displays on the lower CRT.",
+                options: [
+                    "A. flight phase page.",
+                    "B. secondary engine parameters.",
+                    "C. synoptic display."
+                ],
+                answer: "B",
+                explanation: "在正常飛行條件下，EICAS 下方 CRT 螢幕顯示次要引擎參數。"
+            },
+            {
+                id: "M05-20",
+                question: "20. Radio altitude is displayed on an EFIS system.",
+                options: [
+                    "A. on the Electronic Horizontal Situation Indicator.",
+                    "B. on the Electronic Attitude Direction Indicator.",
+                    "C. on the RMI."
+                ],
+                answer: "B",
+                explanation: "無線電高度顯示在電子姿態儀指示器 (EADI) 上。"
+            },
+            {
+                id: "M05-21",
+                question: "21. An EFIS system ADI displays pitch, roll.",
+                options: [
+                    "A. autoland, altitude, compass rose and flight director bars.",
+                    "B. autoland, decision height, range to altitude and flight director bars and slip indicator.",
+                    "C. autoland, rad alt, decision height and slip indicator."
+                ],
+                answer: "B",
+                explanation: "EFIS ADI 顯示自動降落、決斷高度、高度範圍、飛行導引指令桿與側滑指示器。"
+            },
+            {
+                id: "M05-22",
+                question: "22. An electronic flight instrument display consists of.",
+                options: [
+                    "A. Mode control panel, Raster and Stroke generator display, microprocessor and Data inputs.",
+                    "B. ADC, Altimeter, VSI and ASI.",
+                    "C. ADI, HSI and Symbol generator."
+                ],
+                answer: "A",
+                explanation: "電子飛行儀表顯示系統包含模式控制面板、光柵與筆劃產生器顯示器、微處理器及資料輸入。"
+            },
+            {
+                id: "M05-23",
+                question: "23. The EFIS system consists of.",
+                options: [
+                    "A. EHSI, Mode control panel, EADI.",
+                    "B. EADI, EHSI, Symbol generators.",
+                    "C. Mode control Panel, RDMI, EHSI."
+                ],
+                answer: "B",
+                explanation: "EFIS 系統由 EADI、EHSI 以及符號產生器組成。"
+            },
+            {
+                id: "M05-24",
+                question: "24. ILS indications on PFD/ND are shown in.",
+                options: [
+                    "A. cyan.",
+                    "B. magenta.",
+                    "C. green."
+                ],
+                answer: "B",
+                explanation: "PFD/ND 上的 ILS 導引指示以洋紅色顯示。"
+            },
+            {
+                id: "M05-25",
+                question: "25. A weather radar image can be displayed on the ND on all modes except.",
+                options: [
+                    "A. arc.",
+                    "B. nav rose.",
+                    "C. plan."
+                ],
+                answer: "C",
+                explanation: "氣象雷達影像可以顯示在導航顯示器的多種模式，但不適用於 Plan 模式。"
+            },
+            {
+                id: "M05-26",
+                question: "26. In a typical commercial aircraft Head Up Guidance System.",
+                options: [
+                    "A. the type of information shown on the attitude director indicator is displayed on a transparent plate.",
+                    "B. all instrument information is displayed on the windshield.",
+                    "C. only emergency indications or warnings are displayed to the pilot."
+                ],
+                answer: "A",
+                explanation: "平視導引系統將姿態儀資訊投射顯示在正前方的透明板上。"
+            },
+            {
+                id: "M05-27",
+                question: "27. A modern Electronic Horizontal Situation Indicator will display the following:.",
+                options: [
+                    "A. Waypoints, ILS Steering Information, Distance to go and Magnetic Heading.",
+                    "B. ILS Steering Information, Flight director information and Glide Slope Deviation.",
+                    "C. Ground speed, Magnetic Heading, Way points and Localiser."
+                ],
+                answer: "A",
+                explanation: "現代 EHSI 顯示航點、ILS 導引資訊、剩餘距離與磁航向。"
+            },
+            {
+                id: "M05-28",
+                question: "28. Cockpit panels have a matt colour finish. The purpose is.",
+                options: [
+                    "A. so that pilots feel more comfortable during daytime.",
+                    "B. so that the amount of glare is reduced to minimum.",
+                    "C. so that dust and dirt are less evident on panels."
+                ],
+                answer: "B",
+                explanation: "駕駛艙面板採用消光處理是為了將反光降至最低。"
+            },
+            {
+                id: "M05-29",
+                question: "29. A complete EFIS installation in an aircraft is made up of.",
+                options: [
+                    "A. either of the above.",
+                    "B. right (captain) and left (co-pilot).",
+                    "C. left (captain) and right (co-pilot)."
+                ],
+                answer: "A",
+                explanation: "左右座配置因機型而異，視具體安裝而定。"
+            },
+            {
+                id: "M05-30",
+                question: "30. On a modern 'glass cockpit' aircraft, engine information will be displayed on.",
+                options: [
+                    "A. FMS.",
+                    "B. EFIS.",
+                    "C. ECAM."
+                ],
+                answer: "C",
+                explanation: "在現代玻璃座艙飛機中，引擎資訊顯示在 ECAM 上。"
+            },
+            {
+                id: "M05-31",
+                question: "31. What does EFIS mean?",
+                options: [
+                    "A. Electronic Fire Indication Signal.",
+                    "B. Electronic Flight Instrument System.",
+                    "C. Electronic Flight Information System."
+                ],
+                answer: "B",
+                explanation: "EFIS 全稱為 Electronic Flight Instrument System。"
+            },
+            {
+                id: "M05-32",
+                question: "32. What does EICAS mean?",
+                options: [
+                    "A. Electronic indicator and control alerting system.",
+                    "B. Engine indicating and Crew alerting system.",
+                    "C. Electronic indicator and crew alerting system."
+                ],
+                answer: "B",
+                explanation: "EICAS 全稱為 Engine indicating and Crew alerting system。"
+            },
+            {
+                id: "M05-33",
+                question: "33. What does ECAM mean?",
+                options: [
+                    "A. Engine Centralised Aircraft Management System.",
+                    "B. Engine Centralised Aircraft Monitoring System.",
+                    "C. Electronic Centralised Aircraft Monitoring System."
+                ],
+                answer: "C",
+                explanation: "ECAM 全稱為 Electronic Centralised Aircraft Monitoring System。"
+            }
+        ];
+
+        let currentIndex = 0;
+        let score = 0;
+        let userAnswers = new Array(questionBank.length).fill(null);
+
+        const questionText = document.getElementById("question-text");
+        const optionsContainer = document.getElementById("options-container");
+        const explanationBox = document.getElementById("explanation-box");
+        const explanationText = document.getElementById("explanation-text");
+        const currentIdxEl = document.getElementById("current-idx");
+        const totalCntEl = document.getElementById("total-cnt");
+        const quizContainer = document.getElementById("quiz-container");
+        const resultContainer = document.getElementById("result-container");
+        const scoreText = document.getElementById("score-text");
+        const prevBtn = document.getElementById("prev-btn");
+        const nextBtn = document.getElementById("next-btn");
+
+        totalCntEl.textContent = questionBank.length;
+
+        function loadQuestion() {
+            const q = questionBank[currentIndex];
+            currentIdxEl.textContent = currentIndex + 1;
+            questionText.textContent = q.question;
+            optionsContainer.innerHTML = "";
+
+            q.options.forEach((opt) => {
+                const optionLetter = opt.charAt(0);
+                const btn = document.createElement("button");
+                btn.className = "option-btn";
+                btn.textContent = opt;
+
+                if (userAnswers[currentIndex] !== null) {
+                    btn.disabled = true;
+                    if (optionLetter === q.answer) {
+                        btn.classList.add("correct");
+                    } else if (optionLetter === userAnswers[currentIndex]) {
+                        btn.classList.add("wrong");
+                    }
+                } else {
+                    btn.onclick = () => selectOption(optionLetter, q.answer);
+                }
+                optionsContainer.appendChild(btn);
+            });
+
+            if (userAnswers[currentIndex] !== null) {
+                explanationText.textContent = q.explanation;
+                explanationBox.classList.remove("hidden");
+            } else {
+                explanationBox.classList.add("hidden");
+            }
+
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.textContent = currentIndex === questionBank.length - 1 ? "查看成績" : "下一題";
+        }
+
+        function selectOption(selected, correct) {
+            userAnswers[currentIndex] = selected;
+            if (selected === correct) {
+                score++;
+            }
+            loadQuestion();
+        }
+
+        function nextQuestion() {
+            if (currentIndex < questionBank.length - 1) {
+                currentIndex++;
+                loadQuestion();
+            } else {
+                quizContainer.classList.add("hidden");
+                resultContainer.classList.remove("hidden");
+                scoreText.textContent = score;
+            }
+        }
+
+        function prevQuestion() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                loadQuestion();
+            }
+        }
+
+        function restartQuiz() {
+            currentIndex = 0;
+            score = 0;
+            userAnswers = new Array(questionBank.length).fill(null);
+            resultContainer.classList.add("hidden");
+            quizContainer.classList.remove("hidden");
+            loadQuestion();
+        }
+
+        loadQuestion();
+    </script>
+</body>
+</html>
