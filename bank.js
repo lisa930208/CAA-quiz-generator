@@ -1,164 +1,736 @@
-const questionBank = [
-    {
-        id: "M05-01",
-        question: "1. What are the basic elements for 'Classic T' format?",
-        options: [
-            "A. Direction, altitude and height.",
-            "B. Airspeed, pitch and roll.",
-            "C. Airspeed, attitude, altitude and direction."
-        ],
-        answer: "C",
-        explanation: "Classic T 的四大基本儀表核心元素為：Airspeed (空速)、Attitude (姿態)、Altitude (高度) 與 Direction (方向)。"
+const allQuestionBanks = {
+    "M05-01": {
+        title: "Electronic Instrument Systems",
+        questions: [
+            {
+                id: "M05-01",
+                question: "1. What are the basic elements for 'Classic T' format?",
+                options: [
+                    "A. Direction, altitude and height.",
+                    "B. Airspeed, pitch and roll.",
+                    "C. Airspeed, attitude, altitude and direction."
+                ],
+                answer: "C",
+                explanation: "Classic T 的四大基本儀表核心元素為：Airspeed (空速)、Attitude (姿態)、Altitude (高度) 與 Direction (方向)。"
+            },
+            {
+                id: "M05-02",
+                question: "2. Typical displays on an EHSI are.",
+                options: [
+                    "A. Engine indications.",
+                    "B. VOR, Map, Plan and weather radar.",
+                    "C. VOR, Plan, Map and Attitude."
+                ],
+                answer: "B",
+                explanation: "EHSI 典型顯示包含 VOR、Map、Plan 及氣象雷達 (weather radar)。"
+            },
+            {
+                id: "M05-03",
+                question: "3. An EADI display showing a moving runway moves down during the final stages of an approach. The aircraft must.",
+                options: [
+                    "A. fly down.",
+                    "B. fly up.",
+                    "C. hold descent path."
+                ],
+                answer: "A",
+                explanation: "在進場最後階段上升跑道會向上移直到觸及飛機符號。若上升跑道開始向下移，代表飛機正在爬升，因此必須向下飛行。"
+            },
+            {
+                id: "M05-04",
+                question: "4. During an instrument approach, the glideslope pointer reflects below the glideslope centre mark. This means the aircraft is positioned.",
+                options: [
+                    "A. above the glideslope.",
+                    "B. below the glideslope.",
+                    "C. to the left of the localiser."
+                ],
+                answer: "A",
+                explanation: "指針在中心標記下方，代表滑道在飛機下方，也就是飛機位於滑道上方。"
+            },
+            {
+                id: "M05-05",
+                question: "5. Engine parameters are displayed on.",
+                options: [
+                    "A. ECAM.",
+                    "B. EHSI.",
+                    "C. FMSCDU."
+                ],
+                answer: "A",
+                explanation: "引擎參數可以透過選取 Engine 頁面顯示在 ECAM 上。"
+            },
+            {
+                id: "M05-06",
+                question: "6. What is the fixed feature of an ADI?",
+                options: [
+                    "A. The glideslope pointer.",
+                    "B. The aircraft symbol.",
+                    "C. The lateral deviation bar."
+                ],
+                answer: "B",
+                explanation: "ADI 儀表正中央繪製的小飛機符號為固定特徵。"
+            },
+            {
+                id: "M05-07",
+                question: "7. On an EADI, the Flight Director command bars show.",
+                options: [
+                    "A. the path with respect to the horizon.",
+                    "B. the required path with respect to the actual path.",
+                    "C. the actual path with respect to the required path."
+                ],
+                answer: "B",
+                explanation: "飛行導引指令桿顯示的是相對於實際飛行路徑的需求路徑。"
+            },
+            {
+                id: "M05-08",
+                question: "8. What instrument includes a display of a rising runway?",
+                options: [
+                    "A. ECAM.",
+                    "B. EHSI.",
+                    "C. EADI."
+                ],
+                answer: "C",
+                explanation: "上升跑道顯示於 EADI（電子姿態儀指示器）上。"
+            },
+            {
+                id: "M05-09",
+                question: "9. What functions are available on the EHSI?",
+                options: [
+                    "A. Full arc and Wx only.",
+                    "B. Full arc, Wx and Map Mode.",
+                    "C. Full Arc only."
+                ],
+                answer: "B",
+                explanation: "EHSI 提供 Full arc、Wx 及 Map Mode 等顯示功能。"
+            },
+            {
+                id: "M05-10",
+                question: "10. With radio coupled autopilot, what are the inputs?",
+                options: [
+                    "A. ADF and VOR.",
+                    "B. ILS and VOR.",
+                    "C. ADF and ILS."
+                ],
+                answer: "B",
+                explanation: "無線電耦合自動駕駛儀主要接收 ILS 與 VOR 訊號輸入。"
+            },
+            {
+                id: "M05-11",
+                question: "11. An EADI display of flight director commands are coloured.",
+                options: [
+                    "A. cyan.",
+                    "B. magenta.",
+                    "C. red."
+                ],
+                answer: "B",
+                explanation: "EADI 飛行導引指令桿顏色為洋紅色 (magenta)。"
+            },
+            {
+                id: "M05-12",
+                question: "12. EFIS systems have two control panels, their purpose is.",
+                options: [
+                    "A. one to control the type of EFIS display and the other to select the source of the information being displayed.",
+                    "B. one for the EADI display and one for the EHSI display.",
+                    "C. to provide display control by one control panel whilst the other provides a standby."
+                ],
+                answer: "A",
+                explanation: "一個控制面板控制顯示類型，另一個選擇資訊來源。"
+            },
+            {
+                id: "M05-13",
+                question: "13. What would you expect to see displayed on an EADI display?",
+                options: [
+                    "A. Compass heading, selected heading and VOR.",
+                    "B. Course information, weather radar, way point alert and bearing pointers.",
+                    "C. Flight director command bars, slip indicator, rate to altitude & autoland."
+                ],
+                answer: "C",
+                explanation: "EADI 顯示飛行導引指令桿、側滑指示器、高度速率及自動降落等資訊。"
+            },
+            {
+                id: "M05-14",
+                question: "14. An EFIS ADI display will show along with pitch and roll.",
+                options: [
+                    "A. flight director bars, autoland, compass rose, altitude.",
+                    "B. decision height, autoland, rad alt , altitude.",
+                    "C. flight director bars, autoland, altitude, range to altitude, decision height."
+                ],
+                answer: "B",
+                explanation: "EFIS ADI 除俯仰與滾轉外，還會顯示決斷高度、自動降落、無線電高度與高度。"
+            },
+            {
+                id: "M05-15",
+                question: "15. If the glideslope pointer is below the centre mark the aircraft is.",
+                options: [
+                    "A. below the glideslope.",
+                    "B. on the glideslope.",
+                    "C. above the glideslope."
+                ],
+                answer: "C",
+                explanation: "滑道指針在中心標記下方時，代表飛機位於滑道上方。"
+            },
+            {
+                id: "M05-16",
+                question: "16. On an EFIS system the weather radar is displayed on.",
+                options: [
+                    "A. the FMC CDU.",
+                    "B. the EADI.",
+                    "C. the EHSI."
+                ],
+                answer: "C",
+                explanation: "氣象雷達顯示於 EHSI 上。"
+            },
+            {
+                id: "M05-17",
+                question: "17. EADI displays show.",
+                options: [
+                    "A. pitch, roll and waypoints.",
+                    "B. pitch and roll attitudes.",
+                    "C. heading and weather radar."
+                ],
+                answer: "B",
+                explanation: "EADI 主要顯示俯仰與滾轉姿態。"
+            },
+            {
+                id: "M05-18",
+                question: "18. On an EHSI in weather radar mode, a severe storm would be shown as.",
+                options: [
+                    "A. orange areas with black or yellow surrounds.",
+                    "B. red areas with black surrounds",
+                    "C. blue areas with white background."
+                ],
+                answer: "B",
+                explanation: "劇烈風暴在氣象雷達模式中以紅色區域帶有黑色外框表示。"
+            },
+            {
+                id: "M05-19",
+                question: "19. During flight (non fault conditions) the EICAS system displays on the lower CRT.",
+                options: [
+                    "A. flight phase page.",
+                    "B. secondary engine parameters.",
+                    "C. synoptic display."
+                ],
+                answer: "B",
+                explanation: "在正常飛行條件下，EICAS 下方 CRT 螢幕顯示次要引擎參數。"
+            },
+            {
+                id: "M05-20",
+                question: "20. Radio altitude is displayed on an EFIS system.",
+                options: [
+                    "A. on the Electronic Horizontal Situation Indicator.",
+                    "B. on the Electronic Attitude Direction Indicator.",
+                    "C. on the RMI."
+                ],
+                answer: "B",
+                explanation: "無線電高度顯示在電子姿態儀指示器 (EADI) 上。"
+            },
+            {
+                id: "M05-21",
+                question: "21. An EFIS system ADI displays pitch, roll.",
+                options: [
+                    "A. autoland, altitude, compass rose and flight director bars.",
+                    "B. autoland, decision height, range to altitude and flight director bars and slip indicator.",
+                    "C. autoland, rad alt, decision height and slip indicator."
+                ],
+                answer: "B",
+                explanation: "EFIS ADI 顯示自動降落、決斷高度、高度範圍、飛行導引指令桿與側滑指示器。"
+            },
+            {
+                id: "M05-22",
+                question: "22. An electronic flight instrument display consists of.",
+                options: [
+                    "A. Mode control panel, Raster and Stroke generator display, microprocessor and Data inputs.",
+                    "B. ADC, Altimeter, VSI and ASI.",
+                    "C. ADI, HSI and Symbol generator."
+                ],
+                answer: "A",
+                explanation: "電子飛行儀表顯示系統包含模式控制面板、光柵與筆劃產生器顯示器、微處理器及資料輸入。"
+            },
+            {
+                id: "M05-23",
+                question: "23. The EFIS system consists of.",
+                options: [
+                    "A. EHSI, Mode control panel, EADI.",
+                    "B. EADI, EHSI, Symbol generators.",
+                    "C. Mode control Panel, RDMI, EHSI."
+                ],
+                answer: "B",
+                explanation: "EFIS 系統由 EADI、EHSI 以及符號產生器組成。"
+            },
+            {
+                id: "M05-24",
+                question: "24. ILS indications on PFD/ND are shown in.",
+                options: [
+                    "A. cyan.",
+                    "B. magenta.",
+                    "C. green."
+                ],
+                answer: "B",
+                explanation: "PFD/ND 上的 ILS 導引指示以洋紅色顯示。"
+            },
+            {
+                id: "M05-25",
+                question: "25. A weather radar image can be displayed on the ND on all modes except.",
+                options: [
+                    "A. arc.",
+                    "B. nav rose.",
+                    "C. plan."
+                ],
+                answer: "C",
+                explanation: "氣象雷達影像可以顯示在導航顯示器的多種模式，但不適用於 Plan 模式。"
+            },
+            {
+                id: "M05-26",
+                question: "26. In a typical commercial aircraft Head Up Guidance System.",
+                options: [
+                    "A. the type of information shown on the attitude director indicator is displayed on a transparent plate.",
+                    "B. all instrument information is displayed on the windshield.",
+                    "C. only emergency indications or warnings are displayed to the pilot."
+                ],
+                answer: "A",
+                explanation: "平視導引系統將姿態儀資訊投射顯示在正前方的透明板上。"
+            },
+            {
+                id: "M05-27",
+                question: "27. A modern Electronic Horizontal Situation Indicator will display the following:.",
+                options: [
+                    "A. Waypoints, ILS Steering Information, Distance to go and Magnetic Heading.",
+                    "B. ILS Steering Information, Flight director information and Glide Slope Deviation.",
+                    "C. Ground speed, Magnetic Heading, Way points and Localiser."
+                ],
+                answer: "A",
+                explanation: "現代 EHSI 顯示航點、ILS 導引資訊、剩餘距離與磁航向。"
+            },
+            {
+                id: "M05-28",
+                question: "28. Cockpit panels have a matt colour finish. The purpose is.",
+                options: [
+                    "A. so that pilots feel more comfortable during daytime.",
+                    "B. so that the amount of glare is reduced to minimum.",
+                    "C. so that dust and dirt are less evident on panels."
+                ],
+                answer: "B",
+                explanation: "駕駛艙面板採用消光處理是為了將反光降至最低。"
+            },
+            {
+                id: "M05-29",
+                question: "29. A complete EFIS installation in an aircraft is made up of.",
+                options: [
+                    "A. either of the above.",
+                    "B. right (captain) and left (co-pilot).",
+                    "C. left (captain) and right (co-pilot)."
+                ],
+                answer: "A",
+                explanation: "左右座配置因機型而異，視具體安裝而定。"
+            },
+            {
+                id: "M05-30",
+                question: "30. On a modern 'glass cockpit' aircraft, engine information will be displayed on.",
+                options: [
+                    "A. FMS.",
+                    "B. EFIS.",
+                    "C. ECAM."
+                ],
+                answer: "C",
+                explanation: "在現代玻璃座艙飛機中，引擎資訊顯示在 ECAM 上。"
+            },
+            {
+                id: "M05-31",
+                question: "31. What does EFIS mean?",
+                options: [
+                    "A. Electronic Fire Indication Signal.",
+                    "B. Electronic Flight Instrument System.",
+                    "C. Electronic Flight Information System."
+                ],
+                answer: "B",
+                explanation: "EFIS 全稱為 Electronic Flight Instrument System。"
+            },
+            {
+                id: "M05-32",
+                question: "32. What does EICAS mean?",
+                options: [
+                    "A. Electronic indicator and control alerting system.",
+                    "B. Engine indicating and Crew alerting system.",
+                    "C. Electronic indicator and crew alerting system."
+                ],
+                answer: "B",
+                explanation: "EICAS 全稱為 Engine indicating and Crew alerting system。"
+            },
+            {
+                id: "M05-33",
+                question: "33. What does ECAM mean?",
+                options: [
+                    "A. Engine Centralised Aircraft Management System.",
+                    "B. Engine Centralised Aircraft Monitoring System.",
+                    "C. Electronic Centralised Aircraft Monitoring System."
+                ],
+                answer: "C",
+                explanation: "ECAM 全稱為 Electronic Centralised Aircraft Monitoring System。"
+            }
+        ]
     },
-    {
-        id: "M05-02",
-        question: "2. Typical displays on an EHSI are.",
-        options: [
-            "A. Engine indications.",
-            "B. VOR, Map, Plan and weather radar.",
-            "C. VOR, Plan, Map and Attitude."
-        ],
-        answer: "B",
-        explanation: "EHSI 典型顯示包含 VOR、Map、Plan 及氣象雷達 (weather radar)。"
-    },
-    {
-        id: "M05-03",
-        question: "3. An EADI display showing a moving runway moves down during the final stages of an approach. The aircraft must.",
-        options: [
-            "A. fly down.",
-            "B. fly up.",
-            "C. hold descent path."
-        ],
-        answer: "A",
-        explanation: "在進場最後階段上升跑道會向上移直到觸及飛機符號。若上升跑道開始向下移，代表飛機正在爬升，因此必須向下飛行。"
-    },
-    {
-        id: "M05-04",
-        question: "4. During an instrument approach, the glideslope pointer reflects below the glideslope centre mark. This means the aircraft is positioned.",
-        options: [
-            "A. above the glideslope.",
-            "B. below the glideslope.",
-            "C. to the left of the localiser."
-        ],
-        answer: "A",
-        explanation: "指針在中心標記下方，代表滑道在飛機下方，也就是飛機位於滑道上方。"
-    },
-    {
-        id: "M05-05",
-        question: "5. Engine parameters are displayed on.",
-        options: [
-            "A. ECAM.",
-            "B. EHSI.",
-            "C. FMSCDU."
-        ],
-        answer: "A",
-        explanation: "引擎參數可以透過選取 Engine 頁面顯示在 ECAM 上。"
-    },
-    {
-        id: "M05-06",
-        question: "6. What is the fixed feature of an ADI?",
-        options: [
-            "A. The glideslope pointer.",
-            "B. The aircraft symbol.",
-            "C. The lateral deviation bar."
-        ],
-        answer: "B",
-        explanation: "ADI 儀表正中央繪製的小飛機符號為固定特徵。"
-    },
-    {
-        id: "M05-07",
-        question: "7. On an EADI, the Flight Director command bars show.",
-        options: [
-            "A. the path with respect to the horizon.",
-            "B. the required path with respect to the actual path.",
-            "C. the actual path with respect to the required path."
-        ],
-        answer: "B",
-        explanation: "飛行導引指令桿顯示的是相對於實際飛行路徑的需求路徑。"
-    },
-    {
-        id: "M05-08",
-        question: "8. What instrument includes a display of a rising runway?",
-        options: [
-            "A. ECAM.",
-            "B. EHSI.",
-            "C. EADI."
-        ],
-        answer: "C",
-        explanation: "上升跑道顯示於 EADI（電子姿態儀指示器）上。"
-    },
-    {
-        id: "M05-09",
-        question: "9. What functions are available on the EHSI?",
-        options: [
-            "A. Full arc and Wx only.",
-            "B. Full arc, Wx and Map Mode.",
-            "C. Full Arc only."
-        ],
-        answer: "B",
-        explanation: "EHSI 提供 Full arc、Wx 及 Map Mode 等顯示功能。"
-    },
-    {
-        id: "M05-10",
-        question: "10. With radio coupled autopilot, what are the inputs?",
-        options: [
-            "A. ADF and VOR.",
-            "B. ILS and VOR.",
-            "C. ADF and ILS."
-        ],
-        answer: "B",
-        explanation: "無線電耦合自動駕駛儀主要接收 ILS 與 VOR 訊號輸入。"
-    },
-    {
-        id: "M05-11",
-        question: "11. An EADI display of flight director commands are coloured.",
-        options: [
-            "A. cyan.",
-            "B. magenta.",
-            "C. red."
-        ],
-        answer: "B",
-        explanation: "EADI 飛行導引指令桿顏色為洋紅色 (magenta)。"
-    },
-    {
-        id: "M05-12",
-        question: "12. EFIS systems have two control panels, their purpose is.",
-        options: [
-            "A. one to control the type of EFIS display and the other to select the source of the information being displayed.",
-            "B. one for the EADI display and one for the EHSI display.",
-            "C. to provide display control by one control panel whilst the other provides a standby."
-        ],
-        answer: "A",
-        explanation: "一個控制面板控制顯示類型，另一個選擇資訊來源。"
-    },
-    {
-        id: "M05-13",
-        question: "13. What would you expect to see displayed on an EADI display?",
-        options: [
-            "A. Compass heading, selected heading and VOR.",
-            "B. Course information, weather radar, way point alert and bearing pointers.",
-            "C. Flight director command bars, slip indicator, rate to altitude & autoland."
-        ],
-        answer: "C",
-        explanation: "EADI 顯示飛行導引指令桿、側滑指示器、高度速率及自動降落等資訊。"
-    },
-    {
-        id: "M05-14",
-        question: "14. An EFIS ADI display will show along with pitch and roll.",
-        options: [
-            "A. flight director bars, autoland, compass rose, altitude.",
-            "B. decision height, autoland, rad alt , altitude.",
-            "C. flight director bars, autoland, altitude, range to altitude, decision height."
-        ],
-        answer: "B",
-        explanation: "EFIS ADI 除俯仰與滾轉外，還會顯示決斷高度、自動降落、無線電高度與高度。"
-    },
-    {
-        id: "M05-15",
-        question: "15. If the glideslope pointer is below the centre mark the aircraft is.",
-        options: [
-            "A. below the glideslope.",
-            "B. on the glideslope.",
-            "C. above the glideslope."
-        ],
-        answer: "C",
+    "M05-02": {
+        title: "Numbering Systems",
+        questions: [
+            {
+                id: "M05-02-01",
+                question: "1. Convert 011101 Base2 to octal.",
+                options: ["a) 25.", "b) 35.", "c) 33."],
+                answer: "b",
+                explanation: "The OCTAL code has 8 digits, 0 - 7. To convert binary to octal divide the binary number into groups of three starting from the right."
+            },
+            {
+                id: "M05-02-02",
+                question: "2. The binary number 11010111 expressed as a decimal is.",
+                options: ["a) 215.", "b) 223.", "c) 207."],
+                answer: "a",
+                explanation: "Convert binary 11010111 to decimal: 128 + 64 + 16 + 4 + 2 + 1 = 215."
+            },
+            {
+                id: "M05-02-03",
+                question: "3. The octal number 1001 expressed as a decimal is.",
+                options: ["a) 9.", "b) 65.", "c) 513."],
+                answer: "c",
+                explanation: "Octal 1001 = (1 * 8^3) + (0 * 8^2) + (0 * 8^1) + (1 * 8^0) = 512 + 1 = 513."
+            },
+            {
+                id: "M05-02-04",
+                question: "4. What is 345 in binary?",
+                options: ["a) 100111001.", "b) 101011001.", "c) 110011001."],
+                answer: "b",
+                explanation: "Decimal 345 converted to binary is 101011001."
+            },
+            {
+                id: "M05-02-05",
+                question: "5. What is hex 110 in decimal?",
+                options: ["a) 282.", "b) 272.", "c) 32."],
+                answer: "b",
+                explanation: "Hex 110 = (1 * 256) + (1 * 16) + (0 * 1) = 256 + 16 = 272."
+            },
+            {
+                id: "M05-02-06",
+                question: "6. Convert the binary word 1100 to decimal.",
+                options: ["a) 11.", "b) 16.", "c) 12."],
+                answer: "c",
+                explanation: "Binary 1100 = 8 + 4 = 12."
+            },
+            {
+                id: "M05-02-07",
+                question: "7. If a data message is made up of 1s and 0s, it is.",
+                options: ["a) analogue.", "b) binary.", "c) digital."],
+                answer: "c",
+                explanation: "Digital is 1s and 0s, either binary or grey code."
+            },
+            {
+                id: "M05-02-08",
+                question: "8. Convert the binary word 1110 to decimal.",
+                options: ["a) 12.", "b) 14.", "c) 15."],
+                answer: "b",
+                explanation: "Binary 1110 = 8 + 4 + 2 = 14."
+            },
+            {
+                id: "M05-02-09",
+                question: "9. Convert the binary number 110010 to decimal.",
+                options: ["a) 80.", "b) 50.", "c) 34."],
+                answer: "b",
+                explanation: "Binary 110010 = 32 + 16 + 2 = 50."
+            },
+            {
+                id: "M05-02-10",
+                question: "10. Convert the hexadecimal number D into decimal.",
+                options: ["a) 13.", "b) 15.", "c) 14."],
+                answer: "a",
+                explanation: "Hex D represents decimal 13."
+            },
+            {
+                id: "M05-02-11",
+                question: "11. Convert decimal 15 into binary.",
+                options: ["a) 1111.", "b) 1101.", "c) 1110."],
+                answer: "a",
+                explanation: "Decimal 15 = 8 + 4 + 2 + 1 = 1111 in binary."
+            },
+            {
+                id: "M05-02-12",
+                question: "12. Convert 448 to hex.",
+                options: ["a) 22 Base16.", "b) 36 Base16.", "c) 24 Base16."],
+                answer: "c",
+                explanation: "448 in decimal converted to hex is 24 Base16."
+            },
+            {
+                id: "M05-02-13",
+                question: "13. Convert decimal 15 into hexadecimal.",
+                options: ["a) G.", "b) E.", "c) F."],
+                answer: "c",
+                explanation: "Decimal 15 is represented as F in hexadecimal."
+            },
+            {
+                id: "M05-02-14",
+                question: "14. What is 345 in binary?",
+                options: ["a) 100111001.", "b) 110011001.", "c) 101011001."],
+                answer: "c",
+                explanation: "Decimal 345 converted to binary is 101011001."
+            },
+            {
+                id: "M05-02-15",
+                question: "15. Convert 1D to binary.",
+                options: ["a) 11101.", "b) 29.", "c) 101001."],
+                answer: "a",
+                explanation: "Hex 1 = 0001, Hex D (13) = 1101, combined as 11101."
+            },
+            {
+                id: "M05-02-16",
+                question: "16. Convert 2C hex to octal.",
+                options: ["a) 35.", "b) 44.", "c) 54."],
+                answer: "c",
+                explanation: "Hex 2C = 44 decimal = 54 octal."
+            },
+            {
+                id: "M05-02-17",
+                question: "17. A hexadecimal is a number to base.",
+                options: ["a) 2.", "b) 16.", "c) 8."],
+                answer: "b",
+                explanation: "Hexadecimal is a base-16 number system."
+            },
+            {
+                id: "M05-02-18",
+                question: "18. 1012 converted to decimal is.",
+                options: ["a) 52.", "b) 210.", "c) 510."],
+                answer: "c",
+                explanation: "101 Base 2 = 5."
+            },
+            {
+                id: "M05-02-19",
+                question: "19. The binary coded decimal number 10011000 expressed as a decimal number is.",
+                options: ["a) 1528.", "b) 9810.", "c) 1522."],
+                answer: "b",
+                explanation: "BCD 1001 = 9, 1000 = 8, representing 98."
+            },
+            {
+                id: "M05-02-20",
+                question: "20. The decimal number 7 expressed as a binary number is.",
+                options: ["a) 101 Base 2.", "b) 111 Base 2.", "c) 7 Base 2."],
+                answer: "b",
+                explanation: "Decimal 7 in binary is 111."
+            },
+            {
+                id: "M05-02-21",
+                question: "21. Convert 011101 binary to octal.",
+                options: ["a) 25.", "b) 35.", "c) 33."],
+                answer: "b",
+                explanation: "Group into 011 (3) and 101 (5), giving 35 octal."
+            },
+            {
+                id: "M05-02-22",
+                question: "22. Binary Number: 110010 is.",
+                options: ["a) 80.", "b) 50.", "c) 34."],
+                answer: "b",
+                explanation: "Binary 110010 = 32 + 16 + 2 = 50."
+            },
+            {
+                id: "M05-02-23",
+                question: "23. Binary addition of 1101 + 101101 is.",
+                options: ["a) 58.", "b) 70.", "c) 61."],
+                answer: "a",
+                explanation: "13 + 45 = 58 in decimal."
+            },
+            {
+                id: "M05-02-24",
+                question: "24. The binary number 11010111 is expressed as a decimal is.",
+                options: ["a) 107.", "b) 215.", "c) 53."],
+                answer: "b",
+                explanation: "128 + 64 + 16 + 4 + 2 + 1 = 215."
+            },
+            {
+                id: "M05-02-25",
+                question: "25. The octal number 1001 expressed as a decimal is.",
+                options: ["a) 713.", "b) 613.", "c) 513."],
+                answer: "c",
+                explanation: "512 + 1 = 513."
+            },
+            {
+                id: "M05-02-26",
+                question: "26. What is 011100001 Base2 in Octal?",
+                options: ["a) 225 Base 8.", "b) 281 Base 10.", "c) 341 Base 8."],
+                answer: "c",
+                explanation: "011 = 3, 100 = 4, 001 = 1 -> 341 Base 8."
+            },
+            {
+                id: "M05-02-27",
+                question: "27. The binary number 1010100011100101 Base2 in hexadecimal is.",
+                options: ["a) 22BC Base 16.", "b) FFFF Base 16.", "c) A8E5 Base 16."],
+                answer: "c",
+                explanation: "1010=A, 1000=8, 1110=E, 0101=5 -> A8E5 Base 16."
+            },
+            {
+                id: "M05-02-28",
+                question: "28. 0011011000101001 when transferred to computer language this information can be a representation of.",
+                options: ["a) binary, octal or decimal numbers.", "b) hex, octal and binary numbers.", "c) hex, octal and decimal numbers."],
+                answer: "c",
+                explanation: "Binary IS 'computer language' not a representation. Therefore any answer with 'binary' in it is wrong."
+            },
+            {
+                id: "M05-02-29",
+                question: "29. A computer message 3B4 is.",
+                options: ["a) Octal.", "b) binary.", "c) hexadecimal."],
+                answer: "c",
+                explanation: "Contains letter B, indicating hexadecimal."
+            },
+            {
+                id: "M05-02-30",
+                question: "30. What is 54 octal in hexadecimal?",
+                options: ["a) 2F.", "b) 4F.", "c) 2C."],
+                answer: "c",
+                explanation: "Octal 54 = 44 decimal = 2C hex."
+            },
+            {
+                id: "M05-02-31",
+                question: "31. 2D in decimal is.",
+                options: ["a) 43.", "b) 45.", "c) 41."],
+                answer: "b",
+                explanation: "Aircraft Electricity and Electronics Eismin 5th Edition Page 132."
+            },
+            {
+                id: "M05-02-32",
+                question: "32. 84 decimal in hexadecimal is.",
+                options: ["a) 5f.", "b) f4.", "c) 54."],
+                answer: "c",
+                explanation: "Aircraft Electricity and Electronics Eismin 5th Edition Page 132."
+            },
+            {
+                id: "M05-02-33",
+                question: "33. 16 hexadecimal converted to decimal is equivalent to.",
+                options: ["a) 48.", "b) 38.", "c) 22."],
+                answer: "c",
+                explanation: "Aircraft Electricity and Electronics Eismin 5th Edition Page 132."
+            },
+            {
+                id: "M05-02-34",
+                question: "34. Decimal 10 converted to binary is.",
+                options: ["a) 1111.", "b) 1001.", "c) 1010."],
+                answer: "c",
+                explanation: "Aircraft Electricity and Electronics Eismin 5th Edition Page 128."
+            },
+            {
+                id: "M05-02-35",
+                question: "35. What systems uses base 10?",
+                options: ["a) Octal.", "b) Binary.", "c) Decimal."],
+                answer: "c",
+                explanation: "Aircraft Electricity and Electronics Eismin 5th Edition Page 128."
+            },
+            {
+                id: "M05-02-36",
+                question: "36. What systems use base 16?",
+                options: ["a) BCD.", "b) Octal.", "c) Hexadecimal."],
+                answer: "c",
+                explanation: "Aircraft Electricity and Electronics Eismin 5th Edition Page 132."
+            },
+            {
+                id: "M05-02-37",
+                question: "37. Binary coded decimal (BCD) format has a minimum of.",
+                options: ["a) 2 lots of four.", "b) four.", "c) 3 lots of four."],
+                answer: "b",
+                explanation: "BCD uses groups of four bits."
+            },
+            {
+                id: "M05-02-38",
+                question: "38. What is the Hexadecimal number F86 in Binary?",
+                options: ["a) 111110000001.", "b) 3974.", "c) 111110000110."],
+                answer: "c",
+                explanation: "Convert it to Decimal first = 3974. Since it is an even number, it must be the answer with a zero on the end."
+            },
+            {
+                id: "M05-02-39",
+                question: "39. What is 11000012 - 1011002?",
+                options: ["a) 10001101 Base 2.", "b) 110111 Base 2.", "c) 110101 Base 2."],
+                answer: "c",
+                explanation: "Aircraft Electricity and Electronics Eismin 5th Edition Page 1129."
+            },
+            {
+                id: "M05-02-40",
+                question: "40. What is used for the power of 10?",
+                options: ["a) Digital.", "b) Octal.", "c) Decimal."],
+                answer: "c",
+                explanation: "Decimal is a power of 10 counting system."
+            },
+            {
+                id: "M05-02-41",
+                question: "41. What is 44 in hexadecimal?",
+                options: ["a) 2d.", "b) 2c.", "c) 2F."],
+                answer: "b",
+                explanation: "(2 * 16) + (12 * 1) = 44 (c = 12)."
+            },
+            {
+                id: "M05-02-42",
+                question: "42. What is octal 33 in hexadecimal?",
+                options: ["a) 1b.", "b) 11.", "c) 22."],
+                answer: "a",
+                explanation: "Octal 33 = 27 decimal = 1b hex."
+            },
+            {
+                id: "M05-02-43",
+                question: "43. An octal format hexadecimal number 3F written as binary would be.",
+                options: ["a) 110 111.", "b) 111 111.", "c) 101 011."],
+                answer: "b",
+                explanation: "Hex 3 = 0011, F = 1111."
+            },
+            {
+                id: "M05-02-44",
+                question: "44. What is f86 hex when converted to binary?",
+                options: ["a) 1000010000110.", "b) 111110000110.", "c) 100000000000."],
+                answer: "b",
+                explanation: "F=1111, 8=1000, 6=0110 -> 111110000110."
+            },
+            {
+                id: "M05-02-45",
+                question: "45. In a computer, the address 3B8 is.",
+                options: ["a) hexadecimal.", "b) decimal.", "c) octal."],
+                answer: "a",
+                explanation: "Contains letter B, indicating hexadecimal."
+            },
+            {
+                id: "M05-02-46",
+                question: "46. What is a Grays converter?",
+                options: ["a) Analogue to Analogue.", "b) Analogue to Digital.", "c) Digital to Analogue."],
+                answer: "b",
+                explanation: "Gray code converters transform analog or sensor inputs into digital code."
+            },
+            {
+                id: "M05-02-47",
+                question: "47. What is the hexadecimal number AE5 in octal form?",
+                options: ["a) 5445.", "b) 5340.", "c) 5345."],
+                answer: "c",
+                explanation: "AE5 hex = 2789 decimal = 5345 octal."
+            },
+            {
+                id: "M05-02-48",
+                question: "48. Hexadecimal 5C is what in binary?",
+                options: ["a) 1011111.", "b) 1011100.", "c) 1110100."],
+                answer: "b",
+                explanation: "Hex 5 = 0101, C = 1100 -> 01011100."
+            },
+            {
+                id: "M05-02-49",
+                question: "49. Binary 11001101 converted to octal is.",
+                options: ["a) 12E.", "b) 315.", "c) 205."],
+                answer: "b",
+                explanation: "11 (3) 001 (1) 101 (5) -> 315 octal."
+            },
+            {
+                id: "M05-02-50",
+                question: "50. What is the binary notation for 29?",
+                options: ["a) 0001 0110.", "b) 0010 1001.", "c) 0001 1101."],
+                answer: "c",
+                explanation: "Decimal 29 = 11101 (0001 1101)."
+            },
+            {
+                id: "M05-02-51",
+                question: "51. 101012 + 110012 =.",
+                options: ["a) 462.", "b) 468.", "c) 4610."],
+                answer: "c",
+                explanation: "21 + 25 = 46 decimal."
+            }
+        ]
+    }
+};
+
+if (typeof window !== 'undefined') {
+    window.allQuestionBanks = allQuestionBanks;
+}
