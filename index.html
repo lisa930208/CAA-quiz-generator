@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAA 模擬測驗系統</title>
+    <title>EASA Part-66 / CAA / ICAT 綜合模擬測驗系統</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✈️</text></svg>">
@@ -17,25 +17,44 @@
                 <i class="fa-solid fa-plane-departure text-xl"></i>
             </div>
             <div>
-                <h1 class="text-lg font-bold text-slate-800 tracking-wide">EASA Part-66 / CAA 模擬測驗系統</h1>
+                <h1 class="text-lg font-bold text-slate-800 tracking-wide">EASA Part-66 / CAA / ICAT 綜合模擬測驗系統</h1>
                 <p class="text-xs text-slate-500">Aircraft Maintenance License Practice Platform</p>
             </div>
         </div>
         <div class="flex items-center space-x-4">
             <label for="module-select" class="text-xs text-slate-500 font-medium hidden sm:block">選擇單元：</label>
             <select id="module-select" class="bg-slate-50 text-slate-700 text-sm font-semibold px-4 py-2 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500 transition shadow-sm cursor-pointer">
-                <option value="M05-01">Module 05.01 - Electronic Instrument Systems</option>
-                <option value="M05-02">Module 05.02 - Numbering Systems</option>
-                <option value="M05-03">Module 05.03 - Data Conversion</option>
-                <option value="M05-04">Module 05.04 - Data Buses</option>
-                <option value="M05-05">Module 05.05 - Logic Circuits</option>
-                <option value="M05-06">Module 05.06 - Basic Computer Structure</option>
-                <option value="M05-10">Module 05.10 - Fibre Optics</option>
-                <option value="M05-11">Module 05.11 - Electronic Displays</option>
-                <option value="M05-12">Module 05.12 - Electrostatic Sensitive Devices</option>
-                <option value="M05-13">Module 05.13 - Software Management Control</option>
-                <option value="M05-14">Module 05.14 - Electromagnetic Environment</option>
-                <option value="M05-15">Module 05.15 - Typical Electronic/Digital Aircraft Systems</option>
+                <!-- EASA / CAA 考古題區 -->
+                <optgroup label="✈️ EASA / CAA Module 05 考古題">
+                    <option value="M05-01">Module 05.01 - Electronic Instrument Systems</option>
+                    <option value="M05-02">Module 05.02 - Numbering Systems</option>
+                    <option value="M05-03">Module 05.03 - Data Conversion</option>
+                    <option value="M05-04">Module 05.04 - Data Buses</option>
+                    <option value="M05-05">Module 05.05 - Logic Circuits</option>
+                    <option value="M05-06">Module 05.06 - Basic Computer Structure</option>
+                    <option value="M05-10">Module 05.10 - Fibre Optics</option>
+                    <option value="M05-11">Module 05.11 - Electronic Displays</option>
+                    <option value="M05-12">Module 05.12 - Electrostatic Sensitive Devices</option>
+                    <option value="M05-13">Module 05.13 - Software Management Control</option>
+                    <option value="M05-14">Module 05.14 - Electromagnetic Environment</option>
+                    <option value="M05-15">Module 05.15 - Typical Electronic/Digital Aircraft Systems</option>
+                </optgroup>
+
+                <!-- ICAT M5 題庫區 -->
+                <optgroup label="📚 ICAT M5 完整單元題庫">
+                    <option value="M5-01">ICAT 5.1 - Electronic Instrument Systems</option>
+                    <option value="M5-02">ICAT 5.2 - Numbering Systems</option>
+                    <option value="M5-03">ICAT 5.3 - Data Conversion</option>
+                    <option value="M5-04">ICAT 5.4 - Digital Databuses</option>
+                    <option value="M5-05">ICAT 5.5 - Logic Circuits</option>
+                    <option value="M5-06">ICAT 5.6 - Basic Computer Structure & Software</option>
+                    <option value="M5-10">ICAT 5.10 - Fibre Optics</option>
+                    <option value="M5-11">ICAT 5.11 - Electronic Displays</option>
+                    <option value="M5-12">ICAT 5.12 - Electrostatic Sensitive Devices</option>
+                    <option value="M5-13">ICAT 5.13 - Software Management Control</option>
+                    <option value="M5-14">ICAT 5.14 - Electromagnetic Environment</option>
+                    <option value="M5-15">ICAT 5.15 - Typical Electronic Digital Aircraft Systems</option>
+                </optgroup>
             </select>
         </div>
     </header>
@@ -752,186 +771,187 @@
                     { id: "M05-15-150", question: "150. What is the minimum requirement for a CVR to start recording?", options: ["a) When parking brake is released.", "b) On commencement of flight.", "c) When aircraft is capable of moving under its own power."], answer: "c", explanation: "Capable of moving under its own power (engine start)." },
                     { id: "M05-15-151", question: "151. As a minimum requirement when must a cockpit voice recorder start recording?", options: ["a) Once airborne after take off.", "b) Before engine start.", "c) Once aircraft is ready to move under its own power."], answer: "c", explanation: "Ready to move under own power." }
                 ]
+            },
+            // === ICAT M5 完整單元題庫 ===
+            "M5-01": {
+                title: "ICAT 5.1 - Electronic Instrument Systems",
+                questions: [
+                    { id: "M5-01-01", question: "1. The minimum standards for aircraft instrumentation is set by:", options: ["a) The Civil Aviation Authority (CAA)", "b) The Joint Aviation Authorities (JAA)", "c) International Civil Aviation Organization"], answer: "c", explanation: "ICAO sets the international minimum standards for aircraft instrumentation." },
+                    { id: "M5-01-02", question: "2. In the figure, place the correct instrument in its proper position in the basic ‘T’:", options: ["a) Refer to diagram reference", "b) Refer to diagram reference", "c) Refer to diagram reference"], answer: "a", image: "IMG_3779.jpeg", explanation: "Classic 'T' layout includes Airspeed Indicator, Artificial Horizon, Altimeter, and Direction Indicator." },
+                    { id: "M5-01-03", question: "3. When flying a four (4) engine, analogue aircraft, there must be a minimum crew of:", options: ["a) Two (2) pilots & One (1) Flight Engineer", "b) Two (2) pilots", "c) Two (2) pilots & Two (2) Flight Engineers"], answer: "a", explanation: "Traditional four-engine analogue flight deck requirements typically include two pilots and a flight engineer." },
+                    { id: "M5-01-04", question: "4. Match the following screen names to their allotted position below.", options: ["a) Refer to diagram reference", "b) Refer to diagram reference", "c) Refer to diagram reference"], answer: "a", image: "IMG_3780.jpeg", explanation: "Glass cockpit screen layout matching Co-pilot PFD, EICAS, Pilot ND, etc." },
+                    { id: "M5-01-05", question: "5. On EFIS displays, cautionary messages are shown in:", options: ["a) Cyan", "b) Red", "c) Yellow/amber"], answer: "c", explanation: "Cautionary messages are displayed in yellow/amber." },
+                    { id: "M5-01-06", question: "6. On EFIS displays failure warnings are shown:", options: ["a) As a steady red symbol", "b) As a flashing red symbol", "c) As a flashing yellow symbol"], answer: "b", explanation: "Failure warnings are typically flashed in red." },
+                    { id: "M5-01-07", question: "7. The letters ‘PFD’ are an abbreviation for:", options: ["a) Primary Flight Display", "b) Pilot’s Flight Display", "c) Pilot’s First Display"], answer: "a", explanation: "PFD = Primary Flight Display." },
+                    { id: "M5-01-08", question: "8. The letters ‘MFD’ are an abbreviation for:", options: ["a) Multi-Function Display", "b) Master Flight Display", "c) Mandatory Flight Display"], answer: "a", explanation: "MFD = Multi-Function Display." }
+                ]
+            },
+            "M5-02": {
+                title: "ICAT 5.2 - Numbering Systems",
+                questions: [
+                    { id: "M5-02-01", question: "1. The decimal number 286 is represented by the binary number:", options: ["a) 100011110", "b) 010101110", "c) 011100001"], answer: "a", explanation: "286 in decimal converts to binary 100011110." },
+                    { id: "M5-02-02", question: "2. The binary code 101001011 represents the decimal number:", options: ["a) 350", "b) 331", "c) 194"], answer: "b", explanation: "Binary 101001011 = 256 + 64 + 8 + 2 + 1 = 331." },
+                    { id: "M5-02-03", question: "3. The decimal number 84.35 is represented by the binary number:", options: ["a) 10001000.00111010", "b) 1110101.10011001", "c) 1010100.01011000"], answer: "c", explanation: "84 in binary is 1010100, and fractional part .35 converts to .01011000." },
+                    { id: "M5-02-04", question: "4. The binary number 1011.011 is represented by the decimal number:", options: ["a) 11.375", "b) 10.35", "c) 13.575"], answer: "a", explanation: "1011 = 11; .011 = 1/4 + 1/8 = 0.25 + 0.125 = 0.375 -> 11.375." },
+                    { id: "M5-02-05", question: "5. The decimal number 37 is represented by the octal number:", options: ["a) 45", "b) 37", "c) 54"], answer: "a", explanation: "37 / 8 = 4 remainder 5 -> 45 octal." },
+                    { id: "M5-02-06", question: "6. The hexadecimal number A5 represents the decimal number:", options: ["a) 115", "b) 165", "c) 95"], answer: "b", explanation: "A (10) * 16 + 5 = 165." },
+                    { id: "M5-02-07", question: "7. The BCD data string of 1001 0011 0100 . 0101 represents a DME distance of:", options: ["a) 543.8 Nautical Miles", "b) 723.4 Nautical Miles", "c) 934.5 Nautical Miles"], answer: "c", explanation: "1001=9, 0011=3, 0100=4, .0101=.5 -> 934.5 NM." }
+                ]
+            },
+            "M5-03": {
+                title: "ICAT 5.3 - Data Conversion",
+                questions: [
+                    { id: "M5-03-01", question: "1. In an air data computer, if an analogue signal represents 0.25 Volts/20 kts then an airspeed of 150 kts will be represented by a voltage of:", options: ["a) 1.675 V", "b) 1.875 V", "c) 2.0 V"], answer: "b", explanation: "(150 / 20) * 0.25 = 7.5 * 0.25 = 1.875 V." },
+                    { id: "M5-03-02", question: "2. In A/D conversion, a signal’s bandwidth represents:", options: ["a) The maximum frequency range occupied by a signal", "b) The minimum frequency range occupied by a signal", "c) The frequency of a signal"], answer: "a", explanation: "Bandwidth defines the frequency spectrum range occupied by the signal." },
+                    { id: "M5-03-03", question: "3. For ease in conversion to binary form, the number of levels used in sampling is usually a power of:", options: ["a) 2", "b) 8", "c) 16"], answer: "a", explanation: "Powers of 2 align directly with binary digital encoding." },
+                    { id: "M5-03-04", question: "4. The resolution of A/D conversion depends on the input voltage range and:", options: ["a) The number of signals being converted", "b) The number of samples taken", "c) The number of bits used in the conversion"], answer: "c", explanation: "Resolution = Voltage Range / (2^n - 1), where n is the number of bits." },
+                    { id: "M5-03-05", question: "5. A 5-bit D/A converter produces VOUT 0.2 V for a digital input of 1. Find the value of VOUT for a 11111 input.", options: ["a) 1 Volt", "b) 3.1 Volts", "c) 6.2 Volts"], answer: "c", explanation: "Binary 11111 = 31 in decimal. 31 * 0.2V = 6.2 Volts." },
+                    { id: "M5-03-06", question: "6. A 10-bit D/A converter has a step size of 10 mV. Determine the full-scale output voltage and the percentage resolution:", options: ["a) 10.23V and 0.1%", "b) 5.11mV and 0.2%", "c) 5.11mV and 0.1%"], answer: "a", explanation: "Full scale for 10 bits is 2^10 - 1 = 1023 steps. 1023 * 10mV = 10.23V; resolution = 1/1023 ≈ 0.1%." }
+                ]
+            },
+            "M5-04": {
+                title: "ICAT 5.4 - Digital Databuses",
+                questions: [
+                    { id: "M5-04-01", question: "1. Manchester II encodes logic ‘1’ with a voltage transition from:", options: ["a) A high to low state", "b) A low to high state", "c) A specific voltage value"], answer: "a", explanation: "Manchester II logic 1 is represented by a high-to-low mid-bit transition." },
+                    { id: "M5-04-02", question: "2. With asynchronous transmission:", options: ["a) The Transmitter and Receiver clocks are synchronised", "b) The Transmitter and Receiver clocks are not synchronised", "c) The Transmitter and Receiver use the same clocks"], answer: "b", explanation: "Asynchronous systems do not share a continuous common clock." },
+                    { id: "M5-04-03", question: "3. The ARINC 429 Data word is:", options: ["a) 32 bits long", "b) 16 bits long", "c) 64 bits long"], answer: "a", explanation: "ARINC 429 standard words consist of 32 bits." },
+                    { id: "M5-04-04", question: "4. The ARINC 429 standard uses:", options: ["a) No parity checking", "b) Odd parity checking", "c) Even parity checking"], answer: "b", explanation: "Bit 32 is checked using odd parity." },
+                    { id: "M5-04-05", question: "5. The ARINC 429 databus uses:", options: ["a) RZ Unipolar modulation", "b) RZ Bipolar modulation", "c) NRZ Bipolar modulation"], answer: "b", explanation: "Bipolar Return-to-Zero (BRZ / BPRZ)." },
+                    { id: "M5-04-06", question: "6. The ARINC 429 standard address label uses:", options: ["a) Octal representation", "b) Binary representation", "c) Hexadecimal representation"], answer: "a", explanation: "Labels are expressed in Octal (base 8)." },
+                    { id: "M5-04-07", question: "7. Put the following words in their correct position in this figure (ARINC 429 Word Format):", options: ["a) Refer to diagram reference", "b) Refer to diagram reference", "c) Refer to diagram reference"], answer: "a", image: "IMG_3781.jpeg", explanation: "Label (Bits 1-8), SDI (9-10), Data (11-28/29), SSM (29-31), Parity (Bit 32)." },
+                    { id: "M5-04-08", question: "8. As read on an oscilloscope, the first 10 bits of an ARINC 429 word are 1011001111; its address label is:", options: ["a) 363 Octal", "b) 437 Octal", "c) 317 Octal"], answer: "c", explanation: "Bit order reversal yields octal 317." },
+                    { id: "M5-04-09", question: "9. ARINC 429 can run at a baud rate of 12.5 k and:", options: ["a) 100 (kB)", "b) 50 (kB)", "c) 14.5 (kB)"], answer: "a", explanation: "Low speed (12.5 kbps) and High speed (100 kbps)." },
+                    { id: "M5-04-10", question: "10. ARINC 629 is:", options: ["a) A broadcast databus", "b) A bi-directional databus", "c) A unidirectional bus"], answer: "b", explanation: "ARINC 629 is a bi-directional serial bus." },
+                    { id: "M5-04-11", question: "11. ARINC 629 runs at a baud rate of:", options: ["a) 100 kBaud", "b) 2000 kBaud", "c) 50 kBaud"], answer: "b", explanation: "High speed 2 Mbps (2000 kBaud)." },
+                    { id: "M5-04-12", question: "12. ARINC 629 LRUs connect to the databus using:", options: ["a) Direct crimp connection", "b) Terminal blocks", "c) Current Mode Couplers"], answer: "c", explanation: "Inductive Current Mode Couplers." },
+                    { id: "M5-04-13", question: "13. With ARINC 629 each LRU is assigned a unique:", options: ["a) Terminal Interrupt (TI)", "b) Terminal Gap (TG)", "c) Synchronisation Gap (SG)"], answer: "b", explanation: "Terminal Gap (TG) provides unique scheduling." },
+                    { id: "M5-04-14", question: "14. Each time a LRU transmits data it can transmit again:", options: ["a) Only when its TI, TG and SG timers have expired", "b) When just its TG timer has expired", "c) When its TG and SG timers have expired"], answer: "a", explanation: "Must wait through TI, TG, and SG intervals." },
+                    { id: "M5-04-15", question: "15. CSDB can run at a baud rate of 12.5 kBaud and:", options: ["a) 100 kBaud", "b) 50 kBaud", "c) 14.5 kBaud"], answer: "b", explanation: "CSDB standard speeds include 12.5 and 50 kBaud." },
+                    { id: "M5-04-16", question: "16. A CSDB Message block can have:", options: ["a) 6 or 7 bytes", "b) 5 or 7 bytes", "c) 6 or 8 bytes"], answer: "c", explanation: "6 or 8 bytes block structures." },
+                    { id: "M5-04-17", question: "17. CSDB has a special ‘burst’ mode when data is transmitted:", options: ["a) Every 50 milli-seconds for 16 times", "b) Every 16 milli-seconds for 50 times", "c) Every 35 milli-seconds for 16 times"], answer: "a", explanation: "Burst mode timing: every 50 ms for 16 times." },
+                    { id: "M5-04-18", question: "18. ASCB data transmission is:", options: ["a) Bi-directional full duplex", "b) Broadcast in one direction only", "c) Bi-directional half duplex"], answer: "c", explanation: "Avionics Standard Communication Bus operates bi-directionally half-duplex." },
+                    { id: "M5-04-19", question: "19. ASCB can be used with a maximum of:", options: ["a) 48 users", "b) 24 users", "c) 36 users"], answer: "a", explanation: "Up to 48 terminals/users." },
+                    { id: "M5-04-20", question: "20. An ASCB data frame is:", options: ["a) 25 milli-seconds long", "b) 50 milli-seconds long", "c) 75 milli-seconds long"], answer: "a", explanation: "25 ms frame length." },
+                    { id: "M5-04-21", question: "21. An Ethernet Frame format contains a “Preamble” which consists of:", options: ["a) a single byte...", "b) seven bytes, which allow the receiver's clock to be synchronised with the sender's.", "c) a single byte..."], answer: "b", explanation: "7 bytes for clock synchronization." },
+                    { id: "M5-04-22", question: "22. Ethernet protocol expects a minimum data length of:", options: ["a) 46 bytes", "b) 56 bytes", "c) 66 bytes"], answer: "a", explanation: "Minimum payload/data field is 46 bytes." },
+                    { id: "M5-04-23", question: "23. The final field in an Ethernet Frame format contains the:", options: ["a) Frame Check Sequence (FCS)", "b) address of the source", "c) address of the destination"], answer: "a", explanation: "FCS / CRC at the frame tail." },
+                    { id: "M5-04-24", question: "24. Which of the following statements is correct regarding an Ethernet frame Cyclic Redundancy Check (CRC):", options: ["a) The CRC is part of the Preamble...", "b) The CRC is part of the Start of Frame...", "c) The CRC is part of the Frame Check Sequence (FCS), and is used for error detection and recovery"], answer: "c", explanation: "CRC is part of FCS for error detection." },
+                    { id: "M5-04-25", question: "25. An Ethernet frame Start of Frame Delimiter (SOF), consists of:", options: ["a) seven bytes...", "b) seven bytes, all of the form...", "c) a single byte, the last two bits are both binary 1, used to indicate the start of the frame"], answer: "c", explanation: "Single byte SOF delimiter." }
+                ]
+            },
+            "M5-05": {
+                title: "ICAT 5.5 - Logic Circuits",
+                questions: [
+                    { id: "M5-05-01", question: "1. For an AND gate with three (3) inputs, in order to get a logic 1 output:", options: ["a) At least two inputs must be at logic 1", "b) At least one input must be at logic 1", "c) At least three inputs must be at logic 1"], answer: "c", explanation: "All inputs must be 1 for an AND gate output." },
+                    { id: "M5-05-02", question: "2. For the OR gate in the figure below, there will be an output at O:", options: ["a) Only at time T1 and T5", "b) Only at time T3 and T5", "c) Only at time T1, T3 and T5"], answer: "c", image: "IMG_3782.jpeg", explanation: "OR gate outputs high whenever input A or B is high." },
+                    { id: "M5-05-03", question: "3. With an inverter:", options: ["a) The output is the same as the input", "b) The output is the opposite of the input", "c) The output is independent of the input"], answer: "b", explanation: "NOT gate inverts state." },
+                    { id: "M5-05-04", question: "4. In the figure below, what inputs will create a logic 1 output at X.", options: ["a) Refer to diagram reference", "b) Refer to diagram reference", "c) Refer to diagram reference"], answer: "a", image: "IMG_3783.jpeg", explanation: "Analyses 4-input gate with an inverted input bubble." }
+                ]
+            },
+            "M5-06": {
+                title: "ICAT 5.6 - Basic Computer Structure & Software",
+                questions: [
+                    { id: "M5-06-01", question: "1. The initials CPU stand for:", options: ["a) Central Processor Unit", "b) Control Processor Unit", "c) Central Power Unit"], answer: "a", explanation: "Central Processor Unit." },
+                    { id: "M5-06-02", question: "2. The part of a computer’s memory that is used as a scratchpad is called:", options: ["a) ROM", "b) RAM", "c) EPROM"], answer: "b", explanation: "RAM acts as temporary working memory." },
+                    { id: "M5-06-03", question: "3. The abbreviation DRAM is short for:", options: ["a) Dynamic RAM", "b) Digital RAM", "c) Direct RAM"], answer: "a", explanation: "Dynamic RAM." },
+                    { id: "M5-06-04", question: "4. The abbreviation SRAM is short for:", options: ["a) Stationary RAM", "b) Serial RAM", "c) Static RAM"], answer: "c", explanation: "Static RAM." },
+                    { id: "M5-06-05", question: "5. Programmes stored in EPROM:", options: ["a) Cannot be altered once programmed", "b) Can be altered once its contents are erased by UV light", "c) Can be altered via software control"], answer: "b", explanation: "Erased via ultraviolet light window." },
+                    { id: "M5-06-06", question: "6. A byte consists of:", options: ["a) 16 bits", "b) 4 bits", "c) 8 bits"], answer: "c", explanation: "8 bits = 1 byte." },
+                    { id: "M5-06-07", question: "7. Windows 8 is an example of:", options: ["a) A multitasking operating system", "b) Single user operating system", "c) MS DOS operating system"], answer: "a", explanation: "Multitasking OS." },
+                    { id: "M5-06-08", question: "8. Software programmed using mnemonic instruction codes is an example of:", options: ["a) A high level language", "b) A low level language", "c) A medium level language"], answer: "b", explanation: "Assembly / low level language." },
+                    { id: "M5-06-09", question: "9. A barcode reader is a typical example of:", options: ["a) An output device", "b) A storage device", "c) An input device"], answer: "c", explanation: "Input device." },
+                    { id: "M5-06-10", question: "10. SDRAM is an abbreviation for:", options: ["a) Synchronous Dynamic RAM", "b) Static Digital RAM", "c) Stable Dynamic RAM"], answer: "a", explanation: "Synchronous Dynamic RAM." },
+                    { id: "M5-06-11", question: "11. Flash Memory is:", options: ["a) Read-Only Memory", "b) Programmable memory by OEM only", "c) End-user programmable"], answer: "c", explanation: "User programmable non-volatile storage." },
+                    { id: "M5-06-12", question: "12. Before use, hard disks must undergo:", options: ["a) Physical and Logical formatting", "b) Low, Medium and High level formatting", "c) Low, High and Cluster formatting"], answer: "a", explanation: "Physical low-level and logical file-system formatting." },
+                    { id: "M5-06-13", question: "13. To keep track of files, a hard disk reserves a systems area on the drive that contains:", options: ["a) A File Allocation Table and Root Directory", "b) A File Allocation Table and Cluster Directory", "c) A Root and Cluster Directory"], answer: "a", explanation: "FAT and Root Directory." },
+                    { id: "M5-06-14", question: "14. Colour laser printers create characters by:", options: ["a) Using impacting pins", "b) Coloured toner attracted onto the paper", "c) Subliminal colour wax"], answer: "b", explanation: "Toner transfer fusing process." }
+                ]
+            },
+            "M5-10": {
+                title: "ICAT 5.10 - Fibre Optics",
+                questions: [
+                    { id: "M5-10-01", question: "1. Fibre Optics relies on a process of:", options: ["a) Total Internal Reflection", "b) Total Internal Deflection", "c) Total Internal Refraction"], answer: "a", explanation: "Total Internal Reflection guides light." },
+                    { id: "M5-10-02", question: "2. With fibre optics, the attenuation of the signal varies with:", options: ["a) The transmission power level", "b) The light’s wavelength", "c) The length of the cable"], answer: "b", explanation: "Wavelength-dependent attenuation characteristics." },
+                    { id: "M5-10-03", question: "3. Fibre Optic cable:", options: ["a) Is susceptible to EMI", "b) Is immune to EMI", "c) Attenuates EMI"], answer: "b", explanation: "Immune to electromagnetic interference." },
+                    { id: "M5-10-04", question: "4. A fibre optic core is usually made of glass and has a refractive index:", options: ["a) Less than the refractive index of Air", "b) Greater than the refractive index of Air", "c) Equal to the refractive index of Air"], answer: "b", explanation: "Core refractive index (~1.5) exceeds air (~1.0)." },
+                    { id: "M5-10-05", question: "5. Light rays in a fibre optic cable must be:", options: ["a) Lower than the critical angle", "b) Higher than the critical angle", "c) The same as the critical angle"], answer: "c", explanation: "ICAT baseline question answer mapping." },
+                    { id: "M5-10-06", question: "6. The figure below shows the symbol for:", options: ["a) A coupler or splitter", "b) A patchcord", "c) Inline coupling"], answer: "a", image: "IMG_3784.jpeg", explanation: "Optical coupler / splitter schematic symbol." },
+                    { id: "M5-10-07", question: "7. In aircraft use, fibre optic cables should comply with:", options: ["a) ARINC 629", "b) ARINC 636", "c) ARINC 751"], answer: "b", explanation: "ARINC 636." },
+                    { id: "M5-10-08", question: "8. Which type of connector would be used to connect a LRU to the databus?", options: ["a) Butt Type", "b) Expanded Beam Type", "c) Fusion Type"], answer: "b", explanation: "Expanded Beam lens connector." },
+                    { id: "M5-10-09", question: "9. The majority of Fibre Optic systems transmit data using:", options: ["a) Ultraviolet Light", "b) White Light", "c) Infrared Light"], answer: "c", explanation: "Infrared spectrum." }
+                ]
+            },
+            "M5-11": {
+                title: "ICAT 5.11 - Electronic Displays",
+                questions: [
+                    { id: "M5-11-01", question: "1. Electromagnetic deflection of the electron beam in a CRT is achieved using:", options: ["a) coils inside the CRT", "b) coils around the neck of the CRT", "c) X and Y deflection plates"], answer: "b", explanation: "Yoke coils around the neck." },
+                    { id: "M5-11-02", question: "2. To prevent flicker a CRT should be refreshed at least:", options: ["a) 20 times/second", "b) 80 times/second", "c) 40 times/second"], answer: "c", explanation: "Minimum refresh rate around 40Hz." },
+                    { id: "M5-11-03", question: "3. Liquid Crystal Displays are made of:", options: ["a) Three crystals", "b) A single crystal", "c) Many crystals"], answer: "c", explanation: "Multiple liquid crystal molecules." },
+                    { id: "M5-11-04", question: "4. If adjacent phosphors of blue and green are illuminated on a CRT display, what colour will be produced?", options: ["a) Cyan", "b) Magenta", "c) Yellow"], answer: "a", explanation: "Green + Blue = Cyan." },
+                    { id: "M5-11-05", question: "5. A seven segment LED display has the following segments illuminated: a, b, c, d and g. What number is displayed?", options: ["a) 3", "b) 4", "c) 5"], answer: "a", explanation: "Segments a,b,c,d,g form the number 3." }
+                ]
+            },
+            "M5-12": {
+                title: "ICAT 5.12 - Electrostatic Sensitive Devices",
+                questions: [
+                    { id: "M5-12-01", question: "1. Electrostatic problems are caused by:", options: ["a) An imbalance of protons", "b) An imbalance of neutrons", "c) An imbalance of electrons"], answer: "c", explanation: "Electron excess or deficit." },
+                    { id: "M5-12-02", question: "2. What precautions are required when removing ESDS equipment?", options: ["a) Wear a wrist strap connected to an approved ground point", "b) Keep one hand on the airframe", "c) Keep one hand in your pocket"], answer: "a", explanation: "ESD wrist strap grounding." },
+                    { id: "M5-12-03", question: "3. With a relative humidity of 65% to 90%, if you walked across a carpet what electrostatic voltage would you expect to see?", options: ["a) 1,500 volts", "b) 12,000 volts", "c) 35,000 volts"], answer: "a", explanation: "High humidity lowers static voltage generation to ~1,500V." },
+                    { id: "M5-12-04", question: "4. Electrostatic Sensitive Devices are usually identified by a label that is coloured:", options: ["a) Yellow and Red", "b) Yellow and Black", "c) Black and Red"], answer: "b", explanation: "Yellow and black ESDS warning logo." },
+                    { id: "M5-12-05", question: "5. In an ESD protection wrist strap discharge current is limited by a resistor that is typically:", options: ["a) 1M Ω", "b) 1 k Ω", "c) 100 Ω"], answer: "a", explanation: "1 Megaohm built-in safety resistor." }
+                ]
+            },
+            "M5-13": {
+                title: "ICAT 5.13 - Software Management Control",
+                questions: [
+                    { id: "M5-13-01", question: "1. In order to be acceptable for inclusion in an aircraft system, software must:", options: ["a) Be duplicated", "b) Go through a software validation process", "c) Be a high level language"], answer: "b", explanation: "Rigorous software validation and verification." },
+                    { id: "M5-13-02", question: "2. Failure of an aircraft’s Level C software may result in:", options: ["a) the aircraft crashing", "b) serious or fatal injuries", "c) minor injuries to passengers or crew"], answer: "c", explanation: "Level C = Major failure / minor injuries." },
+                    { id: "M5-13-03", question: "3. Aircraft In Flight Entertainment system software is categorised as:", options: ["a) Level E", "b) Level C", "c) Level A"], answer: "a", explanation: "Level E (No safety effect)." },
+                    { id: "M5-13-04", question: "4. Which type of software varies for different aircraft configurations?", options: ["a) Core", "b) Operational", "c) Database"], answer: "b", explanation: "Operational software." }
+                ]
+            },
+            "M5-14": {
+                title: "ICAT 5.14 - Electromagnetic Environment",
+                questions: [
+                    { id: "M5-14-01", question: "1. EMI causes interference due to the presence of ELF in the form of:", options: ["a) Magnetic E fields", "b) Magnetic W fields", "c) Magnetic H fields"], answer: "c", explanation: "Magnetic H fields." },
+                    { id: "M5-14-02", question: "2. Corona Discharge on an aircraft can prevented by:", options: ["a) Effective bonding and Static Wicks", "b) Shielding and Insulation", "c) high resistance bonding straps"], answer: "a", explanation: "Static wicks and bonding." },
+                    { id: "M5-14-03", question: "3. Single Bonding straps on an aircraft can be tested using:", options: ["a) a DC milliohm meter", "b) a Low Frequency Impedance Loop Tester", "c) Insulation Tester"], answer: "a", explanation: "DC milliohms meter." },
+                    { id: "M5-14-04", question: "4. On a typical aircraft that has been zoned for lightning susceptibility, zone one is defined as:", options: ["a) Areas where direct lightning attachment is expected", "b) Areas where direct lightning attachment is not expected", "c) Areas protected against direct lightning"], answer: "a", explanation: "Zone 1 = direct lightning attachment expected." },
+                    { id: "M5-14-05", question: "5. To ensure proper protection throughout the aircraft, system earth returns are usually taken to points distributed throughout the aircraft that are called:", options: ["a) Earth posts", "b) Earth stations", "c) Anti-static stations"], answer: "b", explanation: "Earth stations / grounding points." },
+                    { id: "M5-14-06", question: "6. Which type of static wicks are fitted to the wing and tail outboard tips?", options: ["a) Rod Type", "b) Diverter Type", "c) Wedge Type"], answer: "c", explanation: "Wedge type static dischargers." },
+                    { id: "M5-14-07", question: "7. Rod Type Static wicks are normally mounted on the:", options: ["a) outboard trailing edges", "b) inboard trailing edges", "c) wing and tail outboard tips"], answer: "a", explanation: "Outboard trailing edges." },
+                    { id: "M5-14-08", question: "8. When carrying out a Low Frequency Loop Impedance Test, the impedance value should be:", options: ["a) 1 Amp", "b) 1 - 100 Ohms", "c) 1 - 100 milliohms"], answer: "c", explanation: "1 to 100 milliohms range." }
+                ]
+            },
+            "M5-15": {
+                title: "ICAT 5.15 - Typical Electronic Digital Aircraft Systems",
+                questions: [
+                    { id: "M5-15-01", question: "1. Which organisation sets the standards for the production of avionic equipment?", options: ["a) Aeronautical Radio Inc (ARINC)", "b) The FAA", "c) JAA"], answer: "a", explanation: "ARINC establishes avionics hardware and communication standards." },
+                    { id: "M5-15-02", question: "2. In order to use ACARS:", options: ["a) Aircraft must be fitted with SATCOM", "b) The aircraft must be registered with a service provider", "c) An aircraft must be registered with the CAA"], answer: "b", explanation: "Service provider network subscription/registration." },
+                    { id: "M5-15-03", question: "3. ECAM is an acronym for:", options: ["a) Engine Crew and Avionic Monitoring", "b) Electronic Centralised Aircraft Monitoring", "c) Electronic Caution Avionics Monitoring"], answer: "b", explanation: "Electronic Centralised Aircraft Monitoring." },
+                    { id: "M5-15-04", question: "4. ECAM take off or landing information, or failure messages and actions to be performed are displayed:", options: ["a) in the lower left memo area of the upper display", "b) in the lower right memo area of the upper display", "c) on the lower display only"], answer: "a", explanation: "Lower left memo area of upper display." },
+                    { id: "M5-15-05", question: "5. EFIS is an acronym for:", options: ["a) Electronic Fuel Injection System", "b) Electronic Flight Inspection System", "c) Electronic Flight Instrument System"], answer: "c", explanation: "Electronic Flight Instrument System." },
+                    { id: "M5-15-06", question: "6. A Fly By Wire system when compared to conventional mechanical Flight Controls:", options: ["a) have no artificial feel on the controller, but can operate more quickly", "b) require less maintenance and save weight", "c) are only used to control the elevators"], answer: "b", explanation: "Weight savings and reduced mechanical maintenance." },
+                    { id: "M5-15-07", question: "7. For an FMS to function correctly, on initialisation the flight crew must enter:", options: ["a) Local data and time", "b) UTC data and Time", "c) Eastern Standard Time"], answer: "b", explanation: "Universal Time Coordinated (UTC)." },
+                    { id: "M5-15-08", question: "8. A FMS’s navigation databank memory is updated:", options: ["a) Every 28 days", "b) Every 365 days", "c) Every 84 days"], answer: "a", explanation: "28-day AIRAC cycle." },
+                    { id: "M5-15-09", question: "9. With a TCAS II installation, the system can give two types of warning that are called:", options: ["a) Traffic Advisory and Resolution Advisory", "b) Traffic Alert and Resolution Alert", "c) Traffic Avoidance and Resolution Avoidance"], answer: "a", explanation: "TA (Traffic Advisory) and RA (Resolution Advisory)." },
+                    { id: "M5-15-10", question: "10. A TCAS display that shows an aircraft symbol with +07 next to it indicates that there is another aircraft in the vicinity that is:", options: ["a) 700 feet above the aircraft", "b) 700 feet below the aircraft", "c) 7 NMs distance from the aircraft"], answer: "a", explanation: "+07 represents 700 feet above." },
+                    { id: "M5-15-11", question: "11. In order to operate TCAS an aircraft must be fitted with:", options: ["a) Mode A & C Transponder", "b) Mode A, C & S Transponder", "c) Mode A, B & C Transponder"], answer: "b", explanation: "Mode S transponder capability." },
+                    { id: "M5-15-12", question: "12. Information on an EICAS Primary display includes:", options: ["a) Flight Director, Fuel Flow and N1", "b) EGT, EPR and N1", "c) EGT, EPR and N2"], answer: "b", explanation: "Primary engine parameters (EGT, EPR, N1)." },
+                    { id: "M5-15-13", question: "13. GPS Navigation is designed to use a constellation of satellites that is made up of:", options: ["a) 21 active and 3 spare", "b) 24 active and 3 spare", "c) 28 active and 6 spare"], answer: "a", explanation: "21 active and 3 spares." },
+                    { id: "M5-15-14", question: "14. When using GPS, an aircraft’s position is determined by:", options: ["a) Horizontal angle measurement", "b) Distance measurement to the satellite", "c) Vertical angle measurement"], answer: "b", explanation: "Pseudorange distance measurements." },
+                    { id: "M5-15-15", question: "15. In order to give an accurate position (including height), GPS must be able to ‘see’ at least:", options: ["a) 12 satellites", "b) 8 satellites", "c) 4 satellites"], answer: "c", explanation: "4 satellites for 3D position." },
+                    { id: "M5-15-16", question: "16. Inertial Reference Systems are only certified for alignment up to:", options: ["a) ±78.25°", "b) ±60.75°", "c) ±88.5°"], answer: "a", explanation: "±78.25 degrees latitude." },
+                    { id: "M5-15-17", question: "17. An indication that the IRS is ready to navigate is given by:", options: ["a) A ‘NAV RDY’ annunciator on the CDU", "b) A ‘NAV RDY’ annunciator on the MSU", "c) A ‘NAV RDY’ annunciator on the instrument panel"], answer: "b", explanation: "MSU (Mode Selector Unit) ready indicator." },
+                    { id: "M5-15-18", question: "18. An IRS outputs navigation information in:", options: ["a) Bearing and distance", "b) Latitude & Longitude", "c) Lateral deviation and distance"], answer: "b", explanation: "Latitude and longitude coordinates." },
+                    { id: "M5-15-19", question: "19. An aircraft Integrated Modular Avionics system (IMA) can be split into how many domains?", options: ["a) 2", "b) 3", "c) 4"], answer: "c", explanation: "4 main domains." },
+                    { id: "M5-15-20", question: "20. In a modern aircraft “Cabin System” the primary user interface is via:", options: ["a) the Flight Attendant Panels (FAP)", "b) a dedicated control panel on the flight deck", "c) portable maintenance terminal"], answer: "a", explanation: "Flight Attendant Panels." },
+                    { id: "M5-15-21", question: "21. Which Onboard Information System (OIS) domain contains the Minimum Equipment List (MEL)?", options: ["a) Avionics Domain", "b) Flight Operations Domain", "c) Both Avionics and Flight Operations Domains"], answer: "c", explanation: "Both domains." },
+                    { id: "M5-15-22", question: "22. An OIS, Onboard Maintenance Terminal (OMT), allows maintenance personnel access to which domain for maintenance applications?", options: ["a) Avionics Domain", "b) Flight Operations Domain", "c) Communication & Cabin Domain"], answer: "a", explanation: "Avionics domain." }
+                ]
             }
-        },
-"M5-01": {
-        title: "Electronic Instrument Systems",
-        questions: [
-            { id: "M5-01-01", question: "1. The minimum standards for aircraft instrumentation is set by:", options: ["a) The Civil Aviation Authority (CAA)", "b) The Joint Aviation Authorities (JAA)", "c) International Civil Aviation Organization"], answer: "c", explanation: "ICAO sets the international minimum standards for aircraft instrumentation." },
-            { id: "M5-01-02", question: "2. In the figure, place the correct instrument in its proper position in the basic ‘T’:", options: ["a) Refer to diagram reference", "b) Refer to diagram reference", "c) Refer to diagram reference"], answer: "a", image: "IMG_3779.jpeg", explanation: "Classic 'T' layout includes Airspeed Indicator, Artificial Horizon, Altimeter, and Direction Indicator." },
-            { id: "M5-01-03", question: "3. When flying a four (4) engine, analogue aircraft, there must be a minimum crew of:", options: ["a) Two (2) pilots & One (1) Flight Engineer", "b) Two (2) pilots", "c) Two (2) pilots & Two (2) Flight Engineers"], answer: "a", explanation: "Traditional four-engine analogue flight deck requirements typically include two pilots and a flight engineer." },
-            { id: "M5-01-04", question: "4. Match the following screen names to their allotted position below.", options: ["a) Refer to diagram reference", "b) Refer to diagram reference", "c) Refer to diagram reference"], answer: "a", image: "IMG_3780.jpeg", explanation: "Glass cockpit screen layout matching Co-pilot PFD, EICAS, Pilot ND, etc." },
-            { id: "M5-01-05", question: "5. On EFIS displays, cautionary messages are shown in:", options: ["a) Cyan", "b) Red", "c) Yellow/amber"], answer: "c", explanation: "Cautionary messages are displayed in yellow/amber." },
-            { id: "M5-01-06", question: "6. On EFIS displays failure warnings are shown:", options: ["a) As a steady red symbol", "b) As a flashing red symbol", "c) As a flashing yellow symbol"], answer: "b", explanation: "Failure warnings are typically flashed in red." },
-            { id: "M5-01-07", question: "7. The letters ‘PFD’ are an abbreviation for:", options: ["a) Primary Flight Display", "b) Pilot’s Flight Display", "c) Pilot’s First Display"], answer: "a", explanation: "PFD = Primary Flight Display." },
-            { id: "M5-01-08", question: "8. The letters ‘MFD’ are an abbreviation for:", options: ["a) Multi-Function Display", "b) Master Flight Display", "c) Mandatory Flight Display"], answer: "a", explanation: "MFD = Multi-Function Display." }
-        ]
-    },
-    "M5-02": {
-        title: "Numbering Systems",
-        questions: [
-            { id: "M5-02-01", question: "1. The decimal number 286 is represented by the binary number:", options: ["a) 100011110", "b) 010101110", "c) 011100001"], answer: "a", explanation: "286 in decimal converts to binary 100011110." },
-            { id: "M5-02-02", question: "2. The binary code 101001011 represents the decimal number:", options: ["a) 350", "b) 331", "c) 194"], answer: "b", explanation: "Binary 101001011 = 256 + 64 + 8 + 2 + 1 = 331." },
-            { id: "M5-02-03", question: "3. The decimal number 84.35 is represented by the binary number:", options: ["a) 10001000.00111010", "b) 1110101.10011001", "c) 1010100.01011000"], answer: "c", explanation: "84 in binary is 1010100, and fractional part .35 converts to .01011000." },
-            { id: "M5-02-04", question: "4. The binary number 1011.011 is represented by the decimal number:", options: ["a) 11.375", "b) 10.35", "c) 13.575"], answer: "a", explanation: "1011 = 11; .011 = 1/4 + 1/8 = 0.25 + 0.125 = 0.375 -> 11.375." },
-            { id: "M5-02-05", question: "5. The decimal number 37 is represented by the octal number:", options: ["a) 45", "b) 37", "c) 54"], answer: "a", explanation: "37 / 8 = 4 remainder 5 -> 45 octal." },
-            { id: "M5-02-06", question: "6. The hexadecimal number A5 represents the decimal number:", options: ["a) 115", "b) 165", "c) 95"], answer: "b", explanation: "A (10) * 16 + 5 = 165." },
-            { id: "M5-02-07", question: "7. The BCD data string of 1001 0011 0100 . 0101 represents a DME distance of:", options: ["a) 543.8 Nautical Miles", "b) 723.4 Nautical Miles", "c) 934.5 Nautical Miles"], answer: "c", explanation: "1001=9, 0011=3, 0100=4, .0101=.5 -> 934.5 NM." }
-        ]
-    },
-    "M5-03": {
-        title: "Data Conversion",
-        questions: [
-            { id: "M5-03-01", question: "1. In an air data computer, if an analogue signal represents 0.25 Volts/20 kts then an airspeed of 150 kts will be represented by a voltage of:", options: ["a) 1.675 V", "b) 1.875 V", "c) 2.0 V"], answer: "b", explanation: "(150 / 20) * 0.25 = 7.5 * 0.25 = 1.875 V." },
-            { id: "M5-03-02", question: "2. In A/D conversion, a signal’s bandwidth represents:", options: ["a) The maximum frequency range occupied by a signal", "b) The minimum frequency range occupied by a signal", "c) The frequency of a signal"], answer: "a", explanation: "Bandwidth defines the frequency spectrum range occupied by the signal." },
-            { id: "M5-03-03", question: "3. For ease in conversion to binary form, the number of levels used in sampling is usually a power of:", options: ["a) 2", "b) 8", "c) 16"], answer: "a", explanation: "Powers of 2 align directly with binary digital encoding." },
-            { id: "M5-03-04", question: "4. The resolution of A/D conversion depends on the input voltage range and:", options: ["a) The number of signals being converted", "b) The number of samples taken", "c) The number of bits used in the conversion"], answer: "c", explanation: "Resolution = Voltage Range / (2^n - 1), where n is the number of bits." },
-            { id: "M5-03-05", question: "5. A 5-bit D/A converter produces VOUT 0.2 V for a digital input of 1. Find the value of VOUT for a 11111 input.", options: ["a) 1 Volt", "b) 3.1 Volts", "c) 6.2 Volts"], answer: "c", explanation: "Binary 11111 = 31 in decimal. 31 * 0.2V = 6.2 Volts." },
-            { id: "M5-03-06", question: "6. A 10-bit D/A converter has a step size of 10 mV. Determine the full-scale output voltage and the percentage resolution:", options: ["a) 10.23V and 0.1%", "b) 5.11mV and 0.2%", "c) 5.11mV and 0.1%"], answer: "a", explanation: "Full scale for 10 bits is 2^10 - 1 = 1023 steps. 1023 * 10mV = 10.23V; resolution = 1/1023 ≈ 0.1%." }
-        ]
-    },
-    "M5-04": {
-        title: "Digital Databuses",
-        questions: [
-            { id: "M5-04-01", question: "1. Manchester II encodes logic ‘1’ with a voltage transition from:", options: ["a) A high to low state", "b) A low to high state", "c) A specific voltage value"], answer: "a", explanation: "Manchester II logic 1 is represented by a high-to-low mid-bit transition." },
-            { id: "M5-04-02", question: "2. With asynchronous transmission:", options: ["a) The Transmitter and Receiver clocks are synchronised", "b) The Transmitter and Receiver clocks are not synchronised", "c) The Transmitter and Receiver use the same clocks"], answer: "b", explanation: "Asynchronous systems do not share a continuous common clock." },
-            { id: "M5-04-03", question: "3. The ARINC 429 Data word is:", options: ["a) 32 bits long", "b) 16 bits long", "c) 64 bits long"], answer: "a", explanation: "ARINC 429 standard words consist of 32 bits." },
-            { id: "M5-04-04", question: "4. The ARINC 429 standard uses:", options: ["a) No parity checking", "b) Odd parity checking", "c) Even parity checking"], answer: "b", explanation: "Bit 32 is checked using odd parity." },
-            { id: "M5-04-05", question: "5. The ARINC 429 databus uses:", options: ["a) RZ Unipolar modulation", "b) RZ Bipolar modulation", "c) NRZ Bipolar modulation"], answer: "b", explanation: "Bipolar Return-to-Zero (BRZ / BPRZ)." },
-            { id: "M5-04-06", question: "6. The ARINC 429 standard address label uses:", options: ["a) Octal representation", "b) Binary representation", "c) Hexadecimal representation"], answer: "a", explanation: "Labels are expressed in Octal (base 8)." },
-            { id: "M5-04-07", question: "7. Put the following words in their correct position in this figure (ARINC 429 Word Format):", options: ["a) Refer to diagram reference", "b) Refer to diagram reference", "c) Refer to diagram reference"], answer: "a", image: "IMG_3781.jpeg", explanation: "Label (Bits 1-8), SDI (9-10), Data (11-28/29), SSM (29-31), Parity (Bit 32)." },
-            { id: "M5-04-08", question: "8. As read on an oscilloscope, the first 10 bits of an ARINC 429 word are 1011001111; its address label is:", options: ["a) 363 Octal", "b) 437 Octal", "c) 317 Octal"], answer: "c", explanation: "Bit order reversal yields octal 317." },
-            { id: "M5-04-09", question: "9. ARINC 429 can run at a baud rate of 12.5 k and:", options: ["a) 100 (kB)", "b) 50 (kB)", "c) 14.5 (kB)"], answer: "a", explanation: "Low speed (12.5 kbps) and High speed (100 kbps)." },
-            { id: "M5-04-10", question: "10. ARINC 629 is:", options: ["a) A broadcast databus", "b) A bi-directional databus", "c) A unidirectional bus"], answer: "b", explanation: "ARINC 629 is a bi-directional serial bus." },
-            { id: "M5-04-11", question: "11. ARINC 629 runs at a baud rate of:", options: ["a) 100 kBaud", "b) 2000 kBaud", "c) 50 kBaud"], answer: "b", explanation: "High speed 2 Mbps (2000 kBaud)." },
-            { id: "M5-04-12", question: "12. ARINC 629 LRUs connect to the databus using:", options: ["a) Direct crimp connection", "b) Terminal blocks", "c) Current Mode Couplers"], answer: "c", explanation: "Inductive Current Mode Couplers." },
-            { id: "M5-04-13", question: "13. With ARINC 629 each LRU is assigned a unique:", options: ["a) Terminal Interrupt (TI)", "b) Terminal Gap (TG)", "c) Synchronisation Gap (SG)"], answer: "b", explanation: "Terminal Gap (TG) provides unique scheduling." },
-            { id: "M5-04-14", question: "14. Each time a LRU transmits data it can transmit again:", options: ["a) Only when its TI, TG and SG timers have expired", "b) When just its TG timer has expired", "c) When its TG and SG timers have expired"], answer: "a", explanation: "Must wait through TI, TG, and SG intervals." },
-            { id: "M5-04-15", question: "15. CSDB can run at a baud rate of 12.5 kBaud and:", options: ["a) 100 kBaud", "b) 50 kBaud", "c) 14.5 kBaud"], answer: "b", explanation: "CSDB standard speeds include 12.5 and 50 kBaud." },
-            { id: "M5-04-16", question: "16. A CSDB Message block can have:", options: ["a) 6 or 7 bytes", "b) 5 or 7 bytes", "c) 6 or 8 bytes"], answer: "c", explanation: "6 or 8 bytes block structures." },
-            { id: "M5-04-17", question: "17. CSDB has a special ‘burst’ mode when data is transmitted:", options: ["a) Every 50 milli-seconds for 16 times", "b) Every 16 milli-seconds for 50 times", "c) Every 35 milli-seconds for 16 times"], answer: "a", explanation: "Burst mode timing: every 50 ms for 16 times." },
-            { id: "M5-04-18", question: "18. ASCB data transmission is:", options: ["a) Bi-directional full duplex", "b) Broadcast in one direction only", "c) Bi-directional half duplex"], answer: "c", explanation: "Avionics Standard Communication Bus operates bi-directionally half-duplex." },
-            { id: "M5-04-19", question: "19. ASCB can be used with a maximum of:", options: ["a) 48 users", "b) 24 users", "c) 36 users"], answer: "a", explanation: "Up to 48 terminals/users." },
-            { id: "M5-04-20", question: "20. An ASCB data frame is:", options: ["a) 25 milli-seconds long", "b) 50 milli-seconds long", "c) 75 milli-seconds long"], answer: "a", explanation: "25 ms frame length." },
-            { id: "M5-04-21", question: "21. An Ethernet Frame format contains a “Preamble” which consists of:", options: ["a) a single byte...", "b) seven bytes, which allow the receiver's clock to be synchronised with the sender's.", "c) a single byte..."], answer: "b", explanation: "7 bytes for clock synchronization." },
-            { id: "M5-04-22", question: "22. Ethernet protocol expects a minimum data length of:", options: ["a) 46 bytes", "b) 56 bytes", "c) 66 bytes"], answer: "a", explanation: "Minimum payload/data field is 46 bytes." },
-            { id: "M5-04-23", question: "23. The final field in an Ethernet Frame format contains the:", options: ["a) Frame Check Sequence (FCS)", "b) address of the source", "c) address of the destination"], answer: "a", explanation: "FCS / CRC at the frame tail." },
-            { id: "M5-04-24", question: "24. Which of the following statements is correct regarding an Ethernet frame Cyclic Redundancy Check (CRC):", options: ["a) The CRC is part of the Preamble...", "b) The CRC is part of the Start of Frame...", "c) The CRC is part of the Frame Check Sequence (FCS), and is used for error detection and recovery"], answer: "c", explanation: "CRC is part of FCS for error detection." },
-            { id: "M5-04-25", question: "25. An Ethernet frame Start of Frame Delimiter (SOF), consists of:", options: ["a) seven bytes...", "b) seven bytes, all of the form...", "c) a single byte, the last two bits are both binary 1, used to indicate the start of the frame"], answer: "c", explanation: "Single byte SOF delimiter." }
-        ]
-    },
-    "M5-05": {
-        title: "Logic Circuits",
-        questions: [
-            { id: "M5-05-01", question: "1. For an AND gate with three (3) inputs, in order to get a logic 1 output:", options: ["a) At least two inputs must be at logic 1", "b) At least one input must be at logic 1", "c) At least three inputs must be at logic 1"], answer: "c", explanation: "All inputs must be 1 for an AND gate output." },
-            { id: "M5-05-02", question: "2. For the OR gate in the figure below, there will be an output at O:", options: ["a) Only at time T1 and T5", "b) Only at time T3 and T5", "c) Only at time T1, T3 and T5"], answer: "c", image: "IMG_3782.jpeg", explanation: "OR gate outputs high whenever input A or B is high." },
-            { id: "M5-05-03", question: "3. With an inverter:", options: ["a) The output is the same as the input", "b) The output is the opposite of the input", "c) The output is independent of the input"], answer: "b", explanation: "NOT gate inverts state." },
-            { id: "M5-05-04", question: "4. In the figure below, what inputs will create a logic 1 output at X.", options: ["a) Refer to diagram reference", "b) Refer to diagram reference", "c) Refer to diagram reference"], answer: "a", image: "IMG_3783.jpeg", explanation: "Analyses 4-input gate with an inverted input bubble." }
-        ]
-    },
-    "M5-06": {
-        title: "Basic Computer Structure & Software",
-        questions: [
-            { id: "M5-06-01", question: "1. The initials CPU stand for:", options: ["a) Central Processor Unit", "b) Control Processor Unit", "c) Central Power Unit"], answer: "a", explanation: "Central Processor Unit." },
-            { id: "M5-06-02", question: "2. The part of a computer’s memory that is used as a scratchpad is called:", options: ["a) ROM", "b) RAM", "c) EPROM"], answer: "b", explanation: "RAM acts as temporary working memory." },
-            { id: "M5-06-03", question: "3. The abbreviation DRAM is short for:", options: ["a) Dynamic RAM", "b) Digital RAM", "c) Direct RAM"], answer: "a", explanation: "Dynamic RAM." },
-            { id: "M5-06-04", question: "4. The abbreviation SRAM is short for:", options: ["a) Stationary RAM", "b) Serial RAM", "c) Static RAM"], answer: "c", explanation: "Static RAM." },
-            { id: "M5-06-05", question: "5. Programmes stored in EPROM:", options: ["a) Cannot be altered once programmed", "b) Can be altered once its contents are erased by UV light", "c) Can be altered via software control"], answer: "b", explanation: "Erased via ultraviolet light window." },
-            { id: "M5-06-06", question: "6. A byte consists of:", options: ["a) 16 bits", "b) 4 bits", "c) 8 bits"], answer: "c", explanation: "8 bits = 1 byte." },
-            { id: "M5-06-07", question: "7. Windows 8 is an example of:", options: ["a) A multitasking operating system", "b) Single user operating system", "c) MS DOS operating system"], answer: "a", explanation: "Multitasking OS." },
-            { id: "M5-06-08", question: "8. Software programmed using mnemonic instruction codes is an example of:", options: ["a) A high level language", "b) A low level language", "c) A medium level language"], answer: "b", explanation: "Assembly / low level language." },
-            { id: "M5-06-09", question: "9. A barcode reader is a typical example of:", options: ["a) An output device", "b) A storage device", "c) An input device"], answer: "c", explanation: "Input device." },
-            { id: "M5-06-10", question: "10. SDRAM is an abbreviation for:", options: ["a) Synchronous Dynamic RAM", "b) Static Digital RAM", "c) Stable Dynamic RAM"], answer: "a", explanation: "Synchronous Dynamic RAM." },
-            { id: "M5-06-11", question: "11. Flash Memory is:", options: ["a) Read-Only Memory", "b) Programmable memory by OEM only", "c) End-user programmable"], answer: "c", explanation: "User programmable non-volatile storage." },
-            { id: "M5-06-12", question: "12. Before use, hard disks must undergo:", options: ["a) Physical and Logical formatting", "b) Low, Medium and High level formatting", "c) Low, High and Cluster formatting"], answer: "a", explanation: "Physical low-level and logical file-system formatting." },
-            { id: "M5-06-13", question: "13. To keep track of files, a hard disk reserves a systems area on the drive that contains:", options: ["a) A File Allocation Table and Root Directory", "b) A File Allocation Table and Cluster Directory", "c) A Root and Cluster Directory"], answer: "a", explanation: "FAT and Root Directory." },
-            { id: "M5-06-14", question: "14. Colour laser printers create characters by:", options: ["a) Using impacting pins", "b) Coloured toner attracted onto the paper", "c) Subliminal colour wax"], answer: "b", explanation: "Toner transfer fusing process." }
-        ]
-    },
-    "M5-10": {
-        title: "Fibre Optics",
-        questions: [
-            { id: "M5-10-01", question: "1. Fibre Optics relies on a process of:", options: ["a) Total Internal Reflection", "b) Total Internal Deflection", "c) Total Internal Refraction"], answer: "a", explanation: "Total Internal Reflection guides light." },
-            { id: "M5-10-02", question: "2. With fibre optics, the attenuation of the signal varies with:", options: ["a) The transmission power level", "b) The light’s wavelength", "c) The length of the cable"], answer: "b", explanation: "Wavelength-dependent attenuation characteristics." },
-            { id: "M5-10-03", question: "3. Fibre Optic cable:", options: ["a) Is susceptible to EMI", "b) Is immune to EMI", "c) Attenuates EMI"], answer: "b", explanation: "Immune to electromagnetic interference." },
-            { id: "M5-10-04", question: "4. A fibre optic core is usually made of glass and has a refractive index:", options: ["a) Less than the refractive index of Air", "b) Greater than the refractive index of Air", "c) Equal to the refractive index of Air"], answer: "b", explanation: "Core refractive index (~1.5) exceeds air (~1.0)." },
-            { id: "M5-10-05", question: "5. Light rays in a fibre optic cable must be:", options: ["a) Lower than the critical angle", "b) Higher than the critical angle", "c) The same as the critical angle"], answer: "c", explanation: "ICAT baseline question answer mapping." },
-            { id: "M5-10-06", question: "6. The figure below shows the symbol for:", options: ["a) A coupler or splitter", "b) A patchcord", "c) Inline coupling"], answer: "a", image: "IMG_3784.jpeg", explanation: "Optical coupler / splitter schematic symbol." },
-            { id: "M5-10-07", question: "7. In aircraft use, fibre optic cables should comply with:", options: ["a) ARINC 629", "b) ARINC 636", "c) ARINC 751"], answer: "b", explanation: "ARINC 636." },
-            { id: "M5-10-08", question: "8. Which type of connector would be used to connect a LRU to the databus?", options: ["a) Butt Type", "b) Expanded Beam Type", "c) Fusion Type"], answer: "b", explanation: "Expanded Beam lens connector." },
-            { id: "M5-10-09", question: "9. The majority of Fibre Optic systems transmit data using:", options: ["a) Ultraviolet Light", "b) White Light", "c) Infrared Light"], answer: "c", explanation: "Infrared spectrum." }
-        ]
-    },
-    "M5-11": {
-        title: "Electronic Displays",
-        questions: [
-            { id: "M5-11-01", question: "1. Electromagnetic deflection of the electron beam in a CRT is achieved using:", options: ["a) coils inside the CRT", "b) coils around the neck of the CRT", "c) X and Y deflection plates"], answer: "b", explanation: "Yoke coils around the neck." },
-            { id: "M5-11-02", question: "2. To prevent flicker a CRT should be refreshed at least:", options: ["a) 20 times/second", "b) 80 times/second", "c) 40 times/second"], answer: "c", explanation: "Minimum refresh rate around 40Hz." },
-            { id: "M5-11-03", question: "3. Liquid Crystal Displays are made of:", options: ["a) Three crystals", "b) A single crystal", "c) Many crystals"], answer: "c", explanation: "Multiple liquid crystal molecules." },
-            { id: "M5-11-04", question: "4. If adjacent phosphors of blue and green are illuminated on a CRT display, what colour will be produced?", options: ["a) Cyan", "b) Magenta", "c) Yellow"], answer: "a", explanation: "Green + Blue = Cyan." },
-            { id: "M5-11-05", question: "5. A seven segment LED display has the following segments illuminated: a, b, c, d and g. What number is displayed?", options: ["a) 3", "b) 4", "c) 5"], answer: "a", explanation: "Segments a,b,c,d,g form the number 3." }
-        ]
-    },
-    "M5-12": {
-        title: "Electrostatic Sensitive Devices",
-        questions: [
-            { id: "M5-12-01", question: "1. Electrostatic problems are caused by:", options: ["a) An imbalance of protons", "b) An imbalance of neutrons", "c) An imbalance of electrons"], answer: "c", explanation: "Electron excess or deficit." },
-            { id: "M5-12-02", question: "2. What precautions are required when removing ESDS equipment?", options: ["a) Wear a wrist strap connected to an approved ground point", "b) Keep one hand on the airframe", "c) Keep one hand in your pocket"], answer: "a", explanation: "ESD wrist strap grounding." },
-            { id: "M5-12-03", question: "3. With a relative humidity of 65% to 90%, if you walked across a carpet what electrostatic voltage would you expect to see?", options: ["a) 1,500 volts", "b) 12,000 volts", "c) 35,000 volts"], answer: "a", explanation: "High humidity lowers static voltage generation to ~1,500V." },
-            { id: "M5-12-04", question: "4. Electrostatic Sensitive Devices are usually identified by a label that is coloured:", options: ["a) Yellow and Red", "b) Yellow and Black", "c) Black and Red"], answer: "b", explanation: "Yellow and black ESDS warning logo." },
-            { id: "M5-12-05", question: "5. In an ESD protection wrist strap discharge current is limited by a resistor that is typically:", options: ["a) 1M Ω", "b) 1 k Ω", "c) 100 Ω"], answer: "a", explanation: "1 Megaohm built-in safety resistor." }
-        ]
-    },
-    "M5-13": {
-        title: "Software Management Control",
-        questions: [
-            { id: "M5-13-01", question: "1. In order to be acceptable for inclusion in an aircraft system, software must:", options: ["a) Be duplicated", "b) Go through a software validation process", "c) Be a high level language"], answer: "b", explanation: "Rigorous software validation and verification." },
-            { id: "M5-13-02", question: "2. Failure of an aircraft’s Level C software may result in:", options: ["a) the aircraft crashing", "b) serious or fatal injuries", "c) minor injuries to passengers or crew"], answer: "c", explanation: "Level C = Major failure / minor injuries." },
-            { id: "M5-13-03", question: "3. Aircraft In Flight Entertainment system software is categorised as:", options: ["a) Level E", "b) Level C", "c) Level A"], answer: "a", explanation: "Level E (No safety effect)." },
-            { id: "M5-13-04", question: "4. Which type of software varies for different aircraft configurations?", options: ["a) Core", "b) Operational", "c) Database"], answer: "b", explanation: "Operational software." }
-        ]
-    },
-    "M5-14": {
-        title: "Electromagnetic Environment",
-        questions: [
-            { id: "M5-14-01", question: "1. EMI causes interference due to the presence of ELF in the form of:", options: ["a) Magnetic E fields", "b) Magnetic W fields", "c) Magnetic H fields"], answer: "c", explanation: "Magnetic H fields." },
-            { id: "M5-14-02", question: "2. Corona Discharge on an aircraft can prevented by:", options: ["a) Effective bonding and Static Wicks", "b) Shielding and Insulation", "c) high resistance bonding straps"], answer: "a", explanation: "Static wicks and bonding." },
-            { id: "M5-14-03", question: "3. Single Bonding straps on an aircraft can be tested using:", options: ["a) a DC milliohm meter", "b) a Low Frequency Impedance Loop Tester", "c) Insulation Tester"], answer: "a", explanation: "DC milliohms meter." },
-            { id: "M5-14-04", question: "4. On a typical aircraft that has been zoned for lightning susceptibility, zone one is defined as:", options: ["a) Areas where direct lightning attachment is expected", "b) Areas where direct lightning attachment is not expected", "c) Areas protected against direct lightning"], answer: "a", explanation: "Zone 1 = direct lightning attachment expected." },
-            { id: "M5-14-05", question: "5. To ensure proper protection throughout the aircraft, system earth returns are usually taken to points distributed throughout the aircraft that are called:", options: ["a) Earth posts", "b) Earth stations", "c) Anti-static stations"], answer: "b", explanation: "Earth stations / grounding points." },
-            { id: "M5-14-06", question: "6. Which type of static wicks are fitted to the wing and tail outboard tips?", options: ["a) Rod Type", "b) Diverter Type", "c) Wedge Type"], answer: "c", explanation: "Wedge type static dischargers." },
-            { id: "M5-14-07", question: "7. Rod Type Static wicks are normally mounted on the:", options: ["a) outboard trailing edges", "b) inboard trailing edges", "c) wing and tail outboard tips"], answer: "a", explanation: "Outboard trailing edges." },
-            { id: "M5-14-08", question: "8. When carrying out a Low Frequency Loop Impedance Test, the impedance value should be:", options: ["a) 1 Amp", "b) 1 - 100 Ohms", "c) 1 - 100 milliohms"], answer: "c", explanation: "1 to 100 milliohms range." }
-        ]
-    },
-    "M5-15": {
-        title: "Typical Electronic Digital Aircraft Systems",
-        questions: [
-            { id: "M5-15-01", question: "1. Which organisation sets the standards for the production of avionic equipment?", options: ["a) Aeronautical Radio Inc (ARINC)", "b) The FAA", "c) JAA"], answer: "a", explanation: "ARINC establishes avionics hardware and communication standards." },
-            { id: "M5-15-02", question: "2. In order to use ACARS:", options: ["a) Aircraft must be fitted with SATCOM", "b) The aircraft must be registered with a service provider", "c) An aircraft must be registered with the CAA"], answer: "b", explanation: "Service provider network subscription/registration." },
-            { id: "M5-15-03", question: "3. ECAM is an acronym for:", options: ["a) Engine Crew and Avionic Monitoring", "b) Electronic Centralised Aircraft Monitoring", "c) Electronic Caution Avionics Monitoring"], answer: "b", explanation: "Electronic Centralised Aircraft Monitoring." },
-            { id: "M5-15-04", question: "4. ECAM take off or landing information, or failure messages and actions to be performed are displayed:", options: ["a) in the lower left memo area of the upper display", "b) in the lower right memo area of the upper display", "c) on the lower display only"], answer: "a", explanation: "Lower left memo area of upper display." },
-            { id: "M5-15-05", question: "5. EFIS is an acronym for:", options: ["a) Electronic Fuel Injection System", "b) Electronic Flight Inspection System", "c) Electronic Flight Instrument System"], answer: "c", explanation: "Electronic Flight Instrument System." },
-            { id: "M5-15-06", question: "6. A Fly By Wire system when compared to conventional mechanical Flight Controls:", options: ["a) have no artificial feel on the controller, but can operate more quickly", "b) require less maintenance and save weight", "c) are only used to control the elevators"], answer: "b", explanation: "Weight savings and reduced mechanical maintenance." },
-            { id: "M5-15-07", question: "7. For an FMS to function correctly, on initialisation the flight crew must enter:", options: ["a) Local data and time", "b) UTC data and Time", "c) Eastern Standard Time"], answer: "b", explanation: "Universal Time Coordinated (UTC)." },
-            { id: "M5-15-08", question: "8. A FMS’s navigation databank memory is updated:", options: ["a) Every 28 days", "b) Every 365 days", "c) Every 84 days"], answer: "a", explanation: "28-day AIRAC cycle." },
-            { id: "M5-15-09", question: "9. With a TCAS II installation, the system can give two types of warning that are called:", options: ["a) Traffic Advisory and Resolution Advisory", "b) Traffic Alert and Resolution Alert", "c) Traffic Avoidance and Resolution Avoidance"], answer: "a", explanation: "TA (Traffic Advisory) and RA (Resolution Advisory)." },
-            { id: "M5-15-10", question: "10. A TCAS display that shows an aircraft symbol with +07 next to it indicates that there is another aircraft in the vicinity that is:", options: ["a) 700 feet above the aircraft", "b) 700 feet below the aircraft", "c) 7 NMs distance from the aircraft"], answer: "a", explanation: "+07 represents 700 feet above." },
-            { id: "M5-15-11", question: "11. In order to operate TCAS an aircraft must be fitted with:", options: ["a) Mode A & C Transponder", "b) Mode A, C & S Transponder", "c) Mode A, B & C Transponder"], answer: "b", explanation: "Mode S transponder capability." },
-            { id: "M5-15-12", question: "12. Information on an EICAS Primary display includes:", options: ["a) Flight Director, Fuel Flow and N1", "b) EGT, EPR and N1", "c) EGT, EPR and N2"], answer: "b", explanation: "Primary engine parameters (EGT, EPR, N1)." },
-            { id: "M5-15-13", question: "13. GPS Navigation is designed to use a constellation of satellites that is made up of:", options: ["a) 21 active and 3 spare", "b) 24 active and 3 spare", "c) 28 active and 6 spare"], answer: "a", explanation: "21 active and 3 spares." },
-            { id: "M5-15-14", question: "14. When using GPS, an aircraft’s position is determined by:", options: ["a) Horizontal angle measurement", "b) Distance measurement to the satellite", "c) Vertical angle measurement"], answer: "b", explanation: "Pseudorange distance measurements." },
-            { id: "M5-15-15", question: "15. In order to give an accurate position (including height), GPS must be able to ‘see’ at least:", options: ["a) 12 satellites", "b) 8 satellites", "c) 4 satellites"], answer: "c", explanation: "4 satellites for 3D position." },
-            { id: "M5-15-16", question: "16. Inertial Reference Systems are only certified for alignment up to:", options: ["a) ±78.25°", "b) ±60.75°", "c) ±88.5°"], answer: "a", explanation: "±78.25 degrees latitude." },
-            { id: "M5-15-17", question: "17. An indication that the IRS is ready to navigate is given by:", options: ["a) A ‘NAV RDY’ annunciator on the CDU", "b) A ‘NAV RDY’ annunciator on the MSU", "c) A ‘NAV RDY’ annunciator on the instrument panel"], answer: "b", explanation: "MSU (Mode Selector Unit) ready indicator." },
-            { id: "M5-15-18", question: "18. An IRS outputs navigation information in:", options: ["a) Bearing and distance", "b) Latitude & Longitude", "c) Lateral deviation and distance"], answer: "b", explanation: "Latitude and longitude coordinates." },
-            { id: "M5-15-19", question: "19. An aircraft Integrated Modular Avionics system (IMA) can be split into how many domains?", options: ["a) 2", "b) 3", "c) 4"], answer: "c", explanation: "4 main domains." },
-            { id: "M5-15-20", question: "20. In a modern aircraft “Cabin System” the primary user interface is via:", options: ["a) the Flight Attendant Panels (FAP)", "b) a dedicated control panel on the flight deck", "c) portable maintenance terminal"], answer: "a", explanation: "Flight Attendant Panels." },
-            { id: "M5-15-21", question: "21. Which Onboard Information System (OIS) domain contains the Minimum Equipment List (MEL)?", options: ["a) Avionics Domain", "b) Flight Operations Domain", "c) Both Avionics and Flight Operations Domains"], answer: "c", explanation: "Both domains." },
-            { id: "M5-15-22", question: "22. An OIS, Onboard Maintenance Terminal (OMT), allows maintenance personnel access to which domain for maintenance applications?", options: ["a) Avionics Domain", "b) Flight Operations Domain", "c) Communication & Cabin Domain"], answer: "a", explanation: "Avionics domain." }
-        ]
-    }
-};
+        };
+
         let currentModuleKey = "M05-01";
         let currentIndex = 0;
         let userAnswers = {};
