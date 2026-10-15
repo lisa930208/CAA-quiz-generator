@@ -23,10 +23,11 @@
         </div>
         <div class="flex items-center space-x-4">
             <label for="module-select" class="text-xs text-slate-500 font-medium hidden sm:block">選擇單元：</label>
-            <select id="module-select" onchange="switchModule(this.value)" class="bg-slate-50 text-slate-700 text-sm font-semibold px-4 py-2 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500 transition shadow-sm cursor-pointer">
+            <select id="module-select" class="bg-slate-50 text-slate-700 text-sm font-semibold px-4 py-2 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500 transition shadow-sm cursor-pointer">
                 <option value="M05-01">Module 05.01 - Electronic Instrument Systems</option>
                 <option value="M05-02">Module 05.02 - Numbering Systems</option>
                 <option value="M05-03">Module 05.03 - Data Conversion</option>
+                <option value="M05-04">Module 05.04 - Data Buses</option>
             </select>
         </div>
     </header>
@@ -82,11 +83,11 @@
 
                 <!-- 底部按鈕欄 -->
                 <div class="flex justify-between items-center pt-6 border-t border-slate-200 mt-6">
-                    <button id="prev-btn" onclick="prevQuestion()" class="flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 text-sm font-semibold transition disabled:opacity-40 disabled:cursor-not-allowed">
+                    <button id="prev-btn" class="flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 text-sm font-semibold transition disabled:opacity-40 disabled:cursor-not-allowed">
                         <i class="fa-solid fa-arrow-left"></i>
                         <span>上一題</span>
                     </button>
-                    <button id="next-btn" onclick="nextQuestion()" class="flex items-center space-x-2 px-6 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white text-sm font-bold transition shadow-md shadow-sky-600/20">
+                    <button id="next-btn" class="flex items-center space-x-2 px-6 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white text-sm font-bold transition shadow-md shadow-sky-600/20">
                         <span>下一題</span>
                         <i class="fa-solid fa-arrow-right"></i>
                     </button>
@@ -104,7 +105,7 @@
                     <span class="text-4xl font-black text-sky-600" id="score-text">0</span>
                     <span class="text-slate-500 text-lg font-bold"> / <span id="result-total">33</span></span>
                 </div>
-                <button onclick="restartQuiz()" class="px-6 py-3 bg-sky-600 hover:bg-sky-700 text-white rounded-xl font-bold transition shadow-md shadow-sky-600/20">
+                <button id="restart-btn" class="px-6 py-3 bg-sky-600 hover:bg-sky-700 text-white rounded-xl font-bold transition shadow-md shadow-sky-600/20">
                     <i class="fa-solid fa-rotate-right mr-2"></i>重新測驗此章節
                 </button>
             </div>
@@ -112,7 +113,7 @@
         </div>
     </div>
 
-    <!-- 內嵌題庫與主程式邏輯 -->
+    <!-- 題庫與主程式邏輯 -->
     <script>
         const allQuestionBanks = {
             "M05-01": {
@@ -1101,6 +1102,98 @@
                         explanation: "Physical quantities representing values continuously are analogue."
                     }
                 ]
+            },
+            "M05-04": {
+                title: "Data Buses",
+                questions: [
+                    { id: "M05-04-01", question: "1. In arinc 629, LRUs are programmed to transmit.", options: ["a) one at a time.", "b) one transmits and one recieves.", "c) all at the same time."], answer: "a", explanation: "ARINC 629 transmits messages one at a time sequentially using scheduled terminal intervals." },
+                    { id: "M05-04-02", question: "2. In aircraft use, fibre optic cables should comply with.", options: ["a) ARINC 629 standard.", "b) ARIND 429 standard.", "c) ARIND 636 standard."], answer: "c", explanation: "Fibre optic standards in aircraft systems comply with ARINC 636." },
+                    { id: "M05-04-03", question: "3. ARINC 629 databus is.", options: ["a) one cable, bi-directional.", "b) two cables, uni-directional.", "c) two cables, bi directional."], answer: "c", explanation: "ARINC 629 uses two cables providing bi-directional data flow." },
+                    { id: "M05-04-04", question: "4. An ARINC 573 data bus is used.", options: ["a) to input into a Digital Flight Data Recorder.", "b) to supply digital inputs from a Symbol Generator to the EADI and EHSI.", "c) to input into a FDR Digital Acquisition Unit."], answer: "a", explanation: "ARINC 573 is primarily used for inputting into a Digital Flight Data Recorder." },
+                    { id: "M05-04-05", question: "5. An ARINC 429 bus uses.", options: ["a) a twisted shielded pair of wires.", "b) two bi-directional twin sheathed and earthed wires.", "c) a single twin wire cable for each transmitter."], answer: "a", explanation: "ARINC 429 uses a twisted shielded pair of wires." },
+                    { id: "M05-04-06", question: "6. The ARINC 429 data bus word systems use.", options: ["a) binary coded decimal.", "b) decimal numbering.", "c) hexadecimal numbering."], answer: "a", explanation: "ARINC 429 word systems frequently employ binary coded decimal (BCD)." },
+                    { id: "M05-04-07", question: "7. ARINC 573 is related to what system?", options: ["a) Weather Radar.", "b) FDR.", "c) INS."], answer: "b", explanation: "ARINC 573 links to Flight Data Recorder (FDR) systems." },
+                    { id: "M05-04-08", question: "8. ARINC 629 current mode couplers are.", options: ["a) capacitive.", "b) resistive.", "c) inductive."], answer: "c", explanation: "ARINC 629 couplers use inductive coupling (E-cores)." },
+                    { id: "M05-04-09", question: "9. ARINC 629 databus is.", options: ["a) one bus, bi-directional data flow.", "b) two buses, unidirectional.", "c) two buses, bi-directional data flow."], answer: "a", explanation: "ARINC 629 operates as a single bi-directional serial bus structure." },
+                    { id: "M05-04-10", question: "10. Normal transmission order of ARINC 629 LRUs in periodic mode is in order of.", options: ["a) shortest to largest TI.", "b) shortest to largest TG.", "c) power up."], answer: "c", explanation: "Periodic mode transmission order is based on power up sequence." },
+                    { id: "M05-04-11", question: "11. In an ARINC 429 wordstring, bits 1 to 8 represent the.", options: ["a) destination LRU address.", "b) monitored parameter.", "c) message."], answer: "b", explanation: "Bits 1 to 8 represent the label / monitored parameter." },
+                    { id: "M05-04-12", question: "12. ARINC 629 terminal transmit interval is.", options: ["a) common to each terminal.", "b) unique to each terminal.", "c) when all terminals are quiet."], answer: "a", explanation: "The TI (transmit interval) is common across terminals." },
+                    { id: "M05-04-13", question: "13. MIL-STD-1533 is a data bus for.", options: ["a) Inertial Reference System.", "b) Flight Data Recorders.", "c) Digital Information Transfer System."], answer: "c", explanation: "MIL-STD-1553/1533 relates to Digital Information Transfer Systems." },
+                    { id: "M05-04-14", question: "14. ARINC 629 periodic mode is used for.", options: ["a) transferring data only on events important to aircraft operation.", "b) database loads.", "c) normal operation."], answer: "c", explanation: "Periodic mode is used for normal day-to-day flight operations." },
+                    { id: "M05-04-15", question: "15. How is data coupled to an ARINC 629 data bus?", options: ["a) By a resistive pickup.", "b) By an inductive pickup.", "c) By a capacitive pickup."], answer: "b", explanation: "Data is coupled inductively." },
+                    { id: "M05-04-16", question: "16. How does MIL-STD-1533 put data onto the databus?", options: ["a) Through the bus controller.", "b) R1 (remote terminal).", "c) SSIFU (sub-system interface unit)."], answer: "a", explanation: "The bus controller manages and puts data onto the MIL-STD bus." },
+                    { id: "M05-04-17", question: "17. The parity bit in digital information is used.", options: ["a) to check the validity of data information.", "b) for BITE programs.", "c) to check the status of the system."], answer: "a", explanation: "Parity bits verify data validity and check for transmission errors." },
+                    { id: "M05-04-18", question: "18. ARINC 429 SDI word format is at bits.", options: ["a) 32.", "b) 1-8.", "c) 9-10."], answer: "c", explanation: "Source/Destination Identifier (SDI) occupies bits 9 and 10." },
+                    { id: "M05-04-19", question: "19. What is the parity bit for on an ARINC 429 bus?", options: ["a) To act as a terminal gap in an emergency.", "b) To delay the signal.", "c) To check for corruption during transmission of a word."], answer: "c", explanation: "Bit 32 is a parity bit checking for word corruption." },
+                    { id: "M05-04-20", question: "20. An ARINC 429 word label format is.", options: ["a) hexadecimal.", "b) octal.", "c) binary."], answer: "b", explanation: "ARINC 429 labels are expressed in octal format." },
+                    { id: "M05-04-21", question: "21. How many LRUs can be connected to an ARINC 429 data bus?", options: ["a) 120.", "b) 60.", "c) 20."], answer: "c", explanation: "Standard ARINC 429 can connect up to 20 receivers (one transmitter, multiple sinks)." },
+                    { id: "M05-04-22", question: "22. ARINC 629 terminal transmit interval is.", options: ["a) common to each terminal.", "b) is when all transmissions are quiet.", "c) unique to each terminal."], answer: "a", explanation: "Transmit interval is common to each terminal." },
+                    { id: "M05-04-23", question: "23. An ARINC 429 bus uses.", options: ["a) a twisted shielded pair of wires.", "b) a single twin cable for each transmitter.", "c) two bi-directional twin, sheathed and earthed wires."], answer: "a", explanation: "Twisted shielded pair." },
+                    { id: "M05-04-24", question: "24. ARINC 429 data bus systems uses.", options: ["a) hexadecimal numbering.", "b) binary coded decimal.", "c) decimal numbering."], answer: "b", explanation: "Binary Coded Decimal (BCD) format." },
+                    { id: "M05-04-25", question: "25. An ARINC 429 Binary Coded Decimal word occupies word bits.", options: ["a) 1-8.", "b) 11-29.", "c) 11-28."], answer: "b", explanation: "BCD occupies bits 11-29." },
+                    { id: "M05-04-26", question: "26. An ARINC 429 system uses a.", options: ["a) 20 bit word over a bi-directional bus.", "b) 32 bit word over a twisted pair of wires.", "c) 16 bit word over a twisted pair of wires."], answer: "b", explanation: "32-bit word format transmitted over a twisted pair." },
+                    { id: "M05-04-27", question: "27. An ARINC 629 characteristic is.", options: ["a) all LRUs can transmit and receive at the same time.", "b) data can transmit in both directions down the data bus.", "c) all LRUs can transmit at the same time."], answer: "b", explanation: "Bi-directional data flow down the bus." },
+                    { id: "M05-04-28", question: "28. What limits the number of ARINC 429 receivers on a bus?", options: ["a) The speed and size.", "b) The weight.", "c) The parallel input impedance."], answer: "c", explanation: "Parallel input impedance restricts receiver loading." },
+                    { id: "M05-04-29", question: "29. Data is transferred on the MIL-STD-1553B by.", options: ["a) non return to zero.", "b) Manchester bi-phase.", "c) bi-polar return to zero."], answer: "b", explanation: "Manchester bi-phase encoding is used on MIL-STD-1553B." },
+                    { id: "M05-04-30", question: "30. How are engine indications sent to the FDR?", options: ["a) Source isolated.", "b) Via ARINC 629.", "c) Via ARINC 573."], answer: "c", explanation: "Via ARINC 573." },
+                    { id: "M05-04-31", question: "31. What system uses base 8?", options: ["a) ARINC 429, in dataword labels only.", "b) ARINC 573.", "c) ARINC 629."], answer: "a", explanation: "ARINC 429 labels use base 8 (octal)." },
+                    { id: "M05-04-32", question: "32. On an ARINC 629 data bus, the maximum amount of current-mode couplers per data bus is.", options: ["a) 46.", "b) 120.", "c) 64."], answer: "b", explanation: "Maximum limit is 120 LRUs/couplers." },
+                    { id: "M05-04-33", question: "33. To connect an LRU to the data bus.", options: ["a) a terminal controller and interface module only is required.", "b) current mode coupler, terminal controller and a production break is required.", "c) a current mode coupler, serial interface module and terminal controller is required."], answer: "c", explanation: "Requires coupler, SIM, and terminal controller." },
+                    { id: "M05-04-34", question: "34. A current-mode coupler contains an E-Core assembly. The purpose of the E-Core is to provide effective screening of the signal through the.", options: ["a) current-mode coupler.", "b) couple the signal to the data bus.", "c) enable easy access for monitoring of the signal."], answer: "b", explanation: "Coupling the signal to the data bus." },
+                    { id: "M05-04-35", question: "35. The ARINC 429 low rate of transmission is.", options: ["a) 100 kbits/second with high of 12-14 Mbits/second.", "b) 12-14 Kbits/second with high of 100 kBits/second.", "c) 12-14 Mbits/second with high of 100 Mbits/secon."], answer: "b", explanation: "Low speed is ~12-14 kbps, high speed is 100 kbps." },
+                    { id: "M05-04-36", question: "36. An ARINC 629 bus cable is a twisted pair of wires with.", options: ["a) a 130 ohm resistor at one end.", "b) a 130 ohm resistor at both ends.", "c) a 230 ohm resistor at one end."], answer: "b", explanation: "Terminated with 130 ohm resistors at both ends." },
+                    { id: "M05-04-37", question: "37. An ARINC 629 stub cable.", options: ["a) connects single directional data between the LRU and current mode coupler.", "b) connects bi-directional data between the LRU and current mode coupler.", "c) connects bi-directional data between two LRUs."], answer: "b", explanation: "Bi-directional stub connection between LRU and coupler." },
+                    { id: "M05-04-38", question: "38. Care must be taken when installing ARINC 629 cables into bus panels, damage to cables can cause.", options: ["a) corrosion of the conductor.", "b) arcing of high voltage signals.", "c) standing waves."], answer: "a", explanation: "Conductor corrosion risk." },
+                    { id: "M05-04-39", question: "39. An aircraft databus system.", options: ["a) can use both ARINC 629 and ARINC 429 as they are compatible.", "b) can use both systems, ARINC 629 and ARINC 429 via system card files and signal gateways.", "c) cannot use both ARINC 629 and ARINC 429 data buses."], answer: "b", explanation: "Mixed usage enabled via system card files and gateways." },
+                    { id: "M05-04-40", question: "40. ARINC 629 is used for.", options: ["a) emergency only.", "b) a backup to ARINC 429.", "c) normal flight."], answer: "c", explanation: "Used for normal flight data exchange." },
+                    { id: "M05-04-41", question: "41. Once an ARINC 629 LRU has transmitted a message it will wait how long before transmitting again?", options: ["a) Until the end of the synchronization gap.", "b) Until the start of the terminal gap.", "c) Until the end of the transmit interval"], answer: "c", explanation: "Wait until the end of the transmit interval (TI)." },
+                    { id: "M05-04-42", question: "42. How is the word label 206 written in ARINC 429?", options: ["a) Decimal 206.", "b) Octal 01100001.", "c) Binary 11000110."], answer: "b", explanation: "Octal label representation (reversed bit order MSB to right)." },
+                    { id: "M05-04-43", question: "43. What is ARINC 561 used for?", options: ["a) Fly by Wire systems.", "b) Flight Data Recorder systems.", "c) Inertial Navigation Systems."], answer: "c", explanation: "ARINC 561 specifies Inertial Navigation Systems." },
+                    { id: "M05-04-44", question: "44. An ARINC data word is bits 11-29, if bits 11-18 are patched which of the following would be the LSB bit?", options: ["a) 19.", "b) 29.", "c) 21."], answer: "a", explanation: "Bit 19 becomes the LSB." },
+                    { id: "M05-04-45", question: "45. Fibreoptic databus links are.", options: ["a) simplex.", "b) bi-directional.", "c) one way data buses."], answer: "b", explanation: "Bi-directional links." },
+                    { id: "M05-04-46", question: "46. ARINC 629 is.", options: ["a) half duplex.", "b) full duplex.", "c) simplex."], answer: "a", explanation: "Half duplex communication." },
+                    { id: "M05-04-47", question: "47. A signal in an ARINC 629 system uses.", options: ["a) a pair of wires per transmitter unit.", "b) a single wire.", "c) a twisted pair of wires or fibre optics."], answer: "c", explanation: "Twisted pair or fibre optics." },
+                    { id: "M05-04-48", question: "48. An in-series ARINC 429 system transmits using.", options: ["a) encoder.", "b) time division multiplexing.", "c) wave division multiplexing."], answer: "b", explanation: "Time division multiplexing (TDM)." },
+                    { id: "M05-04-49", question: "49. A terminal controller.", options: ["a) is repetitive transmitting.", "b) will transmit only once during each transmit interval.", "c) transmits only when addressed."], answer: "b", explanation: "Transmits once per transmit interval." },
+                    { id: "M05-04-50", question: "50. The number of LRUs which transmit/receive on ARINC-429 is dependent upon.", options: ["a) speed of transmission & size of aircraft systems.", "b) parallel input impedance.", "c) size of S.D.I."], answer: "b", explanation: "Parallel input impedance." },
+                    { id: "M05-04-51", question: "51. One of the ARINC 429 formats is.", options: ["a) BCD.", "b) octal.", "c) hexadecimal."], answer: "a", explanation: "Binary Coded Decimal (BCD)." },
+                    { id: "M05-04-52", question: "52. A group of bits transmitted at the same time is.", options: ["a) parallel data.", "b) a clock signal.", "c) serial data."], answer: "a", explanation: "Parallel data transmission." },
+                    { id: "M05-04-53", question: "53. The ARINC 429 system uses which of the following system to transfer data?", options: ["a) Non return to zero.", "b) Harvard bi phase.", "c) Bi-directional return to zero."], answer: "c", explanation: "Bipolar / bi-directional return to zero (BBRZ)." },
+                    { id: "M05-04-54", question: "54. Which of the following ARINCs is bidirectional?", options: ["a) 629.", "b) 429.", "c) 573."], answer: "a", explanation: "ARINC 629 is inherently bi-directional on a shared bus." },
+                    { id: "M05-04-55", question: "55. Data is transferred on the MIL-STD-1553B by using.", options: ["a) non return to zero.", "b) Manchester bi-phase.", "c) bipolar return to zero."], answer: "b", explanation: "Manchester bi-phase." },
+                    { id: "M05-04-56", question: "56. The general arrangement of ARINC 629 includes.", options: ["a) databus cable, current mode coupler, stub cable.", "b) current mode coupler, databus cable only.", "c) databus cable, stub cable, voltage mode coupler."], answer: "a", explanation: "Bus cable, coupler, stub cable." },
+                    { id: "M05-04-57", question: "57. ARINC 629 Databus cables are terminated using.", options: ["a) 100 ohms resistor.", "b) 130 ohms resistor.", "c) 25 ohms resistor."], answer: "b", explanation: "130 ohm terminating resistors." },
+                    { id: "M05-04-58", question: "58. In ARINC 429 data field is bits 11 to 28. If the bits 11 to 18 had pad bits, the L.S.B. Of the data would be.", options: ["a) bit 11.", "b) bit 28.", "c) bit 19."], answer: "c", explanation: "Bit 19." },
+                    { id: "M05-04-59", question: "59. The BCD data field of ARINC 429 is contained within bits.", options: ["a) 11-29.", "b) 11-28.", "c) 1-8."], answer: "a", explanation: "Bits 11-29 for BCD." },
+                    { id: "M05-04-60", question: "60. ARINC 629 is transmitted using.", options: ["a) single wire for each transmitter.", "b) fibre optics or twisted pair of wires.", "c) SWG 28 wire."], answer: "b", explanation: "Fibre optics or twisted pair." },
+                    { id: "M05-04-61", question: "61. A simplex system has.", options: ["a) 1 transmitter and multiple receivers.", "b) 1 bus controller and 1 remote terminal.", "c) 1 bus controller and multiple receivers."], answer: "a", explanation: "1 transmitter to multiple receivers." },
+                    { id: "M05-04-62", question: "62. To create a bi-directional communications link within an ARINC 429 system.", options: ["a) four databuses are required.", "b) only one databus is required.", "c) two databuses are required."], answer: "c", explanation: "Two buses are needed for two-way communication." },
+                    { id: "M05-04-63", question: "63. Why does an ARINC databus system send data to LRUs in series?", options: ["a) Saves weight.", "b) More information can be sent.", "c) Takes less time."], answer: "a", explanation: "Saves aircraft wiring weight." },
+                    { id: "M05-04-64", question: "64. Can an LRU transmit and receive on more than one 629 bus?", options: ["a) Yes.", "b) Only if paralleled.", "c) No."], answer: "a", explanation: "Yes, LRUs can interface with multiple buses." },
+                    { id: "M05-04-65", question: "65. ARINC 629 LRUs transmit.", options: ["a) when addressed.", "b) when signal gap is sensed.", "c) when terminal gap is sensed."], answer: "c", explanation: "Terminal gap timing controls transmission." },
+                    { id: "M05-04-66", question: "66. An ARINC 429 BCD word occupies bits 11-29, if 11-15 are filled with padders then the LSB of the word will be.", options: ["a) 11.", "b) 16.", "c) 29."], answer: "b", explanation: "Bit 16." },
+                    { id: "M05-04-67", question: "67. A simplex system has.", options: ["a) one transmitter, many receivers.", "b) a bus controller and separate controller.", "c) one transmitter, one receiver."], answer: "a", explanation: "One transmitter, many receivers." },
+                    { id: "M05-04-68", question: "68. In an Arinc 429 Word label-representing heading is 320, this is represented in bits 1- 8 as.", options: ["a) 01011001.", "b) 00001011.", "c) 01101000."], answer: "b", explanation: "Octal 320 converted and reversed." },
+                    { id: "M05-04-69", question: "69. In ARINC 629 aperiodic mode, LRUs transmit in order of.", options: ["a) longest terminal gap to shortest terminal gap.", "b) power up.", "c) shortest terminal gap to longest terminal gap."], answer: "c", explanation: "Shortest to longest terminal gap." },
+                    { id: "M05-04-70", question: "70. ARINC 629, aperiodic mode is used.", options: ["a) for landing and approach operation.", "b) for normal operation.", "c) for database loads."], answer: "c", explanation: "Used for software and database loads." },
+                    { id: "M05-04-71", question: "71. How is ARINC 429 bi-directional data transfer achieved?", options: ["a) Via a current mode coupler.", "b) Using two data buses.", "c) Via a twisted pair of shielded cables."], answer: "b", explanation: "Using two separate data buses." },
+                    { id: "M05-04-72", question: "72. The data format use to transmit signal to flight data recorder.", options: ["a) Harvard bi-phase 12 bit.", "b) Bi-Polar RZ 12 bit.", "c) Manchester 2 bi-phase 12 bit."], answer: "a", explanation: "Harvard bi-phase 12 bit format." },
+                    { id: "M05-04-73", question: "73. The output voltage of ARINC 429 signal is.", options: ["a) +5v.", "b) +10v to -10v.", "c) -5v."], answer: "b", explanation: "+10V to -10V swing." },
+                    { id: "M05-04-74", question: "74. An ARINC 629 label word is.", options: ["a) 10 bits.", "b) 12 bits.", "c) 8 bits."], answer: "b", explanation: "12-bit label field." },
+                    { id: "M05-04-75", question: "75. The T/R of ARINC 629 is.", options: ["a) Encoder / decoder.", "b) Multiplex / demultiplex.", "c) switching."], answer: "b", explanation: "Multiplex / demultiplex." },
+                    { id: "M05-04-76", question: "76. Terminal gap in ARINC 629 is.", options: ["a) always the same period.", "b) flexible.", "c) can be changed by adjusting the rx/tx software."], answer: "c", explanation: "Configured via software settings." },
+                    { id: "M05-04-77", question: "77. How does ARINC 629 bus transmit and receive information?", options: ["a) Sockets and pins.", "b) Inductive coupling.", "c) Optical coupling."], answer: "b", explanation: "Inductive coupling." },
+                    { id: "M05-04-78", question: "78. What is ARINC 561 used for?", options: ["a) To specify LRU pin-outs.", "b) To specify Radio Comms data bus.", "c) To specify Flight Data Recorder data bus."], answer: "b", explanation: "ARINC radio communication specification." },
+                    { id: "M05-04-79", question: "79. What is the purpose of the parity bit on an ARINC 429 bus?", options: ["a) To indicate if the data is analogue.", "b) To indicate that the data is digital.", "c) To indicate to the receiver that the data is valid."], answer: "c", explanation: "Indicates data validity." },
+                    { id: "M05-04-80", question: "80. ARINC 429 is.", options: ["a) Single Source Multiple Sink System.", "b) Multiple Source Multiple Sink system.", "c) Single Source Single Sink system."], answer: "a", explanation: "One transmitter (source) to multiple receivers (sinks)." },
+                    { id: "M05-04-81", question: "81. What is the purpose of intermediate production breaks in ARINC 429 or 629 Data cables?", options: ["a) Cables are only manufactured 40 feet long.", "b) To allow maintenance personnel to divide the right and left system buses into two parts for easy removal and installation.", "c) To allow connection of new cables to the existing ones in case of a modification."], answer: "b", explanation: "Facilitates maintenance and bus separation." },
+                    { id: "M05-04-82", question: "82. Where is the parity bit installed in a data word?", options: ["a) Front.", "b) End MSB.", "c) Middle."], answer: "b", explanation: "Bit 32 (most significant bit position at end)." },
+                    { id: "M05-04-83", question: "83. RZ bi-polar modulation consists of bits which are one of __________ states?", options: ["a) Eight.", "b) Two.", "c) Three."], answer: "c", explanation: "Three states (+V, 0V, -V)." },
+                    { id: "M05-04-84", question: "84. In the ARINC 429 digital information transfer system, data may travel in:.", options: ["a) both directions on the same bus simultaneously.", "b) one direction only.", "c) both directions on the same bus sequentially by time multiplexing."], answer: "b", explanation: "Travels in one direction only per bus." },
+                    { id: "M05-04-85", question: "85. An ARINC 629 data word.", options: ["a) includes an 8 bit label and a 16 bit data field.", "b) has only 20 bits.", "c) comprises up to 256 data bits."], answer: "b", explanation: "Comprises 20 bits (12-bit label, etc.)." },
+                    { id: "M05-04-86", question: "86. In an ARINC 429 digital word bit number 32 is used for.", options: ["a) terminating the data field.", "b) checking parity.", "c) identifying word type."], answer: "b", explanation: "Parity checking." },
+                    { id: "M05-04-87", question: "87. What connects an LRU to the Bus Coupler in an ARINC 629 Data Bus?", options: ["a) Patch Cord.", "b) Stub Cable.", "c) Interconnect Cable."], answer: "b", explanation: "Stub cable." }
+                ]
             }
         };
 
@@ -1112,6 +1205,14 @@
             for (let key in allQuestionBanks) {
                 userAnswers[key] = new Array(allQuestionBanks[key].questions.length).fill(null);
             }
+            
+            document.getElementById("module-select").addEventListener("change", function(e) {
+                switchModule(e.target.value);
+            });
+            document.getElementById("prev-btn").addEventListener("click", prevQuestion);
+            document.getElementById("next-btn").addEventListener("click", nextQuestion);
+            document.getElementById("restart-btn").addEventListener("click", restartQuiz);
+
             loadQuestion();
         }
 
@@ -1218,12 +1319,6 @@
             document.getElementById("quiz-container").classList.remove("hidden");
             loadQuestion();
         }
-
-        // 強制綁定至全域 window，確保 HTML 內聯 onchange 絕對找得到
-        window.switchModule = switchModule;
-        window.nextQuestion = nextQuestion;
-        window.prevQuestion = prevQuestion;
-        window.restartQuiz = restartQuiz;
 
         window.onload = initApp;
     </script>
